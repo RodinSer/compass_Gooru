@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">GooRu</string>
+    <string name="entrance">Вход</string>
+    <string name="e_mail">e-mail</string>
+    <string name="password">Пароль</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="Enter">Войти</string>
+    <string name="auth">Авторизоваться</string>
+    <string name="registration">Регистрация</string>
+    <string name="progress_en">Progress</string>
+    <string name="month">/мес</string>
+    <string name="which_includes">Что включает:</string>
+    <string name="rub">Р</string>
+    <string name="repeat_password">Повторить пароль</string>
+    <string name="reset_password">Сбросить пароля</string>
+    <string name="load_error">Проверте состояние сети, и повторите попытку</string>
+    <string name="name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="title_contact">Контактные данные</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="title_person">Персональные данные</string>
+    <string name="change_password">Сменить пароль</string>
+    <string name="activate_subscription">Активировать подписку</string>
+    <string name="edit">Редактировать</string>
+    <string name="edit_person_data">Редактирование персональных данных</string>
+    <string name="save">Сохранить</string>
+    <string name="link_to_source">Ссылка на источник</string>
+    <string name="compass">COMPASS</string>
+    <string name="parsing">PARSING</string>
+    <string name="offer">Нажимая кнопку «Зарегистрироваться», я даю согласие на обработку персональных данных, соглашаюсь с тарифами и правилами публичной оферты</string>
+    <string name="bad_parameters">Невозможно войти с предоставленными учетными данными</string>
+    <string name="bad_parameters_registration">Невозможно зарегестрироваться с предоставленными учетными данными</string>
+    <string name="password_helper">* Пароли должны совпадать, должен содержать цифры и латинские буквы</string>
+    <string name="new_source">Новый источник</string>
+
+    <string-array name="popular_parsing">
+        <item>Поиск работы специалистов</item>
+        <item>Новости дня в стране и мире</item>
+        <item>Книжные новинки</item>
+        <item>Ежедневный гороскоп</item>
+        <item>Финансовый отчет</item>
+        <item>Лекарственные средства</item>
+        <item>Адресса для почтовых рассылок</item>
+        <item>Горячие обеды быстро</item>
+    </string-array>
+
+    <string-array name="auth_group">
+        <item>Вход</item>
+        <item>Регистрация</item>
+    </string-array>
+
+    <string-array name="par_source">
+        <item>Мои Парсеры</item>
+        <item>Избранное</item>
+    </string-array>
+
+</resources>

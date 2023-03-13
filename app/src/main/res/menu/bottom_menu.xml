@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:enabled="true"
+        android:id="@id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+
+    <item
+        android:enabled="true"
+        android:icon="@drawable/ic_par_source"
+        android:id="@id/tabParSourceFragment"
+        android:title="ParSource" />
+
+    <item
+        android:id="@id/ticketsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_bottom_message"
+        android:iconTint="@color/purple_title"
+        android:title="Message" />
+
+    <item
+        android:id="@id/profileFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"
+        android:iconTint="@color/purple_title"
+        android:title="profile" />
+
+
+</menu>

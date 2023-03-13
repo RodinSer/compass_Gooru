@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".feature.presentation.chat.tikets.TicketsFragment">
+
+    <TextView
+        android:layout_margin="16dp"
+        android:id="@+id/title"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="Обращение"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"/>
+
+    <Button
+        android:id="@+id/new_ticket_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Новое сообщение"
+        android:textAllCaps="false"
+        android:layout_margin="16dp"/>
+
+</LinearLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    app:layoutDescription="@xml/fragment_parser_scene"
+    tools:context=".feature.presentation.parser.parser.ParserFragment">
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/info_group"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:constraint_referenced_ids="avatar_group,title_key_word,title_name,date_title,title_status,name,key_word,date,status,button" />
+
+    <ImageView
+        android:id="@+id/avatar_group"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/title_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_name"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/title_name"
+        style="@style/ParserStatus_tile"
+        android:layout_marginStart="5dp"
+        android:text="имя"
+        app:layout_constraintStart_toEndOf="@+id/avatar_group"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name"
+        style="@style/ParserStatus_field"
+        android:layout_marginStart="5dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/title_statistic_group"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem" />
+
+    <TextView
+        android:id="@+id/title_key_word"
+        style="@style/ParserStatus_tile"
+        android:layout_width="70dp"
+        android:text="ключевые слова"
+        app:layout_constraintStart_toStartOf="@+id/title_name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/key_word"
+        style="@style/ParserStatus_field"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/title_key_word"
+        tools:text="java" />
+
+    <TextView
+        android:id="@+id/date_title"
+        style="@style/ParserStatus_tile"
+        android:text="дата"
+        app:layout_constraintStart_toStartOf="@+id/title_name"
+        app:layout_constraintTop_toBottomOf="@+id/key_word" />
+
+    <TextView
+        android:id="@+id/date"
+        style="@style/ParserStatus_field"
+        app:layout_constraintBottom_toBottomOf="@+id/date_title"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/date_title"
+        tools:text="@tools:sample/date/mmddyy" />
+
+    <TextView
+        android:id="@+id/title_status"
+        style="@style/ParserStatus_tile"
+        android:text="статус"
+        app:layout_constraintStart_toStartOf="@+id/title_name"
+        app:layout_constraintTop_toBottomOf="@+id/date_title" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/title_statistic_group"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="title_name, title_key_word,date_title" />
+
+    <TextView
+        android:id="@+id/status"
+        style="@style/ParserStatus_field"
+        app:layout_constraintBottom_toBottomOf="@+id/title_status"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/title_status"
+        tools:text="70%" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/name" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/avatar_group"
+        app:layout_constraintTop_toBottomOf="@id/title_status">
+
+        <RadioButton
+            android:id="@+id/radio_all"
+            style="@style/Parsing.Radio_Button"
+            android:text="Все" />
+
+        <RadioButton
+            android:id="@+id/radio_comment"
+            style="@style/Parsing.Radio_Button"
+            android:text="с комментариями" />
+
+        <RadioButton
+            android:id="@+id/radio_favorite"
+            style="@style/Parsing.Radio_Button"
+            android:text="избранное" />
+
+    </RadioGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="10dp"
+
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:listitem="@layout/item_parser" />
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
