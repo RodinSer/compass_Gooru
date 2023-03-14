@@ -6,6 +6,9 @@ import android.os.Environment
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gooru.core.LoadState
+import com.example.gooru.core.base.BaseViewModel
+import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.feature.data.body.BodyFavorite
 import com.example.gooru.feature.data.pref.UserIdProvider
 import com.example.gooru.feature.domain.repository.PagingParser
@@ -17,16 +20,19 @@ import java.io.File
 class ParserViewModel(
     private val parser: PagingParser,
     private val favoriteUseCase: FavoriteUseCase,
-    private val userIdProvider: UserIdProvider
-) : ViewModel() {
+    private val userIdProvider: UserIdProvider,
+    private val dispatchers: DispatchersWrapper
+) : BaseViewModel() {
 
     fun parsers(id: Int) = parser.getParser(id)
 
     fun worKFavorite( parserId: Int?) {
-        viewModelScope.launch {
-            if (parserId != null)
+        viewModelScope.launch (dispatchers.io+handler){
+            if (parserId != null){
+                _loadState.value = LoadState.LOADING
                 favoriteUseCase.workFavorite(userIdProvider.getUserId(), parserId)
-            Log.e("Kart","parserId = $parserId")
+                _loadState.value = LoadState.ERROR
+            }
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.gooru.feature.presentation.profile
 
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
+import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.feature.domain.model.homepage.user.User
@@ -29,7 +30,7 @@ class ProfileViewModel(
     private val _user = MutableSharedFlow<User>(replay = 1)
     val user = _user.asSharedFlow()
 
-    private val _avatar = MutableSharedFlow<String>(replay = 1)
+    private val _avatar = MutableStateFlow<String>("")
     val avatar = _avatar.asSharedFlow()
 
     private val _tariffVisibility = MutableStateFlow(false)
@@ -40,28 +41,39 @@ class ProfileViewModel(
     }
 
     private fun getUserInfo() =
-        viewModelScope.launch(dispatchers.io) {
+        viewModelScope.launch(dispatchers.io + handler) {
+            _loadState.value = LoadState.LOADING
             val currentUser = userInfoUseCase.getUserInfo()
             changeUser = currentUser
             changeUser?.tariff = tariffUseCase.getUserTariff()
             _tariffVisibility.value = changeUser?.tariff != null
             _user.emit(currentUser)
+            _loadState.value = LoadState.SUCCESS
         }
 
-    fun updateUser(first: String, last: String? = null) = viewModelScope.launch(dispatchers.io) {
-        if (changeUser != null)
-            _user.emit(userUpdateUseCase.userUpData(changeUser!!.toBody(first, last)))
-    }
+    fun updateUser(first: String, last: String? = null) =
+        viewModelScope.launch(dispatchers.io + handler) {
+
+            if (changeUser != null) {
+                _loadState.value = LoadState.LOADING
+                _user.emit(userUpdateUseCase.userUpData(changeUser!!.toBody(first, last)))
+                _loadState.value = LoadState.SUCCESS
+            }
+
+        }
 
     fun changePassword(newPassword: String, oldPassword: String) =
-        viewModelScope.launch(dispatchers.io) {
+        viewModelScope.launch(dispatchers.io + handler) {
+            _loadState.value = LoadState.LOADING
             changePasswordUseCase.changePassword(newPassword, oldPassword)
+            _loadState.value = LoadState.SUCCESS
         }
 
-    fun loadImage(uri: Uri?)=
-        viewModelScope.launch(dispatchers.io) {
-            val a = uploadUseCase.imageUpload(uri, changeUser?.id).avatar
-            _avatar.emit(a)
-    }
+    fun loadImage(uri: Uri?) =
+        viewModelScope.launch(dispatchers.io + handler) {
+            _loadState.value = LoadState.LOADING
+            _avatar.emit(uploadUseCase.imageUpload(uri, changeUser?.id).avatar)
+            _loadState.value = LoadState.SUCCESS
+        }
 
 }

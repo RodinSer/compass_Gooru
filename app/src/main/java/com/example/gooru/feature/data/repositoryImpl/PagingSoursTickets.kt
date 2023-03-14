@@ -1,13 +1,12 @@
 package com.example.gooru.feature.data.repositoryImpl
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.gooru.feature.domain.model.support.SupportTicket
-import com.example.gooru.feature.domain.useCase.support.SupportAllUseCase
+import com.example.gooru.feature.domain.useCase.support.SupportAllTicketsUseCase
 
 class PagingSoursTickets(
-    private val supportAllUseCase: SupportAllUseCase
+    private val supportAllUseCase: SupportAllTicketsUseCase
 ) : PagingSource<Int, SupportTicket>() {
     override fun getRefreshKey(state: PagingState<Int, SupportTicket>) = FIRST_PAGE
 
@@ -16,8 +15,6 @@ class PagingSoursTickets(
 
         val item =
             supportAllUseCase.getAllTickets(page)
-
-        Log.e("Kart", item.first().id.toString())
 
         return LoadResult.Page(
             prevKey = null,

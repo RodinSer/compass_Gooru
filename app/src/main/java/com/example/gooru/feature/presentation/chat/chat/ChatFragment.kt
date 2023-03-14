@@ -3,6 +3,7 @@ package com.example.gooru.feature.presentation.chat.chat
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.databinding.FragmentChatBinding
 import com.example.gooru.feature.presentation.chat.chat.adapter.ChatAdapter
@@ -15,15 +16,21 @@ class ChatFragment : BaseFragment<FragmentChatBinding>() {
 
     private val adapter by lazy { ChatAdapter(viewModel.getUserId()) }
 
-    private val ticketId: Int = 1
+    private val args by navArgs<ChatFragmentArgs>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.startWebSocket(ticketId)
+
+        viewModel.getMessage(args.ticketId)
+
+        viewModel.startWebSocket(args.ticketId)
 
         binding.recyclerView.adapter = adapter
 
-        dataObserver(viewModel.message) {
-            adapter.submitList(it)
+        dataObserver(viewModel.message) { messages->
+            adapter.submitList(messages)
+
+            binding.recyclerView.smoothScrollToPosition(messages.size)
 
         }
 

@@ -29,7 +29,7 @@ interface UsersApi {
     companion object {
         private const val USER_ME = "auth/users/me/"
         private const val CHANGE_PASSWORD = "auth/users/set_password/"
-        private const val UPLOAD_AVATAR = "user/upload/{id}/"
+        private const val UPLOAD_AVATAR = "api/v2/user/upload/{id}/"
     }
 }
 

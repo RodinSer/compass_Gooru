@@ -17,8 +17,12 @@ import com.example.gooru.feature.domain.useCase.parser.GetParserUseCase
 import com.example.gooru.feature.domain.useCase.parser.GetParserUseCaseImpl
 import com.example.gooru.feature.domain.useCase.parsource.NewParSourceUseCase
 import com.example.gooru.feature.domain.useCase.parsource.impl.NewParSourceUseCaseImpl
-import com.example.gooru.feature.domain.useCase.support.SupportAllUseCase
+import com.example.gooru.feature.domain.useCase.support.SupportAllTicketsUseCase
+import com.example.gooru.feature.domain.useCase.support.SupportByTicketUseCase
+import com.example.gooru.feature.domain.useCase.support.SupportNewTicketUseCase
 import com.example.gooru.feature.domain.useCase.support.impl.SupportAllUseCaseImpl
+import com.example.gooru.feature.domain.useCase.support.impl.SupportByTicketUseCaseImpl
+import com.example.gooru.feature.domain.useCase.support.impl.SupportNewTicketUseCaseImpl
 import com.example.gooru.feature.domain.useCase.tariff.AllTariffUseCase
 import com.example.gooru.feature.domain.useCase.tariff.PayUseCase
 import com.example.gooru.feature.domain.useCase.tariff.UserTariffUseCase
@@ -39,7 +43,11 @@ val useCaseModule = module {
 
     single<NewParSourceUseCase> { NewParSourceUseCaseImpl(get()) }
 
-    single<SupportAllUseCase> { SupportAllUseCaseImpl(repository = get()) }
+    single<SupportAllTicketsUseCase> { SupportAllUseCaseImpl(repository = get()) }
+
+    single<SupportByTicketUseCase> { SupportByTicketUseCaseImpl(get()) }
+
+    single<SupportNewTicketUseCase> { SupportNewTicketUseCaseImpl(get()) }
 }
 
 val tariffUseCaseModule = module {

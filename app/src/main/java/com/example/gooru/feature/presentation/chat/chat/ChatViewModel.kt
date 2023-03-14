@@ -1,15 +1,20 @@
 package com.example.gooru.feature.presentation.chat.chat
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.gooru.core.extensions.simpleDateFormat
-import com.example.gooru.feature.data.dto.support.chat.ChatMessage
+import com.example.gooru.feature.data.dto.support.chat.ChatMessageDto
 import com.example.gooru.feature.data.dto.support.chat.SendMessage
 import com.example.gooru.feature.data.pref.AuthTokenProvider
 import com.example.gooru.feature.data.pref.UserIdProvider
+import com.example.gooru.feature.domain.model.ChatMessage
+import com.example.gooru.feature.domain.useCase.support.SupportByTicketUseCase
 import com.example.gooru.feature.presentation.chat.chat.websocket.AppWebSocketListener
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
@@ -18,7 +23,8 @@ class ChatViewModel(
     private val client: OkHttpClient,
     private val gson: Gson,
     private val tokenProvider: AuthTokenProvider,
-    private val userIdProvider: UserIdProvider
+    private val supportByTicketUseCase: SupportByTicketUseCase,
+    private val userIdProvider: UserIdProvider,
 ) : ViewModel() {
 
     private val _message = MutableStateFlow<List<ChatMessage>>(mutableListOf())
@@ -29,11 +35,18 @@ class ChatViewModel(
     private var webSocket: WebSocket? = null
 
     private fun messageListener(json: String) {
+
         val newList = _message.value.toMutableList()
-        val newItem: ChatMessage = gsonConvectorFromJson(json)
-        newItem.created_at = newItem.created_at.simpleDateFormat()
+        val newItem: ChatMessageDto = gsonConvectorFromJson(json)
+        newItem.created = newItem.created.simpleDateFormat()
         newList.add(newItem)
         _message.value = newList
+    }
+
+    fun getMessage(ticketId: Int){
+        viewModelScope.launch {
+            _message.value =  supportByTicketUseCase.getMessageByTicketID(ticketId)
+        }
     }
 
     fun startWebSocket(ticketId: Int) {

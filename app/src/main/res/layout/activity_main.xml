@@ -7,16 +7,40 @@
     android:orientation="vertical"
     tools:context=".app.MainActivity">
 
-    <TextView
-        style="@style/CompassText"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/compass" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      >
 
-    <TextView
-        style="@style/TitleText"
-        android:layout_marginStart="8dp"
-        android:text="@string/parsing" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/CompassText"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/compass" />
+
+            <TextView
+                style="@style/TitleText"
+                android:layout_marginStart="8dp"
+                android:text="@string/parsing" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:paddingEnd="16dp"
+            android:id="@+id/message_button"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_bottom_message"
+            tools:ignore="RtlSymmetry" />
+
+    </FrameLayout>
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
@@ -29,9 +53,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigate"
-        android:background="@drawable/bg_bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_navigation"
         app:menu="@menu/bottom_menu" />
 
 </LinearLayout>

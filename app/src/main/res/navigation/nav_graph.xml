@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/startAuthFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -47,7 +47,11 @@
         android:id="@+id/chatFragment"
         android:name="com.example.gooru.feature.presentation.chat.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="TicketId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/startAuthFragment"
         android:name="com.example.gooru.feature.presentation.authorization.start.StartAuthFragment"

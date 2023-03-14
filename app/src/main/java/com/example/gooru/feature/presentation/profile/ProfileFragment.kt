@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
+import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.constant.FORM_DATA
-import com.example.gooru.core.extensions.createChangePasswordDialog
-import com.example.gooru.core.extensions.createContactEditDialog
-import com.example.gooru.core.extensions.createPersonEditDialog
-import com.example.gooru.core.extensions.loadImage
+import com.example.gooru.core.extensions.*
 import com.example.gooru.databinding.FragmentProfileBinding
 import com.example.gooru.feature.domain.model.homepage.user.User
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,9 +30,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         dataObserver(viewModel.user) { user -> userObserver(user) }
 
-        dataObserver(viewModel.avatar) { binding.avatar.loadImage(it) }
+        dataObserver(viewModel.avatar) { url -> binding.avatar.loadImage(url) }
 
         dataObserver(viewModel.tariffVisibility) { binding.userTariff.isVisible = it }
+
+        dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
 
         binding.avatar.setOnClickListener { getItem.launch(FORM_DATA) }
 
@@ -53,6 +53,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
                 viewModel.changePassword(newPassword, oldPassword)
             }
         }
+    }
+
+    private fun loadStateListener(state: LoadState) {
+        if (state == LoadState.ERROR) showError { }
+        binding.progressBarr.isVisible = state == LoadState.LOADING
     }
 
     private fun userObserver(user: User) = binding.apply {

@@ -43,8 +43,8 @@ interface ParSourceApi {
     suspend fun getFavoriteList():ResultFavoriteParserDto
 
     companion object {
-        private const val PAR_SOURCE = "parsource_mobile/"
-        private const val PAR_SOURCE_POST = "parsource/"
+        private const val PAR_SOURCE = "api/v2/parsource_mobile/"
+        private const val PAR_SOURCE_POST = "api/v2/parsource/"
         private const val PARSER = "parser/"
         private const val PAGE = "page"
         private const val PAGE_SIZE = "page_size"

@@ -21,6 +21,8 @@
 
     <color name="purple_title">#5960C7</color>
     <color name="blue_title">#197ECA</color>
+    <color name="blue_message">#ACCBF4</color>
+    <color name="green_message">#ACCAB3</color>
     <color name="transparent">#00000000</color>
     <color name="transparent_white">#94D3EBFD</color>
 

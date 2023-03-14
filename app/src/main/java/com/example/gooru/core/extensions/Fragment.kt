@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.gooru.R
 import com.example.gooru.feature.presentation.authorization.auth.AuthFragment
+import com.example.gooru.feature.presentation.chat.tikets.TicketsFragment
 import com.example.gooru.feature.presentation.profile.ProfileFragment
 import com.google.android.material.textfield.TextInputEditText
 
@@ -122,5 +123,29 @@ fun Fragment.showError(
         action()
         dialog.dismiss()
     }
+    dialog.show()
+}
+
+
+fun TicketsFragment.createNewTicketDialog(
+    action: (message: String, theme: String) -> Unit
+) {
+    val dialogView = LayoutInflater.from(requireContext())
+        .inflate(R.layout.dialog_create_ticket, null, false)
+    val createButton = dialogView.findViewById<Button>(R.id.create_button)
+    val closeButton = dialogView.findViewById<ImageView>(R.id.close_image)
+    val message = dialogView.findViewById<TextInputEditText>(R.id.message)
+    val theme = dialogView.findViewById<TextInputEditText>(R.id.theme)
+
+    val dialog = AlertDialog.Builder(requireContext())
+        .setView(dialogView)
+        .create()
+
+    createButton.setOnClickListener {
+        action(message.text.toString(), theme.text.toString())
+        dialog.dismiss()
+    }
+
+    closeButton.setOnClickListener { dialog.dismiss() }
     dialog.show()
 }

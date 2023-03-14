@@ -2,14 +2,13 @@ package com.example.gooru.feature.data.api
 
 import com.example.gooru.feature.data.body.BodyChangePassword
 import com.example.gooru.feature.data.body.BodyRegister
-import com.example.gooru.feature.data.dto.auth.TokenDto
 import com.example.gooru.feature.data.body.BodyUser
 import com.example.gooru.feature.data.body.BodyUserEmail
 import com.example.gooru.feature.data.dto.auth.RegistrationUserDto
+import com.example.gooru.feature.data.dto.auth.TokenDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface AuthApi {
 

@@ -15,13 +15,6 @@
         android:title="ParSource" />
 
     <item
-        android:id="@id/ticketsFragment"
-        android:enabled="true"
-        android:icon="@drawable/ic_bottom_message"
-        android:iconTint="@color/purple_title"
-        android:title="Message" />
-
-    <item
         android:id="@id/profileFragment"
         android:enabled="true"
         android:icon="@drawable/ic_profile"

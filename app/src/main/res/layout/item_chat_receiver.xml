@@ -6,17 +6,13 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="16dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="8dp"
+
             android:orientation="vertical">
 
             <TextView
@@ -25,14 +21,9 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                tools:text="@tools:sample/lorem" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/subtitle"
-                android:textSize="13sp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:background="@drawable/bg_message_receiver"
                 tools:text="@tools:sample/lorem" />
 
             <TextView
@@ -43,12 +34,12 @@
                 android:textSize="13sp"
                 tools:text="@tools:sample/lorem" />
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:scaleType="centerCrop"
         android:layout_gravity="center"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="35dp"

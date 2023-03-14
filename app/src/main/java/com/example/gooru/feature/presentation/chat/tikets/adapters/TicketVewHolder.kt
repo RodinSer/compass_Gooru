@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.chat.tikets
+package com.example.gooru.feature.presentation.chat.tikets.adapters
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gooru.databinding.ItemTicketBinding
@@ -7,17 +7,17 @@ import com.example.gooru.feature.domain.model.support.SupportTicket
 class TicketVewHolder(private val binding: ItemTicketBinding, onClick: (id: Int) -> Unit) :
     RecyclerView.ViewHolder(binding.root) {
 
-    private var ticedId: Int? = null
+    private var ticketId: Int? = null
 
     init {
         binding.root.setOnClickListener {
-            ticedId?.let { id -> onClick(id) }
+            ticketId?.let { id -> onClick(id) }
 
         }
     }
 
     fun bind(item: SupportTicket) {
-        ticedId = item.id
+        ticketId = item.id
         binding.title.text = item.name
         binding.message.text = item.message
     }

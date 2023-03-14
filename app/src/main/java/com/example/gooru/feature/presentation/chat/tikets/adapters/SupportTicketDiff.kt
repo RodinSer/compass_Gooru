@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.chat.tikets
+package com.example.gooru.feature.presentation.chat.tikets.adapters
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.gooru.feature.domain.model.support.SupportTicket
