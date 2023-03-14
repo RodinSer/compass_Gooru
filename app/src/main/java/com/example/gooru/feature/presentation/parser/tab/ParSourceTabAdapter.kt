@@ -6,7 +6,7 @@ import com.example.gooru.feature.presentation.parser.favorite.FavoriteParserFrag
 import com.example.gooru.feature.presentation.parser.parsource.MyParSourceFragment
 
 class ParSourceTabAdapter(
-    private val fragment: Fragment,
+    fragment: Fragment,
     private val size: Int
 ) : FragmentStateAdapter(fragment) {
     override fun getItemCount() = size

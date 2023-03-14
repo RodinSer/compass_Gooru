@@ -7,7 +7,7 @@ import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.feature.data.home.ListHorizontal
 import com.example.gooru.feature.data.home.ListVertical
 import com.example.gooru.feature.data.home.creteFAQList
-import com.example.gooru.feature.data.pref.UserIdProvider
+import com.example.gooru.core.provide.UserIdProvider
 import com.example.gooru.feature.domain.model.homepage.HomeInfo
 import com.example.gooru.feature.domain.model.homepage.user.User
 import com.example.gooru.feature.domain.useCase.parsource.ParSourceUseCase
@@ -60,8 +60,11 @@ class HomeViewModel(
     }
 
     fun getPayUrl(tariffId: Int, redirect: (url: String) -> Unit) {
-        viewModelScope.launch(dispatchers.io) {
-            redirect(payUseCase.getUrl(tariffId))
+        viewModelScope.launch(dispatchers.io + handler) {
+            _loadState.value = LoadState.LOADING
+            val payUrl = payUseCase.getUrl(tariffId)
+            _loadState.value = LoadState.SUCCESS
+            redirect(payUrl)
         }
     }
 }

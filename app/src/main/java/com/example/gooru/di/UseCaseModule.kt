@@ -11,10 +11,12 @@ import com.example.gooru.feature.domain.useCase.auth.impl.ChangePasswordUseCaseI
 import com.example.gooru.feature.domain.useCase.parsource.impl.ParSourceUseCaseImpl
 import com.example.gooru.feature.domain.useCase.auth.impl.RegistrationUseCaseImpl
 import com.example.gooru.feature.domain.useCase.auth.impl.ResetPasswordUseCaseImpl
+import com.example.gooru.feature.domain.useCase.parser.DownLoadURLUseCase
 import com.example.gooru.feature.domain.useCase.parser.FavoriteUseCase
-import com.example.gooru.feature.domain.useCase.parser.FavoriteUseCaseImpl
+import com.example.gooru.feature.domain.useCase.parser.impl.FavoriteUseCaseImpl
 import com.example.gooru.feature.domain.useCase.parser.GetParserUseCase
-import com.example.gooru.feature.domain.useCase.parser.GetParserUseCaseImpl
+import com.example.gooru.feature.domain.useCase.parser.impl.DownLoadURLUseCaseImpl
+import com.example.gooru.feature.domain.useCase.parser.impl.GetParserUseCaseImpl
 import com.example.gooru.feature.domain.useCase.parsource.NewParSourceUseCase
 import com.example.gooru.feature.domain.useCase.parsource.impl.NewParSourceUseCaseImpl
 import com.example.gooru.feature.domain.useCase.support.SupportAllTicketsUseCase
@@ -62,6 +64,8 @@ val parserUseCaseModule = module {
     single<GetParserUseCase> { GetParserUseCaseImpl(get()) }
 
     single<FavoriteUseCase> { FavoriteUseCaseImpl(get()) }
+
+    single<DownLoadURLUseCase> { DownLoadURLUseCaseImpl(get()) }
 }
 
 val userUseCaseModule = module {

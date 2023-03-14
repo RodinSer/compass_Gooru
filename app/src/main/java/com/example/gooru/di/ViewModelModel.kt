@@ -24,9 +24,9 @@ val viewModelModel = module {
 
     viewModel { ProfileViewModel(get(), get(), get(), get(), get(), get()) }
 
-    viewModel { ParserViewModel(get(), get(), get(),get()) }
+    viewModel { ParserViewModel(get(), get(), get(),get(),get(),get()) }
 
-    viewModel { (FavoriteParserViewModel(get())) }
+    viewModel { (FavoriteParserViewModel(get(),get())) }
 
     viewModel { MyParSourceViewModel(get(),get()) }
 

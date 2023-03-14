@@ -23,6 +23,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ic_person" />
+
+        <TextView
+            android:id="@+id/avatar_save_button"
+            android:text="Сохранить"
+            android:layout_gravity="center|bottom"
+            android:gravity="center"
+            android:background="@color/transparent_background_error"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            android:textColor="@color/blue_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -143,6 +156,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/tittle_person"
         app:layout_constraintStart_toEndOf="@+id/tittle_person"
         app:layout_constraintTop_toTopOf="@+id/tittle_person"
+        app:tint="@color/subtitle" />
+
+    <ImageView
+        android:id="@+id/avatar_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:elevation="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0"
         app:tint="@color/subtitle" />
 
     <ImageView

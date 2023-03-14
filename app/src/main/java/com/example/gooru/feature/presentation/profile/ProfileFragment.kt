@@ -22,7 +22,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     private val getItem = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         binding.avatar.loadImage(uri)
-        binding.activateSubscriptionButton.setOnClickListener { viewModel.loadImage(uri) }
+        if (uri != null)
+            binding.avatarSaveButton.isVisible = true
+        binding.avatarSaveButton.setOnClickListener {
+            viewModel.loadImage(uri)
+            binding.avatarSaveButton.isVisible = false
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,7 +41,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
 
-        binding.avatar.setOnClickListener { getItem.launch(FORM_DATA) }
+        binding.avatarEdit.setOnClickListener { getItem.launch(FORM_DATA) }
+
 
         binding.personEdit.setOnClickListener {
             createPersonEditDialog { newFirstName, newLastName ->

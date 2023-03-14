@@ -22,9 +22,7 @@ class TicketsFragment : BaseFragment<FragmentTicketsBinding>() {
 
     private fun onTokedClick(id: Int) {
         findNavController().navigate(
-            TicketsFragmentDirections.actionTicketsFragmentToChatFragment(
-                id
-            )
+            TicketsFragmentDirections.actionTicketsFragmentToChatFragment(id)
         )
     }
 
@@ -41,7 +39,6 @@ class TicketsFragment : BaseFragment<FragmentTicketsBinding>() {
         }
 
         dataObserver(viewModel.ticket) { list->
-            // adapter.submitData(it)
             adapter.submitList(list)
             binding.recyclerView.adapter = adapter
         }

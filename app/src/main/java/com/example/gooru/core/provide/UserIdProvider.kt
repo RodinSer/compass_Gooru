@@ -1,4 +1,4 @@
-package com.example.gooru.feature.data.pref
+package com.example.gooru.core.provide
 
 import android.content.Context
 

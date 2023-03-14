@@ -26,32 +26,34 @@ class ParserFragment : BaseFragment<FragmentParserBinding>() {
 
     private val adapter = ParserAdapter(::onClickItemButton)
 
-    private val mapRadio by lazy { mapOf(R.id.radio_all to "ALL",R.id.radio_favorite to "favorite",R.id.radio_comment to "comment") }
-
-   private val args by navArgs<ParserFragmentArgs>()
-
-
-    private val downloadManager by lazy {
-        requireContext().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+    private val mapRadio by lazy {
+        mapOf(
+            R.id.radio_all to "ALL",
+            R.id.radio_favorite to "favorite",
+            R.id.radio_comment to "comment"
+        )
     }
+
+    private val args by navArgs<ParserFragmentArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.infoGroup.visibility = View.GONE
-
-        binding.recyclerView.adapter = adapter
+        settingsRecyclerView()
 
         dataObserver(viewModel.parsers(args.parSourceId)) { adapter.submitData(it) }
 
-        binding.recyclerView.setItemTouchHelper(resources.getDimensionPixelSize(R.dimen.offset240))
-
         binding.radioGroup.check(R.id.radio_all)
 
-        binding.radioGroup.setOnCheckedChangeListener { radioGroup, i ->
-           Log.e( "Kart",mapRadio[radioGroup.checkedRadioButtonId].toString())
+        binding.radioGroup.setOnCheckedChangeListener { radioGroup, _ ->
+            Log.e("Kart", mapRadio[radioGroup.checkedRadioButtonId].toString())
         }
 
+    }
+
+    private fun settingsRecyclerView(){
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.setItemTouchHelper(resources.getDimensionPixelSize(R.dimen.offset240))
     }
 
     private fun onClickItemButton(button: ParserButton) {
@@ -59,7 +61,7 @@ class ParserFragment : BaseFragment<FragmentParserBinding>() {
             ParserButton.SHARE -> button.item?.let { showShareDialog(it.shareUrl) }
             ParserButton.LINK -> button.item?.let { startNewApp(it.url) }
             ParserButton.EDIT -> {}
-            ParserButton.DOWNLOAD -> {}
+            ParserButton.DOWNLOAD -> viewModel.downLoad(args.parSourceId, button.item?.id)
             ParserButton.FAVORITE -> viewModel.worKFavorite(button.item?.id)
             ParserButton.MESSAGE -> {}
         }

@@ -1,7 +1,7 @@
 package com.example.gooru.di
 
 import com.example.gooru.feature.data.api.*
-import com.example.gooru.feature.data.pref.AuthInterceptor
+import com.example.gooru.core.provide.AuthInterceptor
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

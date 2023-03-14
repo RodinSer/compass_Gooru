@@ -4,14 +4,12 @@ import com.example.gooru.feature.data.body.BodyFavorite
 import com.example.gooru.feature.data.body.BodyParSource
 import com.example.gooru.feature.data.dto.parser.ParserDto
 import com.example.gooru.feature.data.dto.parser.ResultFavoriteParserDto
+import com.example.gooru.feature.data.dto.parser.d.DownloadUrlDto
 import com.example.gooru.feature.data.dto.parsource.NewParSourceDto
 import com.example.gooru.feature.data.dto.parsource.ResponseParSourceDto
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import okhttp3.ResponseBody
+import retrofit2.Response
+import retrofit2.http.*
 
 interface ParSourceApi {
 
@@ -19,7 +17,7 @@ interface ParSourceApi {
     suspend fun getUserParSource(): ResponseParSourceDto
 
     @POST(PAR_SOURCE_POST)
-    suspend fun createParSource(@Body body:BodyParSource): NewParSourceDto
+    suspend fun createParSource(@Body body: BodyParSource): NewParSourceDto
 
     @GET(PARSER)
     suspend fun getParserForParSourceId(
@@ -28,27 +26,33 @@ interface ParSourceApi {
         @Query(PAGE_SIZE) pageSize: Int = PAGE_SIZE_INT,
     ): ParserDto
 
-    @POST("usersfavorite/")
+    @POST(FAVORITE_ALL)
     suspend fun setFavorite(
         @Body body: BodyFavorite
     )
 
-
-    @DELETE("usersfavorite/{id}")
+    @DELETE(FAVORITE_ID)
     suspend fun deleteFavorite(
-        @Path("id") id:Int
+        @Path("id") id: Int
     )
 
-    @GET("usersfavorite/")
-    suspend fun getFavoriteList():ResultFavoriteParserDto
+    @GET(FAVORITE_ALL)
+    suspend fun getFavoriteList(): ResultFavoriteParserDto
 
-    companion object {
-        private const val PAR_SOURCE = "api/v2/parsource_mobile/"
-        private const val PAR_SOURCE_POST = "api/v2/parsource/"
-        private const val PARSER = "parser/"
-        private const val PAGE = "page"
-        private const val PAGE_SIZE = "page_size"
-        private const val PAGE_SIZE_INT = 10
-        private const val PAR_SOURCE_Id = "parsource_id"
+    @POST(DOWNLOAD_EXCEL)
+    suspend fun getUrlDownloadExel(/*@Body body: BodyDownloadFile*/): DownloadUrlDto
+
+    private companion object {
+        const val PAR_SOURCE = "api/v2/parsource_mobile/"
+        const val PAR_SOURCE_POST = "api/v2/parsource/"
+        const val PARSER = "parser/"
+        const val FAVORITE_ALL = "usersfavorite/"
+        const val FAVORITE_ID = "usersfavorite/{id}"
+        const val DOWNLOAD_EXCEL = "api/v2/parser/download/excel/select/"
+
+        const val PAGE = "page"
+        const val PAGE_SIZE = "page_size"
+        const val PAGE_SIZE_INT = 10
+        const val PAR_SOURCE_Id = "parsource_id"
     }
 }

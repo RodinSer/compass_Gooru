@@ -1,13 +1,11 @@
 package com.example.gooru.feature.presentation.authorization.auth
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.extensions.emailValidation
-import com.example.gooru.feature.data.pref.AuthTokenProvider
+import com.example.gooru.core.provide.AuthTokenProvider
 import com.example.gooru.feature.domain.useCase.auth.AuthUseCase
 import com.example.gooru.feature.domain.useCase.auth.ResetPasswordUseCase
 import com.example.gooru.feature.presentation.authorization.AuthState
@@ -43,7 +41,7 @@ class AuthViewModel(
         }
 
     fun checkToken() {
-        // if (tokenProvider.tokenContain()) _stateAuth.value = AuthState.SUCCESS_RESET
+        if (tokenProvider.tokenContain()) _stateAuth.value = AuthState.SUCCESS_AUTH
     }
 
     fun resetPassword(email: String) {

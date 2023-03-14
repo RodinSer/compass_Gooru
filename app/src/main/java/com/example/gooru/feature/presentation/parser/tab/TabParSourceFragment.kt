@@ -14,26 +14,29 @@ class TabParSourceFragment : BaseFragment<FragmentStartAuthBinding>() {
 
     private val tabs by lazy { resources.getStringArray((R.array.par_source)) }
 
-    private val tabLayoutMediator by lazy {
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = tabs[position]
-        }
-    }
+    private var tabLayoutMediator: TabLayoutMediator? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        settingsTabMediator()
+
+    }
+
+    private fun settingsTabMediator() {
         binding.viewPager.isUserInputEnabled = false
 
         binding.viewPager.adapter = ParSourceTabAdapter(this, tabs.size)
 
-        tabLayoutMediator.attach()
-
+        tabLayoutMediator =
+            TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+                tab.text = tabs[position]
+            }.apply { attach() }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        tabLayoutMediator.detach()
+        tabLayoutMediator?.detach()
     }
 
 }

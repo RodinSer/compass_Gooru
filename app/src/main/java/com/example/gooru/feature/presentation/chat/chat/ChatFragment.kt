@@ -29,7 +29,6 @@ class ChatFragment : BaseFragment<FragmentChatBinding>() {
 
         dataObserver(viewModel.message) { messages->
             adapter.submitList(messages)
-
             binding.recyclerView.smoothScrollToPosition(messages.size)
 
         }
