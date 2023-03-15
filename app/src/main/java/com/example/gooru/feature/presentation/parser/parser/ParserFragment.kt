@@ -1,9 +1,5 @@
 package com.example.gooru.feature.presentation.parser.parser
 
-import android.app.DownloadManager
-import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -60,12 +56,10 @@ class ParserFragment : BaseFragment<FragmentParserBinding>() {
         when (button) {
             ParserButton.SHARE -> button.item?.let { showShareDialog(it.shareUrl) }
             ParserButton.LINK -> button.item?.let { startNewApp(it.url) }
-            ParserButton.EDIT -> {}
+            ParserButton.EDIT -> viewModel.editParser(button.item)
             ParserButton.DOWNLOAD -> viewModel.downLoad(args.parSourceId, button.item?.id)
-            ParserButton.FAVORITE -> viewModel.worKFavorite(button.item?.id)
+            ParserButton.FAVORITE -> viewModel.worKFavorite(button.item)
             ParserButton.MESSAGE -> {}
         }
     }
-
-
 }

@@ -1,7 +1,12 @@
 package com.example.gooru.feature.presentation.chat.chat
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.LoadState
+import com.example.gooru.core.base.BaseViewModel
+import com.example.gooru.core.constant.BASE_WS_URL
+import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.extensions.simpleDateFormat
 import com.example.gooru.feature.data.dto.support.chat.ChatMessageDto
 import com.example.gooru.feature.data.dto.support.chat.SendMessage
@@ -17,6 +22,7 @@ import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
+import retrofit2.HttpException
 
 class ChatViewModel(
     private val client: OkHttpClient,
@@ -24,7 +30,8 @@ class ChatViewModel(
     private val tokenProvider: AuthTokenProvider,
     private val supportByTicketUseCase: SupportByTicketUseCase,
     private val userIdProvider: UserIdProvider,
-) : ViewModel() {
+    private val dispatchers: DispatchersWrapper
+) : BaseViewModel() {
 
     private val _message = MutableStateFlow<List<ChatMessage>>(mutableListOf())
     val message = _message.asStateFlow()
@@ -42,9 +49,9 @@ class ChatViewModel(
         _message.value = newList
     }
 
-    fun getMessage(ticketId: Int){
-        viewModelScope.launch {
-            _message.value =  supportByTicketUseCase.getMessageByTicketID(ticketId)
+    fun getMessage(ticketId: Int) {
+        viewModelScope.launch (dispatchers.io + handler){
+            _message.value = supportByTicketUseCase.getMessageByTicketID(ticketId)
         }
     }
 
@@ -52,12 +59,21 @@ class ChatViewModel(
         val request = Request.Builder()
             .url("$BASE_WS_URL/$ticketId/$AUTH ${tokenProvider.getToken()}")
             .build()
+        try {
+            webSocket = client.newWebSocket(request, webSocketListener)
+        } catch (t: HttpException) {
+            Log.e("Kart", "error = ${t.message()}")
+        }
 
-        webSocket = client.newWebSocket(request, webSocketListener)
     }
 
     fun sendMessage(text: String) {
-        webSocket?.send(gson.toJson(SendMessage(text)))
+        try {
+            webSocket?.send(gson.toJson(SendMessage(text)))
+        } catch (t: HttpException) {
+            Log.e("Kart", "error = ${t.message()}")
+        }
+
     }
 
     fun closeWebSocKet() {
@@ -71,7 +87,6 @@ class ChatViewModel(
     fun getUserId() = userIdProvider.getUserId()
 
     private companion object {
-        const val BASE_WS_URL = "ws://10.10.10.88:8003/ws/chat"
         const val AUTH = "?Authorization=token"
     }
 

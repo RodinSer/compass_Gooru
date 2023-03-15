@@ -4,20 +4,22 @@ import com.example.gooru.feature.domain.model.parser.Parser
 import com.google.gson.annotations.SerializedName
 
 class ParserResultDto(
-    val article: String,
+    private val article: String,
     @SerializedName("create_at")
-    val create: String,
-    val id: Int,
+    private val create: String,
+    private val id: Int,
     @SerializedName("is_active")
-    val isActive: Boolean,
+    private val isActive: Boolean,
     @SerializedName("is_public")
-    val isPublic: Boolean,
+    private val isPublic: Boolean,
     @SerializedName("parsource")
-    val parSource: Int,
+    private val parSource: Int,
     @SerializedName("share_url")
-    val shareUrl: String,
-    val title: String,
-    val url: String
-){
-    fun toParser() = Parser(article, create, id, isActive, isPublic, parSource, shareUrl, title, url)
+    private val shareUrl: String,
+    private val title: String,
+    private val url: String,
+    private val favoriteId:Int?,
+) {
+    fun toParser() =
+        Parser(article, create, id, isActive, isPublic, parSource, shareUrl, title, url)
 }

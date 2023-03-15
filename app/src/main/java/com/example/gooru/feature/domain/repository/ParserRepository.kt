@@ -2,9 +2,12 @@ package com.example.gooru.feature.domain.repository
 
 import com.example.gooru.feature.data.body.BodyDownloadFile
 import com.example.gooru.feature.data.body.BodyFavorite
+import com.example.gooru.feature.data.body.BodyPatchParser
 import com.example.gooru.feature.data.dto.parser.FavoriteParserDto
 import com.example.gooru.feature.domain.model.parser.Parser
 import com.example.gooru.feature.domain.model.parser.ParserInPage
+import retrofit2.Response
+import java.net.IDN
 
 interface ParserRepository {
 
@@ -15,5 +18,9 @@ interface ParserRepository {
     suspend fun getListFavorite():List<FavoriteParserDto>
 
     suspend fun getUrlExel(body: BodyDownloadFile): String
+
+    suspend fun deleteFavoriteById(favoriteId:Int)
+
+    suspend fun editParser(bodyPatchParser: BodyPatchParser,parserId:Int)
 }
 

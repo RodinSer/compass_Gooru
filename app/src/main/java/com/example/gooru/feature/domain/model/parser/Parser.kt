@@ -1,7 +1,7 @@
 package com.example.gooru.feature.domain.model.parser
 
 data class Parser(
-    val article: String,
+    var article: String,
     val create: String,
     val id: Int,
     val isActive: Boolean,
@@ -9,5 +9,6 @@ data class Parser(
     val parSource: Int,
     val shareUrl: String,
     val title: String,
-    val url: String
+    val url: String,
+    var favoriteId: Int? = null
 )

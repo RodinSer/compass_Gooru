@@ -24,7 +24,7 @@ val viewModelModel = module {
 
     viewModel { ProfileViewModel(get(), get(), get(), get(), get(), get()) }
 
-    viewModel { ParserViewModel(get(), get(), get(),get(),get(),get()) }
+    viewModel { ParserViewModel(get(), get(), get(),get(),get(),get(),get()) }
 
     viewModel { (FavoriteParserViewModel(get(),get())) }
 
@@ -32,7 +32,7 @@ val viewModelModel = module {
 
     viewModel { (TicketsViewModel(get(),get(),get())) }
 
-    viewModel { ChatViewModel(get(named("authHeader")), get(), get(), get(),get()) }
+    viewModel { ChatViewModel(get(named("authHeader")), get(), get(), get(),get(),get()) }
 
     viewModel { AddParSourceViewModel(get(), get()) }
 

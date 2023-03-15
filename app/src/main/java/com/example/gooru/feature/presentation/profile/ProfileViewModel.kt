@@ -30,7 +30,7 @@ class ProfileViewModel(
     private val _user = MutableSharedFlow<User>(replay = 1)
     val user = _user.asSharedFlow()
 
-    private val _avatar = MutableStateFlow<String>("")
+    private val _avatar = MutableStateFlow("")
     val avatar = _avatar.asSharedFlow()
 
     private val _tariffVisibility = MutableStateFlow(false)

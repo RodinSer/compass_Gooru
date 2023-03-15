@@ -1,7 +1,9 @@
 package com.example.gooru.feature.data.api
 
+import com.example.gooru.feature.data.body.BodyDownloadFile
 import com.example.gooru.feature.data.body.BodyFavorite
 import com.example.gooru.feature.data.body.BodyParSource
+import com.example.gooru.feature.data.body.BodyPatchParser
 import com.example.gooru.feature.data.dto.parser.ParserDto
 import com.example.gooru.feature.data.dto.parser.ResultFavoriteParserDto
 import com.example.gooru.feature.data.dto.parser.d.DownloadUrlDto
@@ -26,6 +28,12 @@ interface ParSourceApi {
         @Query(PAGE_SIZE) pageSize: Int = PAGE_SIZE_INT,
     ): ParserDto
 
+    @PATCH(PATCH_PARSER)
+    suspend fun editParserForApi(
+        @Body body: BodyPatchParser,
+        @Path("id") parserId:Int
+    ): ParserDto
+
     @POST(FAVORITE_ALL)
     suspend fun setFavorite(
         @Body body: BodyFavorite
@@ -34,20 +42,21 @@ interface ParSourceApi {
     @DELETE(FAVORITE_ID)
     suspend fun deleteFavorite(
         @Path("id") id: Int
-    )
+    ): Response<ResponseBody>
 
     @GET(FAVORITE_ALL)
     suspend fun getFavoriteList(): ResultFavoriteParserDto
 
     @POST(DOWNLOAD_EXCEL)
-    suspend fun getUrlDownloadExel(/*@Body body: BodyDownloadFile*/): DownloadUrlDto
+    suspend fun getUrlDownloadExel(@Body body: BodyDownloadFile): DownloadUrlDto
 
     private companion object {
         const val PAR_SOURCE = "api/v2/parsource_mobile/"
         const val PAR_SOURCE_POST = "api/v2/parsource/"
         const val PARSER = "parser/"
+        const val PATCH_PARSER = "parser/{id}/"
         const val FAVORITE_ALL = "usersfavorite/"
-        const val FAVORITE_ID = "usersfavorite/{id}"
+        const val FAVORITE_ID = "usersfavorite/{id}/"
         const val DOWNLOAD_EXCEL = "api/v2/parser/download/excel/select/"
 
         const val PAGE = "page"

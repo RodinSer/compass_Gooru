@@ -43,7 +43,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         binding.avatarEdit.setOnClickListener { getItem.launch(FORM_DATA) }
 
-
         binding.personEdit.setOnClickListener {
             createPersonEditDialog { newFirstName, newLastName ->
                 viewModel.updateUser(newFirstName, newLastName)

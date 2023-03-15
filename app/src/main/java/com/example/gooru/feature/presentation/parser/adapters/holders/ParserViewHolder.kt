@@ -18,9 +18,10 @@ class ParserViewHolder(
 
         onClickButton(binding.favoriteButton, ParserButton.FAVORITE)
         onClickButton(binding.shareButton, ParserButton.SHARE)
-        onClickButton(binding.editButton, ParserButton.EDIT)
         onClickButton(binding.downloadButton, ParserButton.DOWNLOAD)
         onClickButton(binding.linkButton, ParserButton.LINK)
+        onClickSaveEditText()
+        onClickEditText()
 
         clickDescription()
 
@@ -33,6 +34,9 @@ class ParserViewHolder(
         binding.title.text = item.title
         binding.comment.setText(item.article)
         binding.description.text = item.article
+        binding.description.isVisible = true
+        binding.favoriteButton.isSelected = item.favoriteId != null
+
     }
 
     private fun clickCommentButton() =
@@ -45,6 +49,19 @@ class ParserViewHolder(
         onClickListener(button)
     }
 
+    private fun onClickEditText() {
+        binding.description.isVisible = false
+        binding.editField.isVisible = true
+        binding.editText.setText(binding.description.text)
+    }
+
+    private fun onClickSaveEditText() {
+        binding.description.isVisible = true
+        binding.editField.isVisible = false
+        binding.description.text = binding.editText.text
+        parser?.article = binding.description.text.toString()
+        onClickButton(binding.saveTextButton, ParserButton.EDIT)
+    }
 
     private fun clickDescription() =
         binding.description.setOnClickListener {

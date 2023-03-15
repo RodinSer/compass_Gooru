@@ -3,10 +3,14 @@ package com.example.gooru.feature.presentation.chat.tikets
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.createNewTicketDialog
+import com.example.gooru.core.extensions.showError
 import com.example.gooru.databinding.FragmentTicketsBinding
+import com.example.gooru.feature.domain.model.support.SupportTicket
 import com.example.gooru.feature.presentation.chat.tikets.adapters.TicketsListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -29,18 +33,29 @@ class TicketsFragment : BaseFragment<FragmentTicketsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.newTicketButton.setOnClickListener {
-            createNewTicketDialog { message, theme ->
-                viewModel.creteNewTicket(theme, message){
-                    binding.recyclerView.adapter?.notifyItemInserted(0)
-                    binding.recyclerView.smoothScrollToPosition(0)
-                }
-            }
-        }
+        binding.newTicketButton.setOnClickListener { newTicket() }
 
-        dataObserver(viewModel.ticket) { list->
-            adapter.submitList(list)
-            binding.recyclerView.adapter = adapter
+        dataObserver(viewModel.ticket) { list -> setAdapter(list) }
+
+        dataObserver(viewModel.loadState){ state-> loadStateListener(state) }
+    }
+
+    private fun loadStateListener(state: LoadState) {
+        if (state == LoadState.ERROR) showError { viewModel.getTickets() }
+        binding.progressBarr.isVisible = state == LoadState.LOADING
+    }
+
+    private fun setAdapter(list: MutableList<SupportTicket>) {
+        adapter.submitList(list)
+        binding.recyclerView.adapter = adapter
+    }
+
+    private fun newTicket() {
+        createNewTicketDialog { message, theme ->
+            viewModel.creteNewTicket(theme, message) {
+                binding.recyclerView.adapter?.notifyItemInserted(0)
+                binding.recyclerView.smoothScrollToPosition(0)
+            }
         }
     }
 

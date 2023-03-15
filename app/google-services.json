@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "686722739162",
+    "project_id": "gooru-1865e",
+    "storage_bucket": "gooru-1865e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686722739162:android:81c75ad615e8572b30eee3",
+        "android_client_info": {
+          "package_name": "com.example.gooru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686722739162-tm12qvsr3mjqi0eds1b89i8d7t9pplod.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB96UMglteOxpHgh9wRHJjKusL21tAM334"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686722739162-tm12qvsr3mjqi0eds1b89i8d7t9pplod.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
