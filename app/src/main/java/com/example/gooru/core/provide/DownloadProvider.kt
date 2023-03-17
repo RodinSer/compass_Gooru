@@ -4,13 +4,14 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
+import android.util.Log
 import java.io.File
 
 interface DownloadProvider {
     fun downloadFile(url: String, fileName: String, format: String = "xlsx")
 }
 
-class DownloadProviderImpl( private val context: Context) : DownloadProvider {
+class DownloadProviderImpl( context: Context) : DownloadProvider {
 
     private val downloadManager =
         context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
@@ -18,14 +19,16 @@ class DownloadProviderImpl( private val context: Context) : DownloadProvider {
     override fun downloadFile(url: String, fileName: String, format: String) {
 
         val downloadRequest = DownloadManager
-            .Request(Uri.parse(url))
+            .Request(Uri.parse("$url.$format"))
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)//качать только по войфай или нет
             .setTitle("GooRu_$fileName.$format")
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
                 File.separator + "GooRu_$fileName.$format"
             )
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED) // показать сообщение о скачивании
+            .setNotificationVisibility(
+                DownloadManager.Request.VISIBILITY_VISIBLE
+            ) // показать сообщение о скачивании
 
         downloadManager.enqueue(downloadRequest)
 

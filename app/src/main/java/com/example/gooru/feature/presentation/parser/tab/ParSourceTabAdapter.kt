@@ -2,7 +2,7 @@ package com.example.gooru.feature.presentation.parser.tab
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.gooru.feature.presentation.parser.favorite.FavoriteParserFragment
+import com.example.gooru.feature.presentation.parser.parser.favorite.FavoriteParserFragment
 import com.example.gooru.feature.presentation.parser.parsource.MyParSourceFragment
 
 class ParSourceTabAdapter(

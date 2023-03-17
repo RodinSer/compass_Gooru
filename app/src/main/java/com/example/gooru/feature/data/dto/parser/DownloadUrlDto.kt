@@ -1,10 +1,8 @@
 package com.example.gooru.feature.data.dto.parser
 
-import com.google.gson.annotations.SerializedName
+import retrofit2.http.Url
 
-/*
 class DownloadUrlDto(
-
-    @SerializedName("URL")
+    @Url
     val URL: String
-)*/
+)

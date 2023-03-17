@@ -7,5 +7,5 @@ class BodyDownloadFile(
     @SerializedName("parsource")
     val parSource: Int,
     @SerializedName("parser_ids")
-    val parserIds: List<Int>
+    val parserIds: String
 )

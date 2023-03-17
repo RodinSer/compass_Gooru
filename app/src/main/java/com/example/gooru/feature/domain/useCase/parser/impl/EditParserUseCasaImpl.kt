@@ -9,8 +9,7 @@ class EditParserUseCasaImpl(
     private val repository: ParserRepository
 ) : EditParserUseCasa {
     override suspend fun start(text: String, parserId: Int) {
-        Log.e("Kart","$text")
-        repository.editParser(BodyPatchParser("ВАСЯ"), parserId)
+        repository.editParser(BodyPatchParser(text), parserId)
 
     }
 

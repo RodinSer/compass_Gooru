@@ -10,5 +10,7 @@ data class Parser(
     val shareUrl: String,
     val title: String,
     val url: String,
-    var favoriteId: Int? = null
+    var favoriteId: Int?,
+    var comment:String?,
+    val commentId:Int?
 )

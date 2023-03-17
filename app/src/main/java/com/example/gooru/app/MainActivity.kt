@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.core.view.isVisible
-import androidx.navigation.findNavController
+
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.gooru.R
@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
                 if (destination.id != R.id.ticketsFragment && destination.id != R.id.chatFragment) {
                     navController.navigate(R.id.ticketsFragment)
                 }
-
             }
         }
     }

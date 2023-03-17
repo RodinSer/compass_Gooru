@@ -7,7 +7,7 @@ import com.example.gooru.databinding.ItemParsingBinding
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.presentation.parser.adapters.holders.ParSoursViewHolder
 
-class ParSourceAdapter : RecyclerView.Adapter<ParSoursViewHolder>() {
+class ParSourceAdapter (private val onClick:(parSourceId:Int)->Unit): RecyclerView.Adapter<ParSoursViewHolder>() {
 
     private var items = listOf<ParSourceHome>()
 
@@ -16,7 +16,8 @@ class ParSourceAdapter : RecyclerView.Adapter<ParSoursViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ParSoursViewHolder(
-        ItemParsingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemParsingBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+        onClick
     )
 
     override fun getItemCount() = items.size

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     app:layoutDescription="@xml/fragment_parser_scene"
-    tools:context=".feature.presentation.parser.parser.ParserFragment">
+    tools:context=".feature.presentation.parser.parser.parserp.ParserFragment">
 
 
     <androidx.constraintlayout.widget.Group

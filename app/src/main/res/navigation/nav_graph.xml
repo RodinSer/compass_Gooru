@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/parserFragment"
-        android:name="com.example.gooru.feature.presentation.parser.parser.ParserFragment"
+        android:name="com.example.gooru.feature.presentation.parser.parser.parserp.ParserFragment"
         android:label="fragment_parser"
         tools:layout="@layout/fragment_parser" >
         <argument

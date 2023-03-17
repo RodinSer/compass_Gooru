@@ -29,4 +29,8 @@ val repositoryModule = module {
 
     single<SupportRepository> { SupportRepositoryImpl(get()) }
 
+    single<CommentRepository> { CommentRepositoryImpl(get()) }
+
+
+
 }

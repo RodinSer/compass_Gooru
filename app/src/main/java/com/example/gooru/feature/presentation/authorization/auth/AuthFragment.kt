@@ -65,7 +65,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     }
 
     private fun startAuth() {
-        viewModel.getToken(TEST_EMAIL, TEST_PASSWORD)
+        viewModel.getToken(binding.email.text.toString(), binding.password.text.toString())
     }
 
     companion object {

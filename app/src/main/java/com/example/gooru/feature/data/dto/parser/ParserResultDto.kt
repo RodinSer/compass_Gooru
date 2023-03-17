@@ -18,8 +18,9 @@ class ParserResultDto(
     private val shareUrl: String,
     private val title: String,
     private val url: String,
-    private val favoriteId:Int?,
+    private val favorite:Int?,
+    private val comment:ParserCommentDto?
 ) {
     fun toParser() =
-        Parser(article, create, id, isActive, isPublic, parSource, shareUrl, title, url)
+        Parser(article, create, id, isActive, isPublic, parSource, shareUrl, title, url,favorite,comment?.comment,comment?.id)
 }

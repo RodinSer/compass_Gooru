@@ -1,6 +1,5 @@
 package com.example.gooru.feature.data.home
 
-import com.example.gooru.feature.domain.model.homepage.HomeInfo
 import com.example.gooru.feature.domain.model.homepage.HomePage
 import com.example.gooru.feature.presentation.home.HomeViewModel
 

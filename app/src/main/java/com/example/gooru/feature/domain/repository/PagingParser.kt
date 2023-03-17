@@ -6,5 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PagingParser {
 
-    fun getParser(parSourceId:Int): Flow<PagingData<Parser>>
+    fun getParserByParSourceId(parSourceId:Int,radioButtonId:Int): Flow<PagingData<Parser>>
+
+    fun getAllFavoriteParser(): Flow<PagingData<Parser>>
 }

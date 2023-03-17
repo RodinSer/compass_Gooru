@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import com.example.gooru.R
 import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.databinding.FragmentMyParSourceBinding
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.presentation.parser.adapters.ParSourceAdapter
+import com.example.gooru.feature.presentation.parser.tab.TabParSourceFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
@@ -18,7 +21,7 @@ class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
 
     private val viewModel by viewModel<MyParSourceViewModel>()
 
-    private val adapter by lazy { ParSourceAdapter() }
+    private val adapter by lazy { ParSourceAdapter(::onClickListener) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +39,15 @@ class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
     private fun setAdapter(parSources: List<ParSourceHome>) {
         adapter.setList(parSources)
         binding.recyclerView.adapter = adapter
+    }
+
+    private fun onClickListener(parSourceId: Int) {
+        findNavController().navigate(
+            TabParSourceFragmentDirections.actionTabParSourceFragmentToParserFragment(
+                parSourceId
+            )
+        )
+
     }
 
 }

@@ -4,14 +4,15 @@ import com.example.gooru.feature.data.body.BodyDownloadFile
 import com.example.gooru.feature.data.body.BodyFavorite
 import com.example.gooru.feature.data.body.BodyPatchParser
 import com.example.gooru.feature.data.dto.parser.FavoriteParserDto
-import com.example.gooru.feature.domain.model.parser.Parser
 import com.example.gooru.feature.domain.model.parser.ParserInPage
-import retrofit2.Response
-import java.net.IDN
 
 interface ParserRepository {
 
-    suspend fun getParserPyParSourceID( page: Int,parSourceId: Int):ParserInPage
+    suspend fun getParserPyParSourceID( page: Int,parSourceId: Int?):ParserInPage
+
+    suspend fun getFavoriteParserByParSourceID(page: Int, parSourceId: Int?, ): ParserInPage
+
+    suspend fun getIsCommentParserByParSourceID(page: Int, parSourceId: Int, ): ParserInPage
 
     suspend fun setFavorite(body: BodyFavorite)
 
