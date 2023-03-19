@@ -20,5 +20,6 @@ class ParserAdapter(
         ItemParserBinding.inflate(LayoutInflater.from(parent.context), parent, false),
         onClickListener
     )
+
 }
 
