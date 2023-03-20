@@ -1,6 +1,5 @@
 package com.example.gooru.di
 
-import com.example.gooru.feature.Test.BlankViewModel
 import com.example.gooru.feature.presentation.authorization.auth.AuthViewModel
 import com.example.gooru.feature.presentation.authorization.registration.RegistrationViewModel
 import com.example.gooru.feature.presentation.chat.chat.ChatViewModel
@@ -37,6 +36,5 @@ val viewModelModel = module {
 
     viewModel { AddParSourceViewModel(get(), get()) }
 
-    viewModel { BlankViewModel(get()) }
 
 }

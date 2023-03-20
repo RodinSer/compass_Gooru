@@ -14,7 +14,7 @@ interface ParserRepository {
 
     suspend fun getIsCommentParserByParSourceID(page: Int, parSourceId: Int, ): ParserInPage
 
-    suspend fun setFavorite(body: BodyFavorite)
+    suspend fun setFavorite(body: BodyFavorite):Int
 
     suspend fun getListFavorite():List<FavoriteParserDto>
 

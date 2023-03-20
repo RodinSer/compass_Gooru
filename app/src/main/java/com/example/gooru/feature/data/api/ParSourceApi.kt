@@ -1,6 +1,7 @@
 package com.example.gooru.feature.data.api
 
 import com.example.gooru.feature.data.body.*
+import com.example.gooru.feature.data.dto.IdFavoriteDto
 import com.example.gooru.feature.data.dto.parser.DownloadUrlDto
 import com.example.gooru.feature.data.dto.parser.ParserCommentDto
 import com.example.gooru.feature.data.dto.parser.ParserDto
@@ -51,7 +52,7 @@ interface ParSourceApi {
     @POST(FAVORITE_ALL)
     suspend fun setFavorite(
         @Body body: BodyFavorite
-    )
+    ):IdFavoriteDto
 
     @DELETE(FAVORITE_ID)
     suspend fun deleteFavorite(
@@ -87,8 +88,8 @@ interface ParSourceApi {
         const val FAVORITE_ALL = "api/v2/usersfavorite/"
         const val FAVORITE_ID = "usersfavorite/{id}/"
         const val DOWNLOAD_EXCEL = "api/v2/parser/download/excel/select/"
-        const val COMMENT = "comment/"
-        const val COMMENT_Id = "comment/{id}/"
+        const val COMMENT = "api/v2/comment/"
+        const val COMMENT_Id = "api/v2/comment/{id}/"
 
         const val PAGE = "page"
         const val PAGE_SIZE = "page_size"

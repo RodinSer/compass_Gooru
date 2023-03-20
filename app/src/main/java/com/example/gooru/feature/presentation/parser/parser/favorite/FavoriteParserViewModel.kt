@@ -35,7 +35,8 @@ class FavoriteParserViewModel(
     commentUseCase
 ) {
 
-    override fun parsers(parSourceId: Int?): Flow<PagingData<Parser>> =
-        parser.getAllFavoriteParser().cachedIn(viewModelScope)
+    override fun getParsers(parSourceId: Int?) {
+        parsers = parser.getAllFavoriteParser().cachedIn(viewModelScope)
+    }
 
 }

@@ -17,7 +17,6 @@ data class Parser(
     var maxTextLine: Int = 3,
     var isCommentVisibility: Boolean = false,
     var isFavorite: Boolean = false,
-    var isEditArticle: Boolean = false
-) {
+    var isEditArticle: Boolean = false,
 
-}
+)

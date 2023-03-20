@@ -15,10 +15,7 @@ import com.example.gooru.feature.domain.useCase.parser.FavoriteUseCase
 import com.example.gooru.feature.presentation.parser.parser.ParserGrope
 import com.example.gooru.feature.presentation.parser.parser.base.BaseParserViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.plus
 
 class ParserViewModel(
@@ -42,9 +39,12 @@ class ParserViewModel(
     private val _radioButtonId = MutableStateFlow(ParserGrope.All.int)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun parsers(parSourceId: Int?): Flow<PagingData<Parser>> = _radioButtonId.asStateFlow()
-        .flatMapLatest { buttonId -> parser.getParserByParSourceId(parSourceId!!, buttonId) }
-        .cachedIn(viewModelScope + handler)
+    override fun getParsers(parSourceId: Int?) {
+        parsers = _radioButtonId.asStateFlow()
+            .flatMapLatest { buttonId -> parser.getParserByParSourceId(parSourceId!!, buttonId) }
+            .cachedIn(viewModelScope + handler)
+            .combine(localChangesFlow, this::merge).cachedIn(viewModelScope)
+    }
 
     fun setRadioButtonId(id: Int) {
         _radioButtonId.value = id

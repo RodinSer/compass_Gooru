@@ -22,6 +22,6 @@ class FavoriteParserFragment :
 
         binding.recyclerView.adapter = adapter
 
-        dataObserver(viewModel.parsers()) { adapter.submitData(it) }
+        dataObserver(viewModel.parsers) { adapter.submitData(it) }
     }
 }

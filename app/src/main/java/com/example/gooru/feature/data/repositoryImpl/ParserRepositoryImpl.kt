@@ -32,9 +32,8 @@ class ParserRepositoryImpl(private val parserApi: ParSourceApi) : ParserReposito
         parserApi.deleteFavorite(favoriteId)
     }
 
-    override suspend fun setFavorite(body: BodyFavorite) {
-        parserApi.setFavorite(body)
-    }
+    override suspend fun setFavorite(body: BodyFavorite)
+        =parserApi.setFavorite(body).id
 
     override suspend fun editParser(bodyPatchParser: BodyPatchParser, parserId: Int) {
         parserApi.editParserForApi(bodyPatchParser, parserId)

@@ -1,13 +1,11 @@
 package com.example.gooru.feature.presentation.parser.adapters.holders
 
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gooru.core.ParserButton
 import com.example.gooru.databinding.ItemParserBinding
 import com.example.gooru.feature.domain.model.parser.Parser
-import kotlin.concurrent.thread
 
 class ParserViewHolder(
     private val binding: ItemParserBinding,
@@ -17,20 +15,15 @@ class ParserViewHolder(
     private var parser: Parser? = null
 
     init {
-
+        onClickButton(binding.commentExpandButton, ParserButton.COMMENT_EXPAND)
+        onClickButton(binding.description, ParserButton.DESCRIPTIONS_EXPAND)
+        onClickButton(binding.saveCommentButton, ParserButton.SAVE_COMMENT)
+        onClickButton(binding.saveTextButton, ParserButton.SAVE_ARTICLE)
         onClickButton(binding.favoriteButton, ParserButton.FAVORITE)
-        onClickButton(binding.shareButton, ParserButton.SHARE)
         onClickButton(binding.downloadButton, ParserButton.DOWNLOAD)
+        onClickButton(binding.editButton, ParserButton.EDIT_ARTICLE)
+        onClickButton(binding.shareButton, ParserButton.SHARE)
         onClickButton(binding.linkButton, ParserButton.LINK)
-
-        onClickEditText()
-
-        onClickSaveEditText()
-
-        clickDescription()
-
-        clickCommentButton()
-
     }
 
     fun bind(item: Parser) {
@@ -39,51 +32,23 @@ class ParserViewHolder(
         binding.comment.setText(item.comment)
         binding.description.text = item.article
         binding.description.isVisible = true
-        binding.favoriteButton.isSelected = item.favoriteId != null
-
-        onClickSaveComment()
+        binding.favoriteButton.isSelected = item.isFavorite
+        binding.comment.isVisible = item.isCommentVisibility
+        binding.saveCommentButton.isVisible = item.isCommentVisibility
+        binding.description.maxLines = item.maxTextLine
+        binding.description.isVisible = !item.isEditArticle
+        binding.editField.isVisible = item.isEditArticle
+        binding.editText.setText(binding.description.text)
     }
 
-    private fun clickCommentButton() =
-        binding.commentButton.setOnClickListener {
-            binding.comment.isVisible = !binding.comment.isVisible
-            binding.saveCommentButton.isVisible = !binding.saveCommentButton.isVisible
-        }
 
     private fun onClickButton(view: View, button: ParserButton) = view.setOnClickListener {
+        if (button == ParserButton.SAVE_ARTICLE)
+            parser?.article = binding.editText.text.toString()
+        if (button == ParserButton.SAVE_COMMENT)
+            parser?.comment = binding.comment.text.toString()
+
         button.item = parser
         onClickListener(button)
     }
-
-    private fun onClickEditText() {
-        binding.editButton.setOnClickListener {
-            binding.description.isVisible = false
-            binding.editField.isVisible = true
-            binding.editText.setText(binding.description.text)
-        }
-    }
-
-    private fun onClickSaveEditText() {
-        binding.saveTextButton.setOnClickListener {
-            binding.description.isVisible = true
-            binding.editField.isVisible = false
-            binding.description.text = binding.editText.text
-            parser?.article = binding.description.text.toString()
-            onClickButton(binding.saveTextButton, ParserButton.EDIT)
-        }
-    }
-
-    private fun onClickSaveComment() {
-        binding.saveCommentButton.setOnClickListener {
-            parser?.comment = binding.comment.text.toString()
-            onClickButton(binding.saveCommentButton, ParserButton.COMMENT)
-        }
-    }
-
-    private fun clickDescription() =
-        binding.description.setOnClickListener {
-            binding.description.maxLines = if (binding.description.maxLines == 3)
-                Int.MAX_VALUE else 3
-        }
-
 }

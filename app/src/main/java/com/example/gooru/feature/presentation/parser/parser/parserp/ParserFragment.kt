@@ -23,7 +23,9 @@ class ParserFragment : BaseParserFragment<FragmentParserBinding, ParserViewModel
 
         binding.radioGroup.check(R.id.radio_favorite)
 
-        dataObserver(viewModel.parsers(args.parSourceId)){ adapter.submitData(it) }
+        viewModel.getParsers(args.parSourceId)
+
+        dataObserver(viewModel.parsers) { adapter.submitData(it) }
 
         binding.radioGroup.setOnCheckedChangeListener { radioGroup, _ ->
             viewModel.setRadioButtonId(radioGroup.checkedRadioButtonId)

@@ -1,7 +1,6 @@
 package com.example.gooru.di
 
 import com.example.gooru.R
-import com.example.gooru.feature.Test.TestRepository
 import com.example.gooru.feature.data.repositoryImpl.*
 import com.example.gooru.feature.domain.repository.*
 import org.koin.android.ext.koin.androidContext
@@ -31,9 +30,5 @@ val repositoryModule = module {
     single<SupportRepository> { SupportRepositoryImpl(get()) }
 
     single<CommentRepository> { CommentRepositoryImpl(get()) }
-
-    single<TestRepository> { TestRepository() }
-
-
 
 }
