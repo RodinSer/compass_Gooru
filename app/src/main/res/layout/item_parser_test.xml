@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp">
+
+        <ImageView
+            android:id="@+id/share_button"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_share" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="@tools:sample/lorem" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                tools:text="@tools:sample/lorem/random" />
+
+
+            <EditText
+                android:id="@+id/editArticle"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/link_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:paddingVertical="6dp"
+                android:text="@string/link_to_source"
+                android:textColor="@color/parsing_selector_text"
+                android:textSize="13sp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/edit_comment"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/save_comment_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/save"
+                android:elevation="5dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/comment_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_message" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageView
+        android:id="@+id/favorite_button"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/selector_favorite" />
+
+    <ImageView
+        android:id="@+id/edit_button"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_edit"
+        app:tint="#989898" />
+
+    <ImageView
+        android:id="@+id/download_button"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_download" />
+
+</LinearLayout>

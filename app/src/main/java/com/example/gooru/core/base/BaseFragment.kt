@@ -26,9 +26,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         return binding.root
     }
 
-    fun <I : Any> dataObserver(flow: Flow<I>, block: suspend (it: I) -> Unit) {
+    fun <I : Any> dataObserver(flow: Flow<I>?, block: suspend (it: I) -> Unit) {
         viewLifecycleOwner.lifecycleScope.launch {
-            flow.collect {
+            flow?.collect {
                 block(it)
             }
         }
