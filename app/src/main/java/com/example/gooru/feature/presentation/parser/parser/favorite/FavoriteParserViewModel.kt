@@ -35,6 +35,10 @@ class FavoriteParserViewModel(
     commentUseCase
 ) {
 
+    init {
+        getParsers()
+    }
+
     override fun getParsers(parSourceId: Int?) {
         parsers = parser.getAllFavoriteParser().cachedIn(viewModelScope)
     }

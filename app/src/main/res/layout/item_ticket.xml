@@ -22,12 +22,12 @@
             tools:text="@tools:sample/lorem" />
 
         <TextView
-            android:id="@+id/group"
+            android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:background="@drawable/bg_time"
-            android:backgroundTint="@color/subtitle"
+            android:backgroundTint="@color/background"
             android:padding="10dp"
             tools:text="@tools:sample/lorem" />
 

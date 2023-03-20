@@ -1,8 +1,5 @@
 package com.example.gooru.feature.presentation.parser.parser.base
 
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.viewbinding.ViewBinding
 import com.example.gooru.core.ParserButton
 import com.example.gooru.core.base.BaseFragment

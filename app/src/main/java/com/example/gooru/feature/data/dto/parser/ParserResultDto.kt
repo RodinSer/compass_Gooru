@@ -35,6 +35,7 @@ class ParserResultDto(
             favorite,
             comment?.comment,
             comment?.id,
-            isFavorite = favorite != null
+            isFavorite = favorite != null,
+            isCommentFull = comment != null
         )
 }

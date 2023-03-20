@@ -14,13 +14,16 @@
         app:cardCornerRadius="16dp">
 
 
+
+
         <ImageView
-            android:id="@+id/share_button"
+            android:id="@+id/edit_button"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
             android:layout_gravity="end"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_share" />
+            app:tint="#989898" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,26 +129,24 @@
                     android:id="@+id/comment_expand_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="10dp"
+                    android:paddingHorizontal="5dp"
                     android:paddingVertical="5dp"
-                    android:src="@drawable/ic_message" />
+                    android:src="@drawable/selector_comment" />
 
-
+                <ImageView
+                    android:id="@+id/share_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="5dp"
+                    android:paddingVertical="5dp"
+                    android:src="@drawable/ic_share" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
-    <ImageView
-        android:id="@+id/edit_button"
-        android:layout_width="80dp"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_edit"
-        app:tint="#989898" />
 
     <ImageView
         android:id="@+id/download_button"

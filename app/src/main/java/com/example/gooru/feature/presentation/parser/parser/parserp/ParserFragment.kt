@@ -21,7 +21,7 @@ class ParserFragment : BaseParserFragment<FragmentParserBinding, ParserViewModel
 
         settingsRecyclerView()
 
-        binding.radioGroup.check(R.id.radio_favorite)
+        binding.radioGroup.check(R.id.radio_all)
 
         viewModel.getParsers(args.parSourceId)
 
@@ -34,7 +34,7 @@ class ParserFragment : BaseParserFragment<FragmentParserBinding, ParserViewModel
 
     private fun settingsRecyclerView() {
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.setItemTouchHelper(resources.getDimensionPixelSize(R.dimen.offset240))
+        binding.recyclerView.setItemTouchHelper(resources.getDimensionPixelSize(R.dimen.offset_left_button))
     }
 
 }

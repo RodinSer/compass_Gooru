@@ -16,7 +16,8 @@ class FavoriteParserFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.recyclerView.setItemTouchHelper(resources.getDimensionPixelSize(R.dimen.offset240))
+
+        binding.recyclerView.setItemTouchHelper(resources.getDimensionPixelSize(R.dimen.offset_left_button))
 
         createViewModel<FavoriteParserViewModel>()
 

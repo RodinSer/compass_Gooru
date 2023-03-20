@@ -12,14 +12,15 @@ class TicketVewHolder(private val binding: ItemTicketBinding, onClick: (id: Int)
     init {
         binding.root.setOnClickListener {
             ticketId?.let { id -> onClick(id) }
-
         }
     }
 
     fun bind(item: SupportTicket) {
         ticketId = item.id
-        binding.title.text = item.name
+        binding.title.text = item.topicName
         binding.message.text = item.message
+        binding.status.text = item.status
+        binding.date.text = item.date
     }
 
 }

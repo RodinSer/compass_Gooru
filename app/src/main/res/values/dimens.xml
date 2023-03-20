@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="offset240">240dp</dimen>
+    <dimen name="offset_left_button">80dp</dimen>
 </resources>

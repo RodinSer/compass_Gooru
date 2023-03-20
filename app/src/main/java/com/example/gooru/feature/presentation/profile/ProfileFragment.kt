@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.constant.FORM_DATA
@@ -33,6 +34,22 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        observers()
+
+        logOut()
+
+        binding.avatarEdit.setOnClickListener { getItem.launch(FORM_DATA) }
+
+        personEditButton()
+
+        contentEditButton()
+
+        changePasswordButton()
+
+    }
+
+
+    private fun observers() {
         dataObserver(viewModel.user) { user -> userObserver(user) }
 
         dataObserver(viewModel.avatar) { url -> binding.avatar.loadImage(url) }
@@ -40,30 +57,30 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         dataObserver(viewModel.tariffVisibility) { binding.userTariff.isVisible = it }
 
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
-
-        binding.avatarEdit.setOnClickListener { getItem.launch(FORM_DATA) }
-
-        binding.personEdit.setOnClickListener {
-            createPersonEditDialog { newFirstName, newLastName ->
-                viewModel.updateUser(newFirstName, newLastName)
-            }
-        }
-
-        binding.contactEdit.setOnClickListener {
-            createContactEditDialog { number -> viewModel.updateUser(number) }
-        }
-
-        binding.changePasswordButton.setOnClickListener {
-            createChangePasswordDialog { newPassword, oldPassword ->
-                viewModel.changePassword(newPassword, oldPassword)
-            }
-        }
     }
 
     private fun loadStateListener(state: LoadState) {
         if (state == LoadState.ERROR) showError { }
         binding.progressBarr.isVisible = state == LoadState.LOADING
     }
+
+    private fun personEditButton() =
+        binding.personEdit.setOnClickListener {
+            createPersonEditDialog { newFirstName, newLastName ->
+                viewModel.updateUser(newFirstName, newLastName)
+            }
+        }
+
+    private fun contentEditButton() = binding.contactEdit.setOnClickListener {
+        createContactEditDialog { number -> viewModel.updateUser(number) }
+    }
+
+    private fun changePasswordButton() =
+        binding.changePasswordButton.setOnClickListener {
+            createChangePasswordDialog { newPassword, oldPassword ->
+                viewModel.changePassword(newPassword, oldPassword)
+            }
+        }
 
     private fun userObserver(user: User) = binding.apply {
         avatar.loadImage(user.avatar)
@@ -74,6 +91,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         tariffName.text = user.tariff?.tariff.toString()
         startDate.text = user.tariff?.created
         finishDate.text = user.tariff?.finishDate
+    }
+
+    private fun logOut() {
+        binding.logUot.setOnClickListener {
+            viewModel.logOut()
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToStartAuthFragment())
+        }
     }
 
 }

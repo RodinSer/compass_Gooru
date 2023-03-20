@@ -22,7 +22,7 @@ val viewModelModel = module {
 
     viewModel { RegistrationViewModel(get(), get()) }
 
-    viewModel { ProfileViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { ProfileViewModel(get(), get(), get(), get(), get(), get(),get()) }
 
     viewModel { ParserViewModel(get(), get(), get(), downLoadURLUseCase =  get(),get(), downloadProvider = get(),get(),get()) }
 

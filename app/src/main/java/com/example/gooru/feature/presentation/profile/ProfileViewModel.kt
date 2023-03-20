@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
+import com.example.gooru.core.provide.AuthTokenProvider
 import com.example.gooru.feature.domain.model.homepage.user.User
 import com.example.gooru.feature.domain.useCase.tariff.UserTariffUseCase
 import com.example.gooru.feature.domain.useCase.user.AvatarUploadUseCase
@@ -23,6 +24,7 @@ class ProfileViewModel(
     private val changePasswordUseCase: UserChangePasswordUseCase,
     private val uploadUseCase: AvatarUploadUseCase,
     private val tariffUseCase: UserTariffUseCase,
+    private val tokenProvider:AuthTokenProvider
 ) : BaseViewModel() {
 
     private var changeUser: User? = null
@@ -75,5 +77,7 @@ class ProfileViewModel(
             _avatar.emit(uploadUseCase.imageUpload(uri, changeUser?.id).avatar)
             _loadState.value = LoadState.SUCCESS
         }
+
+    fun logOut() { tokenProvider.clearToken() }
 
 }

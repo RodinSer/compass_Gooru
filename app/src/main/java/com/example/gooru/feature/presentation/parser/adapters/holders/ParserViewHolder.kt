@@ -33,6 +33,7 @@ class ParserViewHolder(
         binding.description.text = item.article
         binding.description.isVisible = true
         binding.favoriteButton.isSelected = item.isFavorite
+        binding.commentExpandButton.isSelected = item.isCommentFull
         binding.comment.isVisible = item.isCommentVisibility
         binding.saveCommentButton.isVisible = item.isCommentVisibility
         binding.description.maxLines = item.maxTextLine

@@ -55,7 +55,7 @@ abstract class BaseParserViewModel(
 
     private fun downLoad(parSourceId: Int?, parserId: Int?) =
         viewModelScope.launch(dispatchers.io + handler) {
-            if (parserId != null && parSourceId!=null) {
+            if (parserId != null && parSourceId != null) {
                 val url = downLoadURLUseCase.getUrl(parSourceId, parserId)
                 downloadProvider.downloadFile(url, "$parSourceId-$parserId")
             }
@@ -69,10 +69,18 @@ abstract class BaseParserViewModel(
             }
         }
 
-    private fun commentWork(item: Parser?) =
+    private fun commentWork(parser: Parser?) =
         viewModelScope.launch(dispatchers.io + handler) {
-            if (item != null)
-                commentUseCase.doWork(item.id, item.comment, item.commentId)
+            if (parser != null) {
+                val newId = commentUseCase.doWork(parser.id, parser.comment, parser.commentId)
+                val isComment = newId != null
+                localChanges.parser[parser.id] = parser.copy(
+                    comment = parser.comment,
+                    commentId = newId,
+                    isCommentFull = isComment
+                )
+                localChangesFlow.value = OnChange(localChanges)
+            }
         }
 
     private fun commentExpand(parser: Parser?) {
@@ -83,7 +91,7 @@ abstract class BaseParserViewModel(
         }
     }
 
-    private  fun descriptionsExpand(parser: Parser?) {
+    private fun descriptionsExpand(parser: Parser?) {
         if (parser != null) {
             val maxLine = if (parser.maxTextLine == 3) Int.MAX_VALUE else 3
             localChanges.parser[parser.id] = parser.copy(maxTextLine = maxLine)
@@ -99,7 +107,7 @@ abstract class BaseParserViewModel(
     }
 
     fun addListenerPersonButton(button: ParserButton) {
-        when(button) {
+        when (button) {
             ParserButton.EDIT_ARTICLE -> editArticleVisibility(button.item)
             ParserButton.DOWNLOAD -> downLoad(button.item?.parSource, button.item?.id)
             ParserButton.FAVORITE -> worKFavorite(button.item)
