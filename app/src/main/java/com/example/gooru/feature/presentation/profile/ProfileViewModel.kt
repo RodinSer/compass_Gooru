@@ -24,7 +24,7 @@ class ProfileViewModel(
     private val changePasswordUseCase: UserChangePasswordUseCase,
     private val uploadUseCase: AvatarUploadUseCase,
     private val tariffUseCase: UserTariffUseCase,
-    private val tokenProvider:AuthTokenProvider
+    private val tokenProvider: AuthTokenProvider,
 ) : BaseViewModel() {
 
     private var changeUser: User? = null
@@ -78,6 +78,8 @@ class ProfileViewModel(
             _loadState.value = LoadState.SUCCESS
         }
 
-    fun logOut() { tokenProvider.clearToken() }
+    fun logOut() {
+        tokenProvider.clearToken()
+    }
 
 }

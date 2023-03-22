@@ -3,7 +3,6 @@ package com.example.gooru.feature.data.api
 import com.example.gooru.feature.data.dto.tariff.TariffDto
 import com.example.gooru.feature.data.dto.tariff.pay.TariffPayDTO
 import com.example.gooru.feature.data.dto.tariff.user.UserTariffDto
-import com.example.gooru.feature.domain.model.homepage.tariff.UserTariff
 import retrofit2.http.GET
 import retrofit2.http.Path
 

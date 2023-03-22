@@ -3,7 +3,7 @@ package com.example.gooru.feature.data.dto.parsource
 import com.example.gooru.core.extensions.simpleDateFormat
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 
-data class NewParSourceDto(
+class NewParSourceDto(
     val data_source: String,
     val data_type: Int,
     val description: String,
@@ -14,4 +14,6 @@ data class NewParSourceDto(
     val parse_fields: Any,
     val url_detail: Any,
     val user: Int
-)
+){
+    fun  toParSource() = ParSourceHome(id,"Now",name)
+}

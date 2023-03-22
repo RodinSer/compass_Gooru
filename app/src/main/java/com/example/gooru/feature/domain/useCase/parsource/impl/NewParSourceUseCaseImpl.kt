@@ -1,6 +1,7 @@
 package com.example.gooru.feature.domain.useCase.parsource.impl
 
 import com.example.gooru.feature.data.body.BodyParSource
+import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.domain.repository.ParSourceRepository
 import com.example.gooru.feature.domain.useCase.parsource.NewParSourceUseCase
 import com.example.gooru.feature.presentation.parser.addparsource.ExchangeParsing
@@ -14,12 +15,12 @@ class NewParSourceUseCaseImpl(
         freelanceSource: List<ExchangeParsing>,
         keywords: List<String>,
         name: String
-    ) {
+    ): ParSourceHome {
         val source = mutableListOf<Int>()
         freelanceSource.forEach{
             if (it.isSelected) source.add(it.id)
         }
-        parSourceRepository.createNewParSource(
+      return  parSourceRepository.createNewParSource(
             BodyParSource(dataType, description, source, keywords.toString(), name)
         )
     }

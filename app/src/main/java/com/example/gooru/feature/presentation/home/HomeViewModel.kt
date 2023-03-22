@@ -27,7 +27,7 @@ class HomeViewModel(
     private val userUseCase: UserInfoUseCase,
     private val userIdProvider: UserIdProvider,
     private val allTariffUseCase: AllTariffUseCase,
-    private val payUseCase: PayUseCase
+    private val payUseCase: PayUseCase,
 ) : BaseViewModel() {
 
     private val _data = MutableStateFlow<List<HomeInfo>>(emptyList())
@@ -35,10 +35,6 @@ class HomeViewModel(
 
     private val _user = MutableSharedFlow<User>(replay = 1)
     val user = _user.asSharedFlow()
-
-    init {
-        getHomePage()
-    }
 
     fun getHomePage() = viewModelScope.launch(dispatchers.io + handler) {
         _loadState.value = LoadState.LOADING
@@ -67,4 +63,5 @@ class HomeViewModel(
             redirect(payUrl)
         }
     }
+
 }

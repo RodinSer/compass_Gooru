@@ -100,4 +100,17 @@
 
     </style>
 
+    <style name="Button.Add.Floating" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
+
+        <item name="android:layout_margin">18dp</item>
+        <item name="android:backgroundTint">@color/blue_title</item>
+        <item name="android:rotation">45</item>
+        <item name="borderWidth">0dp</item>
+        <item name="android:outlineAmbientShadowColor">@color/blue_title</item>
+        <item name="android:outlineSpotShadowColor">@color/blue_title</item>
+        <item name="android:src">@drawable/ic_close</item>
+
+
+    </style>
+
 </resources>

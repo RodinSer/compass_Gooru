@@ -18,9 +18,6 @@ class MyParSourceViewModel(
     private val _list = MutableStateFlow(emptyList<ParSourceHome>())
     val list = _list.asStateFlow()
 
-    init {
-        getMyParSource()
-    }
 
     fun getMyParSource() {
         viewModelScope.launch(dispatcher.io+handler) {

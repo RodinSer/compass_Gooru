@@ -1,6 +1,8 @@
 package com.example.gooru.feature.presentation.profile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,9 +24,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private val viewModel by viewModel<ProfileViewModel>()
 
     private val getItem = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        binding.avatar.loadImage(uri)
-        if (uri != null)
+        if (uri != null) {
             binding.avatarSaveButton.isVisible = true
+            binding.avatar.loadImage(uri)
+        }
         binding.avatarSaveButton.setOnClickListener {
             viewModel.loadImage(uri)
             binding.avatarSaveButton.isVisible = false
@@ -54,7 +57,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         dataObserver(viewModel.avatar) { url -> binding.avatar.loadImage(url) }
 
-        dataObserver(viewModel.tariffVisibility) { binding.userTariff.isVisible = it }
+        dataObserver(viewModel.tariffVisibility) { tariffActive ->
+            binding.userTariff.root.isVisible = tariffActive
+            binding.activateSubscriptionButton.isVisible = !tariffActive
+        }
 
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
     }
@@ -82,15 +88,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
             }
         }
 
+    @SuppressLint("SetTextI18n")
     private fun userObserver(user: User) = binding.apply {
         avatar.loadImage(user.avatar)
         email.text = user.email
         firstName.text = user.firstName
         lastName.text = user.lastName
         phone.text = user.phoneNumber
-        tariffName.text = user.tariff?.tariff.toString()
-        startDate.text = user.tariff?.created
-        finishDate.text = user.tariff?.finishDate
+        userTariff.name.text = user.tariff?.name
+        userTariff.startDate.text = "Дата начала : ${user.tariff?.created}"
+        userTariff.finishDate.text = "Дата завершения : ${user.tariff?.finishDate}"
+        userTariff.recyclerView.adapter = UserTariffAdapter(user.tariff?.description)
     }
 
     private fun logOut() {

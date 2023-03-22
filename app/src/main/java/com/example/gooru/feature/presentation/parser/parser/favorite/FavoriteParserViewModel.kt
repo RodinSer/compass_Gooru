@@ -15,6 +15,8 @@ import com.example.gooru.feature.domain.useCase.parser.FavoriteUseCase
 import com.example.gooru.feature.presentation.parser.parser.ParserGrope
 import com.example.gooru.feature.presentation.parser.parser.base.BaseParserViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.plus
 
 class FavoriteParserViewModel(
     private val parser: PagingParser,
@@ -41,6 +43,7 @@ class FavoriteParserViewModel(
 
     override fun getParsers(parSourceId: Int?) {
         parsers = parser.getAllFavoriteParser().cachedIn(viewModelScope)
+            .combine(localChangesFlow, this::merge).cachedIn(viewModelScope)
     }
 
 }

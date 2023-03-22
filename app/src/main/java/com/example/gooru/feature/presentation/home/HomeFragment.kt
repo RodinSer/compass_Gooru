@@ -22,6 +22,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val adapter by lazy { HomeAdapter { onClick(it) } }
 
+    override fun onStart() {
+        super.onStart()
+        viewModel.getHomePage()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

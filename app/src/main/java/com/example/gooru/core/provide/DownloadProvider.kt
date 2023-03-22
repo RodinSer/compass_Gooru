@@ -4,7 +4,6 @@ import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
-import android.util.Log
 import java.io.File
 
 interface DownloadProvider {
@@ -19,19 +18,18 @@ class DownloadProviderImpl( context: Context) : DownloadProvider {
     override fun downloadFile(url: String, fileName: String, format: String) {
 
         val downloadRequest = DownloadManager
-            .Request(Uri.parse("$url.$format"))
+            .Request(Uri.parse(url))
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)//качать только по войфай или нет
-            .setTitle("GooRu_$fileName.$format")
+            .setTitle("GooRu_$fileName")
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
-                File.separator + "GooRu_$fileName.$format"
+                File.separator + "GooRu_$fileName"
             )
             .setNotificationVisibility(
-                DownloadManager.Request.VISIBILITY_VISIBLE
+                DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED
             ) // показать сообщение о скачивании
 
         downloadManager.enqueue(downloadRequest)
 
     }
-
 }

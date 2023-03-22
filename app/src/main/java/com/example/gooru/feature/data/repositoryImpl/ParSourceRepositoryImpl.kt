@@ -12,12 +12,10 @@ class ParSourceRepositoryImpl(
 ) : ParSourceRepository {
 
     override suspend fun getMyParsingTask() =
-        api.getUserParSource().map { it.toParSourceHome() }
+        api.getUserParSource().results.map { it.toParSourceHome() }
 
     override suspend fun getPopularParsingGroup() = popular.map { PopularParSource(it) }
 
-    override suspend fun createNewParSource(body: BodyParSource) {
-            api.createParSource(body)
-    }
-
+    override suspend fun createNewParSource(body: BodyParSource) =
+            api.createParSource(body).toParSource()
 }

@@ -23,6 +23,8 @@ class FavoriteParserFragment :
 
         binding.recyclerView.adapter = adapter
 
+        binding.recyclerView.itemAnimator = null
+
         dataObserver(viewModel.parsers) { adapter.submitData(it) }
     }
 }

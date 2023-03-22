@@ -1,5 +1,6 @@
 package com.example.gooru.feature.presentation.parser.parser.base
 
+import android.util.Log
 import androidx.viewbinding.ViewBinding
 import com.example.gooru.core.ParserButton
 import com.example.gooru.core.base.BaseFragment
@@ -19,12 +20,13 @@ abstract class BaseParserFragment<V : ViewBinding, VM : BaseParserViewModel> : B
 
     protected val adapter = ParserAdapter(::onClickItemButton)
 
-    protected var parSourceId = -1
-
-    private fun onClickItemButton(button: ParserButton) = when (button) {
-        ParserButton.SHARE -> button.item?.let { showShareDialog(it.shareUrl) }
-        ParserButton.LINK -> button.item?.let { startNewApp(it.url) }
-        else -> viewModel.addListenerPersonButton(button)
+    private fun onClickItemButton(button: ParserButton)  {
+        Log.e("Kart",button.name)
+        when (button) {
+            ParserButton.SHARE -> button.item?.let { showShareDialog(it.shareUrl) }
+            ParserButton.LINK -> button.item?.let { startNewApp(it.url) }
+            else -> viewModel.addListenerPersonButton(button)
+        }
     }
 
 }

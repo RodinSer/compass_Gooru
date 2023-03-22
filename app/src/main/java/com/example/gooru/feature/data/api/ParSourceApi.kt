@@ -15,7 +15,7 @@ import retrofit2.http.*
 interface ParSourceApi {
 
     @GET(PAR_SOURCE)
-    suspend fun getUserParSource(): ResponseParSourceDto
+    suspend fun getUserParSource():ResponseParSourceDto
 
     @POST(PAR_SOURCE_POST)
     suspend fun createParSource(@Body body: BodyParSource): NewParSourceDto

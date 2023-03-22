@@ -10,7 +10,7 @@ interface ParSourceRepository {
 
     suspend fun getPopularParsingGroup(): List<PopularParSource>
 
-    suspend fun createNewParSource(body: BodyParSource)
+    suspend fun createNewParSource(body: BodyParSource): ParSourceHome
 
 
 }
