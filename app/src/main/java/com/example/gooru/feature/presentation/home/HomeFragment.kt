@@ -35,9 +35,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             binding.recyclerView.adapter = adapter
         }
 
-        dataObserver(viewModel.loadState){state->
+        dataObserver(viewModel.loadState) { state ->
             binding.progressBarr.isVisible = state == LoadState.LOADING
-            if (state==LoadState.ERROR)showError { viewModel.getHomePage() }
+            if (state == LoadState.ERROR) showError { viewModel.getHomePage(true) }
+            if (state == LoadState.NO_AUTH) findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToStartAuthFragment())
         }
     }
 
@@ -51,8 +52,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         HomeButton.TARIFF -> redirect(homeButton.id)
     }
 
-    private fun redirect(id: Int){
-        viewModel.getPayUrl(id){url->
+    private fun redirect(id: Int) {
+        viewModel.getPayUrl(id) { url ->
             startNewApp(url)
         }
     }

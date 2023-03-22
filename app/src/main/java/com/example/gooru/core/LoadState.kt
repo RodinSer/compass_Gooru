@@ -4,5 +4,6 @@ enum class LoadState() {
     LOADING,
     ERROR,
     SUCCESS,
-    STARTED
+    STARTED,
+    NO_AUTH
 }

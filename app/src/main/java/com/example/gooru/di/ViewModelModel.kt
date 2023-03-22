@@ -11,30 +11,22 @@ import com.example.gooru.feature.presentation.parser.parser.favorite.FavoritePar
 import com.example.gooru.feature.presentation.parser.parsource.MyParSourceViewModel
 import com.example.gooru.feature.presentation.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val viewModelModel = module {
 
-    viewModel { AuthViewModel(get(), get(), get(), get()) }
-
-    viewModel { HomeViewModel(get(), get(), get(), get(), get(), get(),get()) }
-
-    viewModel { RegistrationViewModel(get(), get()) }
-
-    viewModel { ProfileViewModel(get(), get(), get(), get(), get(), get(),get()) }
-
-    viewModel { ParserViewModel(get(), get(), get(), downLoadURLUseCase =  get(),get(), downloadProvider = get(),get(),get()) }
-
-    viewModel { FavoriteParserViewModel(get(), get(), get(), downLoadURLUseCase =  get(),get(), downloadProvider = get(),get(),get()) }
-
-    viewModel { MyParSourceViewModel(get(),get(),get()) }
-
-    viewModel { (TicketsViewModel(get(),get(),get())) }
-
-    viewModel { ChatViewModel(get(named("authHeader")), get(), get(), get(),get(),get()) }
-
-    viewModel { AddParSourceViewModel(get(), get(),get()) }
+    viewModelOf(::AuthViewModel)
+    viewModelOf(::HomeViewModel)
+    viewModelOf(::RegistrationViewModel)
+    viewModelOf(::ProfileViewModel)
+    viewModelOf(::ParserViewModel)
+    viewModelOf(::FavoriteParserViewModel)
+    viewModelOf(::MyParSourceViewModel)
+    viewModelOf(::TicketsViewModel)
+    viewModelOf(::ChatViewModel)
+    viewModelOf(::AddParSourceViewModel)
 
 
 }
