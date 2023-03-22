@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.example.gooru.R
 import com.example.gooru.feature.presentation.authorization.auth.AuthFragment
 import com.example.gooru.feature.presentation.chat.tikets.TicketsFragment
-import com.example.gooru.feature.presentation.parser.addparsource.AddParSourceFragment
 import com.example.gooru.feature.presentation.profile.ProfileFragment
 import com.google.android.material.textfield.TextInputEditText
 

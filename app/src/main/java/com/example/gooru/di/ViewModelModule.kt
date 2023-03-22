@@ -5,10 +5,10 @@ import com.example.gooru.feature.presentation.authorization.registration.Registr
 import com.example.gooru.feature.presentation.chat.chat.ChatViewModel
 import com.example.gooru.feature.presentation.chat.tikets.TicketsViewModel
 import com.example.gooru.feature.presentation.home.HomeViewModel
-import com.example.gooru.feature.presentation.parser.addparsource.AddParSourceViewModel
-import com.example.gooru.feature.presentation.parser.parser.parserp.ParserViewModel
-import com.example.gooru.feature.presentation.parser.parser.favorite.FavoriteParserViewModel
-import com.example.gooru.feature.presentation.parser.parsource.MyParSourceViewModel
+import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.AddParSourceViewModel
+import com.example.gooru.feature.presentation.tabparsource.parser.parser.parserp.ParserViewModel
+import com.example.gooru.feature.presentation.tabparsource.parser.parser.favorite.FavoriteParserViewModel
+import com.example.gooru.feature.presentation.tabparsource.parsource.MyParSourceViewModel
 import com.example.gooru.feature.presentation.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.dsl.module
