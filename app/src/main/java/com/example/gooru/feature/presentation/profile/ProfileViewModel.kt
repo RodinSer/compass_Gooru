@@ -6,6 +6,7 @@ import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.provide.AuthTokenProvider
+import com.example.gooru.core.provide.UserIdProvider
 import com.example.gooru.feature.domain.model.homepage.user.User
 import com.example.gooru.feature.domain.useCase.tariff.UserTariffUseCase
 import com.example.gooru.feature.domain.useCase.user.AvatarUploadUseCase
@@ -25,6 +26,7 @@ class ProfileViewModel(
     private val uploadUseCase: AvatarUploadUseCase,
     private val tariffUseCase: UserTariffUseCase,
     private val tokenProvider: AuthTokenProvider,
+    private val userIdProvider: UserIdProvider,
 ) : BaseViewModel() {
 
     private var changeUser: User? = null
@@ -61,7 +63,6 @@ class ProfileViewModel(
                 _user.emit(userUpdateUseCase.userUpData(changeUser!!.toBody(first, last)))
                 _loadState.value = LoadState.SUCCESS
             }
-
         }
 
     fun changePassword(newPassword: String, oldPassword: String) =
@@ -80,6 +81,6 @@ class ProfileViewModel(
 
     fun logOut() {
         tokenProvider.clearToken()
+        userIdProvider.clearUserId()
     }
-
 }

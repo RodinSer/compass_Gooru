@@ -8,6 +8,6 @@ class UserChangePasswordUseCaseImpl(
     private val repository: UserRepository
 ) : UserChangePasswordUseCase {
 
-    override suspend fun changePassword(newPassword: String,oldPassword: String) =
-        repository.changePassword(BodyChangePassword(newPassword,oldPassword))
+    override suspend fun changePassword(newPassword: String, oldPassword: String) =
+        repository.changePassword(BodyChangePassword(newPassword, oldPassword))
 }

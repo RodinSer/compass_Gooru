@@ -2,7 +2,6 @@ package com.example.gooru.feature.domain.useCase.parsource
 
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.presentation.parser.addparsource.ExchangeParsing
-import com.google.gson.annotations.SerializedName
 
 interface NewParSourceUseCase {
 

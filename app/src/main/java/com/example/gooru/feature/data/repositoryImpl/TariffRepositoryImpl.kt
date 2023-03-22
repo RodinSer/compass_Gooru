@@ -8,6 +8,7 @@ import com.example.gooru.feature.domain.repository.TariffRepository
 class TariffRepositoryImpl(
     private val tariffApi: TariffApi
 ) : TariffRepository {
+
     override suspend fun getAllTariff() = tariffApi.getTariff().toListTariff().sortedBy { it.cost }
 
     override suspend fun getUserTariff(): UserTariff? = tariffApi.getUserTariff().toUserTariff()

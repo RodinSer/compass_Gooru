@@ -114,7 +114,7 @@ fun Fragment.showError(
 ) {
     val dialogView = LayoutInflater.from(requireContext())
         .inflate(R.layout.dialog_error_internet, null, false)
-    val repeatButton:Button = dialogView.findViewById(R.id.repeat_button)
+    val repeatButton: Button = dialogView.findViewById(R.id.repeat_button)
 
     val dialog = AlertDialog.Builder(requireContext())
         .setView(dialogView)
@@ -149,9 +149,4 @@ fun TicketsFragment.createNewTicketDialog(
 
     closeButton.setOnClickListener { dialog.dismiss() }
     dialog.show()
-}
-
-fun Fragment.createAddFragment(){
-    val dialog = AlertDialog.Builder(requireContext())
-        .create()
 }

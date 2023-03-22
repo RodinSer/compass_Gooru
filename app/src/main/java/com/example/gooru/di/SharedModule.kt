@@ -7,7 +7,7 @@ import com.example.gooru.core.provide.DownloadProviderImpl
 import com.example.gooru.core.provide.UserIdProvider
 import org.koin.dsl.module
 
-val sharedModule = module{
+val sharedModule = module {
 
     single { AuthTokenProvider(get()) }
 

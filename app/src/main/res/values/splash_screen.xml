@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.SplashScreen.App" parent="Theme.SplashScreen.IconBackground">
+    <style name="Theme.GooRU.SplashScreen" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/background</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/favicon</item>
         <item name="windowSplashScreenAnimationDuration">2000</item>
         <item name="postSplashScreenTheme">@style/Theme.GooRU</item>
-
     </style>
-
 </resources>

@@ -6,9 +6,10 @@ import com.example.gooru.feature.domain.useCase.user.AvatarUploadUseCase
 
 class AvatarUploadUseCaseImpl(
     private val userRepository: UserRepository
-):AvatarUploadUseCase {
+) : AvatarUploadUseCase {
+
     override suspend fun imageUpload(uri: Uri?, userId: Int?) =
-        userRepository.loadImage(uri,userId)
+        userRepository.loadImage(uri, userId)
 
 
 }

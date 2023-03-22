@@ -6,10 +6,10 @@ import com.example.gooru.feature.presentation.home.HomeViewModel
 class FAQ(
     val question: String,
     val response: String,
-):HomePage
+) : HomePage
 
 fun HomeViewModel.creteFAQList(): List<HomePage> {
-   return listOf(
+    return listOf(
         FAQ(
             question = "Что такое парсинг?",
             response = "Парсинг — это автоматизированный процесс сбора информации с любого сайта, " +
@@ -50,7 +50,7 @@ fun HomeViewModel.creteFAQList(): List<HomePage> {
         ),
         FAQ(
             question = "Законно ли парсить чужие сайты?",
-            response ="Парсинг не противоречит закону, если:\n" +
+            response = "Парсинг не противоречит закону, если:\n" +
                     "• получаемая информация лежит в открытом доступе и не является " +
                     "коммерческой тайной;\n" +
                     "• не затрагиваются авторские права;\n" +
@@ -60,5 +60,5 @@ fun HomeViewModel.creteFAQList(): List<HomePage> {
                     " сайта проконсультироваться с юристом."
         ),
 
-    )
+        )
 }

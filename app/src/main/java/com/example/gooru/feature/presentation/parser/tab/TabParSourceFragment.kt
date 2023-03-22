@@ -6,6 +6,7 @@ import android.view.View
 import com.example.gooru.R
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.databinding.FragmentStartAuthBinding
+import com.example.gooru.feature.presentation.parser.adapters.ParSourceTabAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class TabParSourceFragment : BaseFragment<FragmentStartAuthBinding>() {

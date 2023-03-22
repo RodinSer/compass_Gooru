@@ -40,7 +40,7 @@ class UserRepositoryImpl(
             val byteArray: ByteArray = stream.toByteArray()
 
             val body = MultipartBody.Part.createFormData(
-                FIELD_NAME, FILE_NAME+userId.toString()+FORMAT,
+                FIELD_NAME, FILE_NAME + userId.toString() + FORMAT,
                 byteArray.toRequestBody(FORM_DATA.toMediaType(), 0, byteArray.size)
             )
 
@@ -50,7 +50,7 @@ class UserRepositoryImpl(
     }
 
     private companion object {
-        const val PLUG =""
+        const val PLUG = ""
         const val FIELD_NAME = "avatar"
         const val FILE_NAME = "avatar_user_"
         const val FORMAT = ".png"

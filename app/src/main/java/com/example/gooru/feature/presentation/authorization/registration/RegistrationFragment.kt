@@ -6,7 +6,6 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.gooru.R
-import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.constant.OFFER
 import com.example.gooru.core.extensions.showError

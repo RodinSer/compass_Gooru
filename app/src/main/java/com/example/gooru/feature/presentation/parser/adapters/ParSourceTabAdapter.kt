@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.parser.tab
+package com.example.gooru.feature.presentation.parser.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

@@ -11,7 +11,7 @@ class AuthTokenProvider(context: Context) {
         preferenceToken.edit().putString(TOKEN, token).apply()
     }
 
-    fun clearToken(){
+    fun clearToken() {
         preferenceToken.edit().clear().apply()
     }
 

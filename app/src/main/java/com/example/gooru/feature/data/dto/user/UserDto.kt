@@ -27,13 +27,9 @@ class UserDto(
         avatar,
         email,
         firstName,
-        getUserGroups(),
         id,
-        isActive,
-        isSuperuser,
         lastName,
         phoneNumber,
-        role,
         username
     )
 }

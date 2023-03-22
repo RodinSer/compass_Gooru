@@ -1,17 +1,15 @@
 package com.example.gooru.feature.presentation.chat.chat
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.constant.BASE_WS_URL
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.extensions.simpleDateFormat
-import com.example.gooru.feature.data.dto.support.chat.ChatMessageDto
-import com.example.gooru.feature.data.dto.support.chat.SendMessage
 import com.example.gooru.core.provide.AuthTokenProvider
 import com.example.gooru.core.provide.UserIdProvider
+import com.example.gooru.feature.data.dto.support.chat.ChatMessageDto
+import com.example.gooru.feature.data.dto.support.chat.SendMessage
 import com.example.gooru.feature.domain.model.ChatMessage
 import com.example.gooru.feature.domain.useCase.support.SupportByTicketUseCase
 import com.example.gooru.feature.presentation.chat.chat.websocket.AppWebSocketListener

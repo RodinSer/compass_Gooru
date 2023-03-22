@@ -1,12 +1,10 @@
 package com.example.gooru.feature.presentation.parser.parser.parserp
 
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.provide.DownloadProvider
 import com.example.gooru.core.provide.UserIdProvider
-import com.example.gooru.feature.domain.model.parser.Parser
 import com.example.gooru.feature.domain.repository.PagingParser
 import com.example.gooru.feature.domain.useCase.parser.CommentUseCase
 import com.example.gooru.feature.domain.useCase.parser.DownLoadURLUseCase

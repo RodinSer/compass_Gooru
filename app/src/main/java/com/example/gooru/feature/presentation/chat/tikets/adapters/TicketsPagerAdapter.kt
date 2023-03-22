@@ -6,9 +6,9 @@ import androidx.paging.PagingDataAdapter
 import com.example.gooru.databinding.ItemTicketBinding
 import com.example.gooru.feature.domain.model.support.SupportTicket
 
-class TicketsPagerAdapter(private val onClick:(id:Int)->Unit) : PagingDataAdapter<SupportTicket, TicketVewHolder>(
-    SupportTicketDiff()
-) {
+class TicketsPagerAdapter(private val onClick: (id: Int) -> Unit) :
+    PagingDataAdapter<SupportTicket, TicketVewHolder>(SupportTicketDiff()) {
+
     override fun onBindViewHolder(holder: TicketVewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }

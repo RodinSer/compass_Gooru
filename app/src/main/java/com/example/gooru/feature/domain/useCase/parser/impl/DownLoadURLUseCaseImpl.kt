@@ -7,7 +7,7 @@ import com.example.gooru.feature.domain.useCase.parser.DownLoadURLUseCase
 class DownLoadURLUseCaseImpl(
     private val parserRepository: ParserRepository
 ) : DownLoadURLUseCase {
-    override suspend fun getUrl(parSourceId: Int, parserId: Int)= parserRepository.getUrlExel(
-            BodyDownloadFile(parSourceId, listOf(parSourceId).toString())
-        )
+
+    override suspend fun getUrl(parSourceId: Int, parserId: Int) =
+        parserRepository.getUrlExel(BodyDownloadFile(parSourceId, listOf(parSourceId).toString()))
 }

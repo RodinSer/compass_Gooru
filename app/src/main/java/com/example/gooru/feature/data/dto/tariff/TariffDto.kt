@@ -6,6 +6,6 @@ class TariffDto(
     private val previous: String?,
     private val results: List<TariffResultDto>
 ) {
-    fun toListTariff() = results.map { dto -> dto.toTariff() }
 
+    fun toListTariff() = results.map { dto -> dto.toTariff() }
 }

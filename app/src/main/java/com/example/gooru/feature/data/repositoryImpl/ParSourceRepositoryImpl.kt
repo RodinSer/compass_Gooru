@@ -17,5 +17,5 @@ class ParSourceRepositoryImpl(
     override suspend fun getPopularParsingGroup() = popular.map { PopularParSource(it) }
 
     override suspend fun createNewParSource(body: BodyParSource) =
-            api.createParSource(body).toParSource()
+        api.createParSource(body).toParSource()
 }

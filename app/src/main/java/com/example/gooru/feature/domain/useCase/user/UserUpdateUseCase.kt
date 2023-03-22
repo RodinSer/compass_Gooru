@@ -5,5 +5,5 @@ import com.example.gooru.feature.domain.model.homepage.user.User
 
 interface UserUpdateUseCase {
 
-    suspend fun userUpData(user: BodyUserUpdate):User
+    suspend fun userUpData(user: BodyUserUpdate): User
 }

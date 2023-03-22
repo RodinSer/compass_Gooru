@@ -1,5 +1,3 @@
 package com.example.gooru.feature.domain.model
 
-class UserAvatar (
-    val avatar: String
-)
+class UserAvatar (val avatar: String)

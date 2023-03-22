@@ -54,27 +54,26 @@ class HomeViewModel(
             val userMe = async { userUseCase.getUserInfo() }.await()
             val tariff = async { allTariffUseCase.getAllTariff() }.await()
 
-            val list = listOf(
+            _data.value = listOf(
                 ListHorizontal("Добро пожаловать", listOf(userMe)),
                 ListHorizontal("Мои Парсеры", myParSource),
                 ListHorizontal("Мои Тарифы", tariff),
                 ListVertical("Как это работает?", creteFAQList())
             )
-            _data.value = list
             _user.emit(userMe)
             _loadState.value = LoadState.SUCCESS
             userIdProvider.putUserID(userMe.id)
         }
     }
 
-    fun getPayUrl(tariffId: Int, redirect: (url: String) -> Unit) {
+    fun getPayUrl(tariffId: Int, redirect: (url: String) -> Unit)=
         viewModelScope.launch(dispatchers.io + handler) {
             _loadState.value = LoadState.LOADING
             val payUrl = payUseCase.getUrl(tariffId)
             _loadState.value = LoadState.SUCCESS
             redirect(payUrl)
         }
-    }
+
 
     fun checkNewItem() {
         val newParSource: ParSourceHome? = savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE]

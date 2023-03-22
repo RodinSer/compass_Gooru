@@ -1,6 +1,5 @@
 package com.example.gooru.feature.presentation.parser.parser.base
 
-import android.util.Log
 import androidx.viewbinding.ViewBinding
 import com.example.gooru.core.ParserButton
 import com.example.gooru.core.base.BaseFragment
@@ -9,6 +8,7 @@ import com.example.gooru.core.extensions.startNewApp
 import com.example.gooru.feature.presentation.parser.adapters.ParserAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("UNCHECKED_CAST")
 abstract class BaseParserFragment<V : ViewBinding, VM : BaseParserViewModel> : BaseFragment<V>() {
 
     protected inline fun <reified V : BaseParserViewModel> createViewModel() {
@@ -20,13 +20,11 @@ abstract class BaseParserFragment<V : ViewBinding, VM : BaseParserViewModel> : B
 
     protected val adapter = ParserAdapter(::onClickItemButton)
 
-    private fun onClickItemButton(button: ParserButton)  {
-        Log.e("Kart",button.name)
+    private fun onClickItemButton(button: ParserButton) =
         when (button) {
             ParserButton.SHARE -> button.item?.let { showShareDialog(it.shareUrl) }
             ParserButton.LINK -> button.item?.let { startNewApp(it.url) }
             else -> viewModel.addListenerPersonButton(button)
         }
-    }
 
 }

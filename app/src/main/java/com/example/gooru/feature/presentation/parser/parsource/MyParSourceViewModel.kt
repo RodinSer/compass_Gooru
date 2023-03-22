@@ -25,14 +25,12 @@ class MyParSourceViewModel(
         getMyParSource()
     }
 
-    fun getMyParSource() {
+    fun getMyParSource() =
         viewModelScope.launch(dispatcher.io+handler) {
             _loadState.value = LoadState.LOADING
             _list.value = homeRepository.getMyParsingTask()
             _loadState.value = LoadState.SUCCESS
         }
-
-    }
 
     fun checkNewItem() {
        val newParSource: ParSourceHome? =  savedStateHandle[NEW_PAR_SOURCE]

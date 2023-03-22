@@ -6,13 +6,13 @@ import com.google.gson.annotations.SerializedName
 
 class SupportTicketDto(
     private val id: Int,
-    private  val message: String,
+    private val message: String,
     private val parser: Int,
     private val status: String,
     @SerializedName("topic_type")
     private val topicName: String,
     @SerializedName("date_create")
-   private val date:String
-){
-    fun toSupport()=SupportTicket(id,message,parser,status,topicName,date.simpleDateFormat())
+    private val date: String
+) {
+    fun toSupport() = SupportTicket(id, message, parser, status, topicName, date.simpleDateFormat())
 }

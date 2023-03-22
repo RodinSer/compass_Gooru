@@ -68,8 +68,4 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
         viewModel.getToken(binding.email.text.toString(), binding.password.text.toString())
     }
 
-    companion object {
-        private const val TEST_EMAIL = "rodin_sr@mail.ru"
-        private const val TEST_PASSWORD = "12345678"
-    }
 }

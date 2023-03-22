@@ -12,7 +12,7 @@ class CommentRepositoryImpl(private val commentApi: ParSourceApi) : CommentRepos
         commentApi.deleteComment(commentID)
     }
 
-    override suspend fun patchComment(body: BodyComment,commentID: Int) {
-        commentApi.patchComment(body,commentID)
+    override suspend fun patchComment(body: BodyComment, commentID: Int) {
+        commentApi.patchComment(body, commentID)
     }
 }

@@ -28,7 +28,7 @@ class TicketsViewModel(
         viewModelScope.launch(dispatcher.io + handler) {
             _loadState.value = LoadState.LOADING
             _tickets.value = ticketUseCase.getAllTickets(0).toMutableList()
-            _loadState.value  = LoadState.SUCCESS
+            _loadState.value = LoadState.SUCCESS
         }
 
     /** Пагинация*/
@@ -37,9 +37,9 @@ class TicketsViewModel(
     fun creteNewTicket(name: String, message: String, function: () -> Unit?) =
         viewModelScope.launch(dispatcher.io + handler) {
             _loadState.value = LoadState.LOADING
-            _tickets.value.add(0,newTicketUseCase.create(name, message))
+            _tickets.value.add(0, newTicketUseCase.create(name, message))
             _loadState.value = LoadState.SUCCESS
             function()
-    }
+        }
 
 }

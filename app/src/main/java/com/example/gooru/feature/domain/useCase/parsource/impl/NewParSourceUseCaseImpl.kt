@@ -17,10 +17,10 @@ class NewParSourceUseCaseImpl(
         name: String
     ): ParSourceHome {
         val source = mutableListOf<Int>()
-        freelanceSource.forEach{
+        freelanceSource.forEach {
             if (it.isSelected) source.add(it.id)
         }
-      return  parSourceRepository.createNewParSource(
+        return parSourceRepository.createNewParSource(
             BodyParSource(dataType, description, source, keywords.toString(), name)
         )
     }

@@ -1,6 +1,5 @@
 package com.example.gooru.feature.presentation.chat.chat.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -16,19 +15,18 @@ import com.example.gooru.feature.presentation.chat.chat.adapter.viewholder.ChatS
 class ChatAdapter(private val userId: Int) :
     ListAdapter<ChatMessage, BaseChatViewHolder>(ChatDiff()) {
 
-    class ChatDiff() : DiffUtil.ItemCallback<ChatMessage>() {
+    class ChatDiff : DiffUtil.ItemCallback<ChatMessage>() {
         override fun areItemsTheSame(oldItem: ChatMessage, newItem: ChatMessage) =
             oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: ChatMessage, newItem: ChatMessage) =
             oldItem.id == newItem.id
-
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position).sender.id == userId) {
-            true ->  R.layout.item_chat_send
-            false ->  R.layout.item_chat_receiver
+            true -> R.layout.item_chat_send
+            false -> R.layout.item_chat_receiver
         }
     }
 

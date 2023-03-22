@@ -1,3 +1,3 @@
 package com.example.gooru.feature.domain.model.homepage
 
-class NewParSource() : HomePage
+class NewParSource : HomePage

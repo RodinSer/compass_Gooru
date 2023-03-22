@@ -1,8 +1,8 @@
 package com.example.gooru.feature.presentation.profile
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,8 +14,8 @@ import com.example.gooru.core.constant.FORM_DATA
 import com.example.gooru.core.extensions.*
 import com.example.gooru.databinding.FragmentProfileBinding
 import com.example.gooru.feature.domain.model.homepage.user.User
+import com.example.gooru.feature.presentation.profile.adapter.UserTariffAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.io.File
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
@@ -24,22 +24,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     private val viewModel by viewModel<ProfileViewModel>()
 
     private val getItem = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        if (uri != null) {
-            binding.avatarSaveButton.isVisible = true
-            binding.avatar.loadImage(uri)
-        }
-        binding.avatarSaveButton.setOnClickListener {
-            viewModel.loadImage(uri)
-            binding.avatarSaveButton.isVisible = false
-        }
+        if (uri != null) bindNewAvatarImage(uri)
+
+        saveAvatarButtonClick(uri)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         observers()
-
-        logOut()
 
         binding.avatarEdit.setOnClickListener { getItem.launch(FORM_DATA) }
 
@@ -49,8 +42,21 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         changePasswordButton()
 
+        logOut()
+
     }
 
+    private fun bindNewAvatarImage(uri: Uri?) {
+        binding.avatarSaveButton.isVisible = true
+        binding.avatar.loadImage(uri)
+    }
+
+    private fun saveAvatarButtonClick(uri: Uri?) {
+        binding.avatarSaveButton.setOnClickListener {
+            viewModel.loadImage(uri)
+            binding.avatarSaveButton.isVisible = false
+        }
+    }
 
     private fun observers() {
         dataObserver(viewModel.user) { user -> userObserver(user) }
@@ -65,17 +71,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
     }
 
-    private fun loadStateListener(state: LoadState) {
-        if (state == LoadState.ERROR) showError { }
-        binding.progressBarr.isVisible = state == LoadState.LOADING
-    }
-
     private fun personEditButton() =
         binding.personEdit.setOnClickListener {
             createPersonEditDialog { newFirstName, newLastName ->
                 viewModel.updateUser(newFirstName, newLastName)
             }
         }
+
+    private fun loadStateListener(state: LoadState) {
+        if (state == LoadState.ERROR) showError { }
+        binding.progressBarr.isVisible = state == LoadState.LOADING
+    }
 
     private fun contentEditButton() = binding.contactEdit.setOnClickListener {
         createContactEditDialog { number -> viewModel.updateUser(number) }

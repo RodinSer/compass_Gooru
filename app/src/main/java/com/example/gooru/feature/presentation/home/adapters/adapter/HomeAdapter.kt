@@ -11,12 +11,8 @@ class HomeAdapter(
     onClickListener: (id: HomeButton) -> Unit
 ) : ListDelegationAdapter<List<HomeInfo>>() {
 
-
-
     init {
         delegatesManager.addDelegate(homeVerticalDelegate(onClickListener))
             .addDelegate(homeHorizontalDelegate(onClickListener))
-
-        val a = items?.get(1)
     }
 }

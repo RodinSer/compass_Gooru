@@ -174,7 +174,7 @@ class ItemTouchHelperCallback(
 fun RecyclerView.setItemTouchHelper(limitScrollX: Int) {
 
 
-   ItemTouchHelper(ItemTouchHelperCallback(limitScrollX)).attachToRecyclerView(this)
+    ItemTouchHelper(ItemTouchHelperCallback(limitScrollX)).attachToRecyclerView(this)
     ItemTouchHelper(ItemTouchHelperCallback(limitScrollX))
 
 }

@@ -8,11 +8,18 @@ class AuthInterceptor(private val tokenProvider: AuthTokenProvider) : Intercepto
 
     override fun intercept(chain: Interceptor.Chain): Response {
         Log.e("Kart", "интецептор токен = ${tokenProvider.getToken()}")
-        val token = if (tokenProvider.getToken() != null) "token ${tokenProvider.getToken()}"
-        else ""
+        val token = if (tokenProvider.getToken() != null) "$TOKEN ${tokenProvider.getToken()}"
+        else EMPTY
+
         val request = chain.request().newBuilder()
-            .addHeader("Authorization", token)
+            .addHeader(AUTHORIZATION, token)
             .build()
         return chain.proceed(request)
+    }
+
+    private companion object {
+        const val AUTHORIZATION = "Authorization"
+        const val TOKEN = "token"
+        const val EMPTY = ""
     }
 }

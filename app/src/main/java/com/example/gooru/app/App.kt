@@ -14,7 +14,7 @@ class App : Application() {
                 listOf(
                     networkModule,
                     repositoryModule,
-                    viewModelModel,
+                    viewModelModule,
                     dispatcherWrapperModule,
                     sharedModule,
                     useCaseModule,

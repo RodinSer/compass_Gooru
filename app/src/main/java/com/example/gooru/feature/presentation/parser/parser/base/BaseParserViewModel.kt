@@ -29,6 +29,7 @@ abstract class BaseParserViewModel(
 ) : BaseViewModel() {
 
     var parsers: Flow<PagingData<Parser>>? = null
+
     private val localChanges = LocalChanges()
     protected val localChangesFlow = MutableStateFlow(OnChange(localChanges))
 

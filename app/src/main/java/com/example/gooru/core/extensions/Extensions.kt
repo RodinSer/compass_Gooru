@@ -35,6 +35,7 @@ fun ImageView.loadCircleImage(url: String?) {
         .circleCrop()
         .into(this)
 }
+
 fun String.emailValidation() =
     Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
@@ -48,12 +49,12 @@ fun String.passwordValidation(): Boolean {
 
 fun Fragment.showShareDialog(share: String) {
 
-        val sendIntent: Intent = Intent().apply {
-            action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, share)
-            type = "text/plain"
-        }
-        val shareIntent = Intent.createChooser(sendIntent, null)
-        ContextCompat.startActivity(requireContext(), shareIntent, null)
+    val sendIntent: Intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, share)
+        type = "text/plain"
+    }
+    val shareIntent = Intent.createChooser(sendIntent, null)
+    ContextCompat.startActivity(requireContext(), shareIntent, null)
 
 }

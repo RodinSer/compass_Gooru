@@ -8,8 +8,8 @@ class CommentUseCaseImpl(private val commentRepository: CommentRepository) : Com
 
     override suspend fun doWork(parserId: Int, comment: String?, commentId: Int?): Int? {
         val body = BodyComment(parserId, comment)
-        var newId:Int? = null
-        if (commentId == null)  newId = commentRepository.setComment(body)
+        var newId: Int? = null
+        if (commentId == null) newId = commentRepository.setComment(body)
         else if (comment == "") commentRepository.deleteComment(commentId)
         else commentRepository.patchComment(body, commentId)
 

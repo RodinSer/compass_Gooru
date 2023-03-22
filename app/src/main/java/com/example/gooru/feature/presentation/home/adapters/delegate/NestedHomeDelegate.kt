@@ -41,8 +41,7 @@ fun userDelegate() =
 
 fun parSourceDelegate(
     onClickListener: (button: HomeButton) -> Unit
-) =
-    adapterDelegateViewBinding<ParSourceHome, HomePage, ItemMyParsingTasksBinding>({ layoutInflater, root ->
+) = adapterDelegateViewBinding<ParSourceHome, HomePage, ItemMyParsingTasksBinding>({ layoutInflater, root ->
         ItemMyParsingTasksBinding.inflate(
             layoutInflater,
             root,
@@ -115,7 +114,7 @@ fun parsingAddDelegate(onClickListener: (button: HomeButton) -> Unit) =
     adapterDelegateViewBinding<NewParSource, HomePage, ItemAddParsourceBinding>({ layoutInflater, root ->
         ItemAddParsourceBinding.inflate(layoutInflater, root, false)
     }) {
-        binding.root.setOnClickListener{
+        binding.root.setOnClickListener {
             onClickListener(HomeButton.NEW_SOURCE)
         }
     }

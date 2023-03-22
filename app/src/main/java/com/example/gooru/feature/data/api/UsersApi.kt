@@ -20,7 +20,7 @@ interface UsersApi {
     suspend fun changePassword(@Body password: BodyChangePassword): Response<Unit>
 
     @Multipart
-        @PUT(UPLOAD_AVATAR)
+    @PUT(UPLOAD_AVATAR)
     suspend fun uploadImage(
         @Part avatar: MultipartBody.Part,
         @Path("id") userId: Int,

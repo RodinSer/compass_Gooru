@@ -1,5 +1,6 @@
 package com.example.gooru.di
 
+import com.example.gooru.core.constant.BASE_URL
 import com.example.gooru.feature.data.api.*
 import com.example.gooru.core.provide.AuthInterceptor
 import com.google.gson.GsonBuilder
@@ -15,10 +16,6 @@ import retrofit2.create
 val networkModule = module {
 
     single { AuthInterceptor(get()) }
-
-    single {
-
-    }
 
     single(named("authHeader")) {
         val interceptor = HttpLoggingInterceptor()
@@ -38,7 +35,7 @@ val networkModule = module {
 
     single(named("retrofit")) {
         Retrofit.Builder()
-            .baseUrl("http://10.10.10.88:8003/")
+            .baseUrl(BASE_URL)
             .client(get(named("authHeader")))
             .addConverterFactory(GsonConverterFactory.create())
             .build()

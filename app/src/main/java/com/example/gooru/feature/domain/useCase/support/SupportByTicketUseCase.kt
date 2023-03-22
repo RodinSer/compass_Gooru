@@ -4,5 +4,5 @@ import com.example.gooru.feature.domain.model.ChatMessage
 
 interface SupportByTicketUseCase {
 
-    suspend fun getMessageByTicketID(ticketId:Int):List<ChatMessage>
+    suspend fun getMessageByTicketID(ticketId: Int): List<ChatMessage>
 }

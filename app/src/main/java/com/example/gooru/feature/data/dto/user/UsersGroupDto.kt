@@ -5,6 +5,7 @@ import com.example.gooru.feature.domain.model.homepage.user.UserGroups
 class UsersGroupDto(
     val id: Int,
     val name: String
-){
-    fun toUsersGroups ()= UserGroups(id,name)
+) {
+
+    fun toUsersGroups() = UserGroups(id, name)
 }

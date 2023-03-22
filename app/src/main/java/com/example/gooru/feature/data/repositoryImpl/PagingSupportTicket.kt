@@ -7,18 +7,10 @@ import kotlinx.coroutines.flow.Flow
 
 class PagingSupportTicket(private val supportAllUseCase: SupportAllTicketsUseCase) {
 
-   private val pager = Pager(
+    private val pager = Pager(
         config = PagingConfig(pageSize = 10, enablePlaceholders = false),
         pagingSourceFactory = { PagingSoursTickets(supportAllUseCase) }
     )
 
-    fun getAllTickets(): Flow<PagingData<SupportTicket>> {
-
-        return pager.flow
-    }
-
-    fun refresh(){
-        PagingSoursTickets(supportAllUseCase).invalidate()
-    }
 }
 

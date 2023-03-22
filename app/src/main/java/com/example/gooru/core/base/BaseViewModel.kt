@@ -13,13 +13,14 @@ abstract class BaseViewModel : ViewModel() {
     val loadState = _loadState.asStateFlow()
 
     protected open fun errorHandler(error: Throwable) {
+        Log.e("Kart", "${error.message}")
         if (error.message == "HTTP 400")
             _loadState.value = LoadState.ERROR
         else _loadState.value = LoadState.ERROR
     }
 
     protected val handler = CoroutineExceptionHandler { _, T ->
-        Log.e("Kart", "${T.message}")
+
         errorHandler(T)
     }
 }

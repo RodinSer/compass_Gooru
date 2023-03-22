@@ -15,7 +15,7 @@ interface TariffApi {
     suspend fun getTariff(): TariffDto
 
     @GET(TARIFF_PAY)
-    suspend fun payTariff(@Path("type_id") tariffId: Int):TariffPayDTO
+    suspend fun payTariff(@Path("type_id") tariffId: Int): TariffPayDTO
 
     private companion object {
         const val TARIFF_PAY = "api/pay/{type_id}/"

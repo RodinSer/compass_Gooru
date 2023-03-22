@@ -10,7 +10,7 @@ import kotlinx.coroutines.delay
 class PagingSoursParser(
     private val parserUseCase: GetParserUseCase,
     private val parSourceId: Int?,
-    private val radioButtonId:Int
+    private val radioButtonId: Int
 ) : PagingSource<Int, Parser>() {
 
     override fun getRefreshKey(state: PagingState<Int, Parser>) = FIRST_PAGE
@@ -19,9 +19,9 @@ class PagingSoursParser(
         val page = params.key ?: FIRST_PAGE
         delay(100)
         val item =
-            parserUseCase.getParser(page, parSourceId,radioButtonId)
+            parserUseCase.getParser(page, parSourceId, radioButtonId)
 
-        Log.e("Kart",item.list.size.toString())
+        Log.e("Kart", item.list.size.toString())
 
         return LoadResult.Page(
             prevKey = item.prevPage,

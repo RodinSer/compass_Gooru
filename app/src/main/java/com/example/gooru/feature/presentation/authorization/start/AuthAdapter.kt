@@ -15,7 +15,7 @@ class AuthAdapter(
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> AuthFragment()
-            1-> RegistrationFragment()
+            1 -> RegistrationFragment()
             else -> Fragment()
         }
     }

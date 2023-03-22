@@ -1,6 +1,5 @@
 package com.example.gooru.feature.domain.repository
 
-import com.example.gooru.feature.data.dto.tariff.pay.TariffPayDTO
 import com.example.gooru.feature.domain.model.homepage.tariff.Tariff
 import com.example.gooru.feature.domain.model.homepage.tariff.UserTariff
 

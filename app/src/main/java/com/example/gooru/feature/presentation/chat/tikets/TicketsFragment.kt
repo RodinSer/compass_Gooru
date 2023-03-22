@@ -24,11 +24,9 @@ class TicketsFragment : BaseFragment<FragmentTicketsBinding>() {
     private val adapter by lazy { TicketsListAdapter { onTokedClick(it) } }
 
 
-    private fun onTokedClick(id: Int) {
-        findNavController().navigate(
-            TicketsFragmentDirections.actionTicketsFragmentToChatFragment(id)
-        )
-    }
+    private fun onTokedClick(id: Int) =
+        findNavController()
+            .navigate(TicketsFragmentDirections.actionTicketsFragmentToChatFragment(id))
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,13 +48,11 @@ class TicketsFragment : BaseFragment<FragmentTicketsBinding>() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun newTicket() {
+    private fun newTicket() =
         createNewTicketDialog { message, theme ->
             viewModel.creteNewTicket(theme, message) {
                 binding.recyclerView.adapter?.notifyItemInserted(0)
                 binding.recyclerView.smoothScrollToPosition(0)
             }
         }
-    }
-
 }

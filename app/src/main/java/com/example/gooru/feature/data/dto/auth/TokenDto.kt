@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class TokenDto(
     @SerializedName("auth_token")
-   private val authToken: String
-){
+    private val authToken: String
+) {
     fun toUserToken() = UserToken(authToken)
 }

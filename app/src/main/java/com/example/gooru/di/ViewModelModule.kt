@@ -10,12 +10,10 @@ import com.example.gooru.feature.presentation.parser.parser.parserp.ParserViewMo
 import com.example.gooru.feature.presentation.parser.parser.favorite.FavoriteParserViewModel
 import com.example.gooru.feature.presentation.parser.parsource.MyParSourceViewModel
 import com.example.gooru.feature.presentation.profile.ProfileViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.androidx.viewmodel.dsl.viewModelOf
-import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val viewModelModel = module {
+val viewModelModule = module {
 
     viewModelOf(::AuthViewModel)
     viewModelOf(::HomeViewModel)
@@ -27,6 +25,5 @@ val viewModelModel = module {
     viewModelOf(::TicketsViewModel)
     viewModelOf(::ChatViewModel)
     viewModelOf(::AddParSourceViewModel)
-
 
 }

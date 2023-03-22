@@ -31,16 +31,13 @@ class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         dataObserver(viewModel.list) { parSources -> setAdapter(parSources) }
 
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
 
-        binding.addParSource.setOnClickListener {
-        findNavController().navigate(TabParSourceFragmentDirections.actionTabParSourceFragmentToAddParSourceFragment())
-        }
+        binding.addParSource.setOnClickListener { navigateAddParSource() }
     }
+
 
     private fun loadStateListener(state: LoadState) {
         binding.progressBarr.isVisible = state == LoadState.LOADING
@@ -52,14 +49,18 @@ class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun onClickListener(parSourceId: Int) {
-        findNavController().navigate(
-            TabParSourceFragmentDirections.actionTabParSourceFragmentToParserFragment(
-                parSourceId
+    private fun onClickListener(parSourceId: Int) =
+        findNavController()
+            .navigate(
+                TabParSourceFragmentDirections
+                    .actionTabParSourceFragmentToParserFragment(parSourceId)
             )
-        )
 
-
-    }
+    private fun navigateAddParSource() =
+        findNavController()
+            .navigate(
+                TabParSourceFragmentDirections
+                    .actionTabParSourceFragmentToAddParSourceFragment()
+            )
 
 }

@@ -1,14 +1,11 @@
 package com.example.gooru.feature.data.repositoryImpl
 
-import android.util.Log
 import com.example.gooru.feature.data.api.ParSourceApi
 import com.example.gooru.feature.data.body.BodyDownloadFile
 import com.example.gooru.feature.data.body.BodyFavorite
 import com.example.gooru.feature.data.body.BodyPatchParser
 import com.example.gooru.feature.data.dto.parser.FavoriteParserDto
-import com.example.gooru.feature.domain.model.parser.ParserInPage
 import com.example.gooru.feature.domain.repository.ParserRepository
-import retrofit2.Response
 
 class ParserRepositoryImpl(private val parserApi: ParSourceApi) : ParserRepository {
 

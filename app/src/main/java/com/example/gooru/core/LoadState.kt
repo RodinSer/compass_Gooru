@@ -1,6 +1,6 @@
 package com.example.gooru.core
 
-enum class LoadState() {
+enum class LoadState {
     LOADING,
     ERROR,
     SUCCESS,

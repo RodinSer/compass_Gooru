@@ -5,6 +5,7 @@ import com.example.gooru.feature.domain.model.homepage.tariff.UserTariff
 class UserTariffDto(
     val results: List<UserTariffResultDto>
 ) {
+
     fun toUserTariff(): UserTariff? {
         var userTariff: UserTariff? = null
         if (results.isNotEmpty()) {

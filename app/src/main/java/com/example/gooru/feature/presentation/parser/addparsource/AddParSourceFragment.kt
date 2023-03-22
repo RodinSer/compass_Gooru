@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
@@ -16,8 +14,6 @@ import com.example.gooru.databinding.FragmentAddParSourceBinding
 import com.example.gooru.feature.presentation.parser.addparsource.adapter.ExchangeAdapter
 import com.example.gooru.feature.presentation.parser.addparsource.adapter.KeyWordAdapter
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
@@ -39,18 +35,6 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
 
         binding.buttonKeyWord.setEndIconOnClickListener { addKeyWord() }
 
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.isBackStack.collect {
-                if (it != null) {
-                    parentFragmentManager.setFragmentResult("TEST", bundleOf("Name" to it.name))
-                }
-
-            }
-        }
-
-//        dataObserver(viewModel.isBackStack) { isBackStack -> popToBAckStack(isBackStack) }
-
         onChangeEditText(binding.name)
 
         sendButton()
@@ -63,10 +47,9 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
             LoadState.SUCCESS -> {
                 Toast.makeText(requireContext(), "parSource создан успешно", Toast.LENGTH_SHORT)
                     .show()
-                popToBAckStack()
+                findNavController().popBackStack()
             }
             else -> {}
-
         }
     }
 
@@ -74,10 +57,6 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
         adapterExchangeParsing.setItems(viewModel.getExchangeParsing())
         binding.recyclerViewExchange.adapter = adapterExchangeParsing
         binding.recyclerViewKeyWord.adapter = adapterKeuWord
-    }
-
-    private fun popToBAckStack() {
-        findNavController().popBackStack()
     }
 
     private fun onChangeEditText(editText: TextInputEditText) =
@@ -95,13 +74,12 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
     private fun sendButton() =
         binding.sendButton.setOnClickListener { createParSource() }
 
-    private fun createParSource() {
-        viewModel.creteParSource(
-            1,
-            binding.description.text.toString(),
-            adapterExchangeParsing.getItems(),
-            adapterKeuWord.getItems(),
-            binding.name.text.toString()
-        )
-    }
+    private fun createParSource() = viewModel.creteParSource(
+        1,
+        binding.description.text.toString(),
+        adapterExchangeParsing.getItems(),
+        adapterKeuWord.getItems(),
+        binding.name.text.toString()
+    )
+
 }
