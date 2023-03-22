@@ -22,7 +22,6 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.checkToken()
 
         dataObserver(viewModel.stateAuth) { state -> observer(state) }
 

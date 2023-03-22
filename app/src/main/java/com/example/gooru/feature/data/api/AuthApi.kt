@@ -1,9 +1,9 @@
 package com.example.gooru.feature.data.api
 
-import com.example.gooru.feature.data.body.BodyChangePassword
-import com.example.gooru.feature.data.body.BodyRegister
-import com.example.gooru.feature.data.body.BodyUser
-import com.example.gooru.feature.data.body.BodyUserEmail
+import com.example.gooru.feature.domain.model.body.BodyChangePassword
+import com.example.gooru.feature.domain.model.body.BodyRegister
+import com.example.gooru.feature.domain.model.body.BodyUser
+import com.example.gooru.feature.domain.model.body.BodyUserEmail
 import com.example.gooru.feature.data.dto.auth.RegistrationUserDto
 import com.example.gooru.feature.data.dto.auth.TokenDto
 import retrofit2.Response

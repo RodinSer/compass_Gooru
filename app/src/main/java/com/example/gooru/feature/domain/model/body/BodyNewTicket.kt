@@ -1,4 +1,4 @@
-package com.example.gooru.feature.data.body
+package com.example.gooru.feature.domain.model.body
 
 @kotlinx.serialization.Serializable
 class BodyNewTicket(

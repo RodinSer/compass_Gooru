@@ -59,4 +59,12 @@ val networkModule = module {
         get<Retrofit>(named("retrofit")).create()
     }
 
+    single<CommentApi> {
+        get<Retrofit>(named("retrofit")).create()
+    }
+
+    single<ParserApi> {
+        get<Retrofit>(named("retrofit")).create()
+    }
+
 }

@@ -34,56 +34,51 @@ import com.example.gooru.feature.domain.useCase.user.impl.AvatarUploadUseCaseImp
 import com.example.gooru.feature.domain.useCase.user.impl.UserChangePasswordUseCaseImpl
 import com.example.gooru.feature.domain.useCase.user.impl.UserInfoUseCaseImpl
 import com.example.gooru.feature.domain.useCase.user.impl.UserUpdateUseCaseImpl
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    single<ParSourceUseCase> { ParSourceUseCaseImpl(get()) }
 
-    single<NewParSourceUseCase> { NewParSourceUseCaseImpl(get()) }
+    singleOf(::ParSourceUseCaseImpl){bind<ParSourceUseCase>()}
+    singleOf(::CommentUseCaseImpl){bind<CommentUseCase>()}
+}
 
-    single<SupportAllTicketsUseCase> { SupportAllUseCaseImpl(repository = get()) }
+val supportUseCaseModule= module {
 
-    single<SupportByTicketUseCase> { SupportByTicketUseCaseImpl(get()) }
-
-    single<SupportNewTicketUseCase> { SupportNewTicketUseCaseImpl(get()) }
-
-    single<CommentUseCase> { CommentUseCaseImpl(get()) }
+    singleOf(::NewParSourceUseCaseImpl){bind<NewParSourceUseCase>()}
+    singleOf(::SupportAllUseCaseImpl){bind<SupportAllTicketsUseCase>()}
+    singleOf(::SupportByTicketUseCaseImpl){bind<SupportByTicketUseCase>()}
+    singleOf(::SupportNewTicketUseCaseImpl){bind<SupportNewTicketUseCase>()}
 }
 
 val tariffUseCaseModule = module {
-    single<UserTariffUseCase> { UserTariffUseCaseImpl(get()) }
 
-    single<AllTariffUseCase> { AllTariffUseCaseImpl(get()) }
-
-    single<PayUseCase> { PayUseCaseImpl(get()) }
+    singleOf(::UserTariffUseCaseImpl){bind<UserTariffUseCase>()}
+    singleOf(::AllTariffUseCaseImpl){bind<AllTariffUseCase>()}
+    singleOf(::PayUseCaseImpl){bind<PayUseCase>()}
 }
 
 val parserUseCaseModule = module {
-    single<GetParserUseCase> { GetParserUseCaseImpl(get()) }
 
-    single<FavoriteUseCase> { FavoriteUseCaseImpl(get()) }
-
-    single<DownLoadURLUseCase> { DownLoadURLUseCaseImpl(get()) }
-
-    single<EditParserUseCasa> { EditParserUseCasaImpl(get()) }
+    singleOf(::GetParserUseCaseImpl){bind<GetParserUseCase>()}
+    singleOf(::FavoriteUseCaseImpl){bind<FavoriteUseCase>()}
+    singleOf(::DownLoadURLUseCaseImpl){bind<DownLoadURLUseCase>()}
+    singleOf(::EditParserUseCasaImpl){bind<EditParserUseCasa>()}
 }
 
 val userUseCaseModule = module {
-    single<UserInfoUseCase> { UserInfoUseCaseImpl(get()) }
 
-    single<UserUpdateUseCase> { UserUpdateUseCaseImpl(get()) }
-
-    single<UserChangePasswordUseCase> { UserChangePasswordUseCaseImpl(get()) }
-
-    single<AvatarUploadUseCase> { AvatarUploadUseCaseImpl(get()) }
+    singleOf(::UserInfoUseCaseImpl){bind<UserInfoUseCase>()}
+    singleOf(::UserUpdateUseCaseImpl){bind<UserUpdateUseCase>()}
+    singleOf(::UserChangePasswordUseCaseImpl){bind<UserChangePasswordUseCase>()}
+    singleOf(::AvatarUploadUseCaseImpl){bind<AvatarUploadUseCase>()}
 }
 
 val authUseCaseModule = module {
-    single<RegistrationUseCase> { RegistrationUseCaseImpl(get()) }
 
-    single<ResetPasswordUseCase> { ResetPasswordUseCaseImpl(get()) }
-
-    single<AuthUseCase> { AuthUseCaseImpl(get()) }
-
-    single<ChangePasswordUseCase> { ChangePasswordUseCaseImpl(get()) }
+    singleOf(::RegistrationUseCaseImpl){bind<RegistrationUseCase>()}
+    singleOf(::ResetPasswordUseCaseImpl){bind<ResetPasswordUseCase>()}
+    singleOf(::AuthUseCaseImpl){bind<AuthUseCase>()}
+    singleOf(::ChangePasswordUseCaseImpl){bind<ChangePasswordUseCase>()}
 }

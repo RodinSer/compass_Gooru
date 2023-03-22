@@ -25,5 +25,4 @@ val viewModelModule = module {
     viewModelOf(::TicketsViewModel)
     viewModelOf(::ChatViewModel)
     viewModelOf(::AddParSourceViewModel)
-
 }

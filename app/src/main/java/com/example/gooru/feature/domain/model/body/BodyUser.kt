@@ -1,4 +1,4 @@
-package com.example.gooru.feature.data.body
+package com.example.gooru.feature.domain.model.body
 
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
