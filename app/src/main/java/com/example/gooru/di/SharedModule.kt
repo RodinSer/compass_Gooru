@@ -1,5 +1,6 @@
 package com.example.gooru.di
 
+import androidx.lifecycle.SavedStateHandle
 import com.example.gooru.core.provide.AuthTokenProvider
 import com.example.gooru.core.provide.DownloadProvider
 import com.example.gooru.core.provide.DownloadProviderImpl
@@ -13,5 +14,7 @@ val sharedModule = module{
     single { UserIdProvider(get()) }
 
     factory<DownloadProvider> { DownloadProviderImpl(get()) }
+
+    single { SavedStateHandle() }
 
 }

@@ -1,5 +1,6 @@
 package com.example.gooru.feature.presentation.home
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseViewModel
@@ -9,11 +10,13 @@ import com.example.gooru.feature.data.home.ListVertical
 import com.example.gooru.feature.data.home.creteFAQList
 import com.example.gooru.core.provide.UserIdProvider
 import com.example.gooru.feature.domain.model.homepage.HomeInfo
+import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.domain.model.homepage.user.User
 import com.example.gooru.feature.domain.useCase.parsource.ParSourceUseCase
 import com.example.gooru.feature.domain.useCase.tariff.AllTariffUseCase
 import com.example.gooru.feature.domain.useCase.tariff.PayUseCase
 import com.example.gooru.feature.domain.useCase.user.UserInfoUseCase
+import com.example.gooru.feature.presentation.parser.addparsource.AddParSourceViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,6 +31,7 @@ class HomeViewModel(
     private val userIdProvider: UserIdProvider,
     private val allTariffUseCase: AllTariffUseCase,
     private val payUseCase: PayUseCase,
+    private val savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
     private val _data = MutableStateFlow<List<HomeInfo>>(emptyList())
@@ -35,6 +39,9 @@ class HomeViewModel(
 
     private val _user = MutableSharedFlow<User>(replay = 1)
     val user = _user.asSharedFlow()
+    init {
+        getHomePage()
+    }
 
     fun getHomePage() = viewModelScope.launch(dispatchers.io + handler) {
         _loadState.value = LoadState.LOADING
@@ -63,5 +70,24 @@ class HomeViewModel(
             redirect(payUrl)
         }
     }
+
+    fun checkNewItem() {
+        val newParSource: ParSourceHome? = savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE]
+
+        if (newParSource != null) {
+            val horizontalItems = (_data.value[1] as ListHorizontal)
+            val list = horizontalItems.list.toMutableList()
+
+            list.add(newParSource)
+
+            horizontalItems.list = list
+
+            val buildList = _data.value.toMutableList()
+            buildList[1] = horizontalItems
+            _data.value = buildList
+            savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE] = null
+        }
+    }
+
 
 }

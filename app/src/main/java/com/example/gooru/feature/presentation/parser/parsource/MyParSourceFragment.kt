@@ -32,11 +32,7 @@ class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
 
     override fun onStart() {
         super.onStart()
-        parentFragmentManager.setFragmentResultListener("TEST",viewLifecycleOwner){ _, result ->
-            val test = result.getString("Name")
-            //Toast.makeText(requireContext(), "test", Toast.LENGTH_SHORT).show()
-            Log.e("Kart","new =  $test")
-        }
+        viewModel.checkNewItem()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,8 +45,7 @@ class MyParSourceFragment : BaseFragment<FragmentMyParSourceBinding>() {
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
 
         binding.addParSource.setOnClickListener {
-            TestFragment().show(parentFragmentManager,"123")
-        // findNavController().navigate(TabParSourceFragmentDirections.actionTabParSourceFragmentToAddParSourceFragment())
+        findNavController().navigate(TabParSourceFragmentDirections.actionTabParSourceFragmentToAddParSourceFragment())
         }
     }
 

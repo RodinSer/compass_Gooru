@@ -60,10 +60,13 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
         binding.progressBarr.isVisible = state == LoadState.LOADING
         when (state) {
             LoadState.ERROR -> showError { createParSource() }
-            LoadState.SUCCESS ->
+            LoadState.SUCCESS -> {
                 Toast.makeText(requireContext(), "parSource создан успешно", Toast.LENGTH_SHORT)
                     .show()
+                popToBAckStack()
+            }
             else -> {}
+
         }
     }
 
@@ -73,8 +76,8 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
         binding.recyclerViewKeyWord.adapter = adapterKeuWord
     }
 
-    private fun popToBAckStack(isBackStack: Boolean) {
-        if (isBackStack) findNavController().popBackStack()
+    private fun popToBAckStack() {
+        findNavController().popBackStack()
     }
 
     private fun onChangeEditText(editText: TextInputEditText) =
@@ -93,12 +96,12 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
         binding.sendButton.setOnClickListener { createParSource() }
 
     private fun createParSource() {
-/*        viewModel.creteParSource(
+        viewModel.creteParSource(
             1,
             binding.description.text.toString(),
             adapterExchangeParsing.getItems(),
             adapterKeuWord.getItems(),
             binding.name.text.toString()
-        )*/
+        )
     }
 }

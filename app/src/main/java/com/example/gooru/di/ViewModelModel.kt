@@ -18,7 +18,7 @@ val viewModelModel = module {
 
     viewModel { AuthViewModel(get(), get(), get(), get()) }
 
-    viewModel { HomeViewModel(get(), get(), get(), get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get(), get(), get(), get(),get()) }
 
     viewModel { RegistrationViewModel(get(), get()) }
 
@@ -28,13 +28,13 @@ val viewModelModel = module {
 
     viewModel { FavoriteParserViewModel(get(), get(), get(), downLoadURLUseCase =  get(),get(), downloadProvider = get(),get(),get()) }
 
-    viewModel { MyParSourceViewModel(get(),get()) }
+    viewModel { MyParSourceViewModel(get(),get(),get()) }
 
     viewModel { (TicketsViewModel(get(),get(),get())) }
 
     viewModel { ChatViewModel(get(named("authHeader")), get(), get(), get(),get(),get()) }
 
-    viewModel { AddParSourceViewModel(get(), get()) }
+    viewModel { AddParSourceViewModel(get(), get(),get()) }
 
 
 }

@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun onStart() {
         super.onStart()
-        viewModel.getHomePage()
+        viewModel.checkNewItem()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
