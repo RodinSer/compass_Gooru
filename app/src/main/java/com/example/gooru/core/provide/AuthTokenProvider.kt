@@ -1,30 +1,12 @@
 package com.example.gooru.core.provide
 
-import android.content.Context
+interface AuthTokenProvider{
 
-class AuthTokenProvider(context: Context) {
+    fun putToken(token: String)
 
-    private val preferenceToken =
-        context.getSharedPreferences(TOKEN_SHARED_NAME, Context.MODE_PRIVATE)
+    fun clearToken()
 
-    fun putToken(token: String) {
-        preferenceToken.edit().putString(TOKEN, token).apply()
-    }
+    fun getToken(): String?
 
-    fun clearToken() {
-        preferenceToken.edit().clear().apply()
-    }
-
-    fun getToken(): String? =
-        preferenceToken.getString(TOKEN, null)
-
-
-    fun tokenContain(): Boolean {
-        return getToken() != null
-    }
-
-    companion object {
-        private const val TOKEN_SHARED_NAME = "Pref_Token"
-        private const val TOKEN = "token"
-    }
+    fun tokenContain(): Boolean
 }

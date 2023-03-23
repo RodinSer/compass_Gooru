@@ -1,7 +1,7 @@
 package com.example.gooru.feature.data.api
 
-import com.example.gooru.feature.data.body.BodyChangePassword
-import com.example.gooru.feature.data.body.BodyUserUpdate
+import com.example.gooru.feature.domain.model.body.BodyChangePassword
+import com.example.gooru.feature.domain.model.body.BodyUserUpdate
 import com.example.gooru.feature.data.dto.user.AvatarDto
 import com.example.gooru.feature.data.dto.user.UserDto
 import okhttp3.MultipartBody

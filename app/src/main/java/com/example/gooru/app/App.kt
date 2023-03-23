@@ -17,11 +17,13 @@ class App : Application() {
                     viewModelModule,
                     dispatcherWrapperModule,
                     sharedModule,
+                    providerModule,
                     useCaseModule,
                     userUseCaseModule,
                     authUseCaseModule,
                     parserUseCaseModule,
-                    tariffUseCaseModule
+                    tariffUseCaseModule,
+                    supportUseCaseModule,
                 )
             )
         }

@@ -1,10 +1,10 @@
 package com.example.gooru.feature.domain.useCase.parsource.impl
 
-import com.example.gooru.feature.data.body.BodyParSource
+import com.example.gooru.feature.domain.model.body.BodyParSource
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.domain.repository.ParSourceRepository
 import com.example.gooru.feature.domain.useCase.parsource.NewParSourceUseCase
-import com.example.gooru.feature.presentation.parser.addparsource.ExchangeParsing
+import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.ExchangeParsing
 
 class NewParSourceUseCaseImpl(
     private val parSourceRepository: ParSourceRepository

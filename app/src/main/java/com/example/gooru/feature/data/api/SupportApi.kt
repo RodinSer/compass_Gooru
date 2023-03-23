@@ -1,6 +1,6 @@
 package com.example.gooru.feature.data.api
 
-import com.example.gooru.feature.data.body.BodyNewTicket
+import com.example.gooru.feature.domain.model.body.BodyNewTicket
 import com.example.gooru.feature.data.dto.support.ResponseSupportDto
 import com.example.gooru.feature.data.dto.support.SupportTicketDto
 import com.example.gooru.feature.data.dto.support.chat.ResponseSupportChatDto

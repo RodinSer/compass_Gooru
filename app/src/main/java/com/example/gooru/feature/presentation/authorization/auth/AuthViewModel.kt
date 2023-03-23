@@ -40,9 +40,6 @@ class AuthViewModel(
             _stateAuth.value = AuthState.SUCCESS_AUTH
         }
 
-    fun checkToken() {
-        if (tokenProvider.tokenContain()) _stateAuth.value = AuthState.SUCCESS_AUTH
-    }
 
     fun resetPassword(email: String) {
         viewModelScope.launch(dispatchers.io) {
@@ -53,7 +50,6 @@ class AuthViewModel(
     }
 
     private fun enableButton() {
-        Log.e("Kart","$isEmailValidator $isPasswordValidator")
         if (isEmailValidator && isPasswordValidator)
             _stateAuth.value = AuthState.ENABLED_BUTTON
         else _stateAuth.value = AuthState.STARTED
