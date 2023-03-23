@@ -3,7 +3,7 @@ package com.example.gooru.feature.domain.useCase.parser.impl
 import com.example.gooru.feature.domain.model.parser.ParserInPage
 import com.example.gooru.feature.domain.repository.ParserRepository
 import com.example.gooru.feature.domain.useCase.parser.GetParserUseCase
-import com.example.gooru.feature.presentation.tabparsource.parser.parser.ParserGrope
+import com.example.gooru.feature.presentation.parsers.parser.ParserGrope
 
 class GetParserUseCaseImpl(private val parserRepository: ParserRepository) : GetParserUseCase {
 

@@ -10,8 +10,8 @@ import com.example.gooru.R
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.createResetPasswordDialog
 import com.example.gooru.core.extensions.showError
-import com.example.gooru.databinding.FragmentAuthBinding
 import com.example.gooru.core.states.AuthState
+import com.example.gooru.databinding.FragmentAuthBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>() {
@@ -21,7 +21,6 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         dataObserver(viewModel.state) { state -> observer(state) }
 

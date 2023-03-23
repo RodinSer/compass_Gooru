@@ -7,7 +7,7 @@ import com.example.gooru.feature.domain.repository.PagingParser
 import com.example.gooru.feature.domain.useCase.parser.GetParserUseCase
 import com.example.gooru.feature.data.PagingSoursParser
 import com.example.gooru.feature.domain.model.parser.Parser
-import com.example.gooru.feature.presentation.tabparsource.parser.parser.ParserGrope
+import com.example.gooru.feature.presentation.parsers.parser.ParserGrope
 import kotlinx.coroutines.flow.Flow
 
 class PagingParserImpl(private val useCase: GetParserUseCase) : PagingParser {

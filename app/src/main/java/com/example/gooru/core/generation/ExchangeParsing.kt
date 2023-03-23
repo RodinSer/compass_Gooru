@@ -1,6 +1,6 @@
 package com.example.gooru.core.generation
 
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.AddParSourceViewModel
+import com.example.gooru.feature.presentation.parsers.addparsource.AddParSourceViewModel
 
 class ExchangeParsing(
     val id: Int,

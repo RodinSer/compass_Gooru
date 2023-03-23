@@ -1,15 +1,11 @@
 package com.example.gooru.feature.presentation.authorization.registration
 
 import androidx.lifecycle.viewModelScope
-import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
-import com.example.gooru.core.extensions.emailValidation
 import com.example.gooru.core.extensions.passwordValidation
 import com.example.gooru.feature.domain.useCase.auth.RegistrationUseCase
 import com.example.gooru.core.states.AuthState
-import com.example.gooru.feature.presentation.authorization.auth.BaseValidationViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import com.example.gooru.feature.presentation.authorization.base.BaseValidationViewModel
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel(
@@ -40,10 +36,4 @@ class RegistrationViewModel(
         isPasswordValidator = this.password.passwordValidation() && this.password == password
         enableButton()
     }
-    /*fun checkEnableButton(email: String, password: String, repeatPassword: String) {
-        if (email.emailValidation() && password.passwordValidation() && password == repeatPassword)
-            _state.value = AuthState.ENABLED_BUTTON
-    }*/
-
-
 }
