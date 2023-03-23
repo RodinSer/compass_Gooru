@@ -6,6 +6,7 @@ import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.provide.AuthTokenProvider
+import com.example.gooru.core.provide.NightModeProvider
 import com.example.gooru.core.provide.UserIdProvider
 import com.example.gooru.feature.domain.model.homepage.user.User
 import com.example.gooru.feature.domain.useCase.tariff.UserTariffUseCase
@@ -27,6 +28,7 @@ class ProfileViewModel(
     private val tariffUseCase: UserTariffUseCase,
     private val tokenProvider: AuthTokenProvider,
     private val userIdProvider: UserIdProvider,
+    private val nightModeProvider: NightModeProvider
 ) : BaseViewModel() {
 
     private var changeUser: User? = null
@@ -34,11 +36,14 @@ class ProfileViewModel(
     private val _user = MutableSharedFlow<User>(replay = 1)
     val user = _user.asSharedFlow()
 
-    private val _avatar = MutableStateFlow("")
+    private val _avatar = MutableStateFlow<String?>("")
     val avatar = _avatar.asSharedFlow()
 
     private val _tariffVisibility = MutableStateFlow(false)
     val tariffVisibility = _tariffVisibility.asSharedFlow()
+
+    private val _isNightMode = MutableStateFlow(nightModeProvider.checkNightMode())
+    val isNightMode = _isNightMode.asSharedFlow()
 
     init {
         getUserInfo()
@@ -51,6 +56,7 @@ class ProfileViewModel(
             changeUser = currentUser
             changeUser?.tariff = tariffUseCase.getUserTariff()
             _tariffVisibility.value = changeUser?.tariff != null
+            _avatar.emit(currentUser.avatar)
             _user.emit(currentUser)
             _loadState.value = LoadState.SUCCESS
         }
@@ -83,4 +89,11 @@ class ProfileViewModel(
         tokenProvider.clearToken()
         userIdProvider.clearUserId()
     }
+
+
+    fun setNightMode(isNight: Boolean) {
+        _isNightMode.value = isNight
+        nightModeProvider.setNightMode(isNight)
+    }
+
 }
