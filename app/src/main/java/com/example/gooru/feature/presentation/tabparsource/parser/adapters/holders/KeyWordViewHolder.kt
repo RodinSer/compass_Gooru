@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter.viewholder
+package com.example.gooru.feature.presentation.tabparsource.parser.adapters.holders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gooru.databinding.ItemKeyWordBinding

@@ -11,8 +11,8 @@ import com.example.gooru.core.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.databinding.FragmentAddParSourceBinding
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter.ExchangeAdapter
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter.KeyWordAdapter
+import com.example.gooru.feature.presentation.tabparsource.parser.adapters.ExchangeAdapter
+import com.example.gooru.feature.presentation.tabparsource.parser.adapters.KeyWordAdapter
 import com.google.android.material.textfield.TextInputEditText
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

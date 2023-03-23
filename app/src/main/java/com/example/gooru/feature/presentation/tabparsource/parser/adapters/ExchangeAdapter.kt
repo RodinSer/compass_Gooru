@@ -1,11 +1,11 @@
-package com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter
+package com.example.gooru.feature.presentation.tabparsource.parser.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gooru.databinding.ItemExchangeParsingBinding
 import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.ExchangeParsing
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter.viewholder.ExchangeViewHolder
+import com.example.gooru.feature.presentation.tabparsource.parser.adapters.holders.ExchangeViewHolder
 
 class ExchangeAdapter : RecyclerView.Adapter<ExchangeViewHolder>() {
 

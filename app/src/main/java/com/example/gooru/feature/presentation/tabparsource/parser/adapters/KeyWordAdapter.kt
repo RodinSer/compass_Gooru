@@ -1,10 +1,10 @@
-package com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter
+package com.example.gooru.feature.presentation.tabparsource.parser.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gooru.databinding.ItemKeyWordBinding
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.adapter.viewholder.KeyWordViewHolder
+import com.example.gooru.feature.presentation.tabparsource.parser.adapters.holders.KeyWordViewHolder
 
 class KeyWordAdapter : RecyclerView.Adapter<KeyWordViewHolder>() {
 

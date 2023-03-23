@@ -1,6 +1,5 @@
 package com.example.gooru.feature.data
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.gooru.feature.domain.model.parser.Parser
@@ -17,18 +16,21 @@ class PagingSoursParser(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Parser> {
         val page = params.key ?: FIRST_PAGE
-        delay(100)
-        val item =
-            parserUseCase.getParser(page, parSourceId, radioButtonId)
+        delay(100) /** фикс лага таб лайаута в таб фрагменте */
 
-        Log.e("Kart", item.list.size.toString())
-
-        return LoadResult.Page(
-            prevKey = item.prevPage,
-            data = item.list,
-            nextKey = item.nextPage
-        )
-
+        return kotlin.runCatching { parserUseCase.getParser(page, parSourceId, radioButtonId) }
+            .fold(
+                onSuccess = {
+                    LoadResult.Page(
+                        prevKey = it.prevPage,
+                        data = it.list,
+                        nextKey = it.nextPage
+                    )
+                },
+                onFailure = {
+                    LoadResult.Error(it)
+                }
+            )
     }
 
     private companion object {

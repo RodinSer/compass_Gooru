@@ -1,7 +1,6 @@
 package com.example.gooru.feature.presentation.home.adapters.adapter
 
 import com.example.gooru.feature.domain.model.homepage.HomeInfo
-import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.presentation.home.HomeButton
 import com.example.gooru.feature.presentation.home.adapters.delegate.homeHorizontalDelegate
 import com.example.gooru.feature.presentation.home.adapters.delegate.homeVerticalDelegate
