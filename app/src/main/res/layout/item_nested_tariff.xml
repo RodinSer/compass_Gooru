@@ -8,6 +8,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/TintIcon"
         android:src="@drawable/ic_check"/>
 
     <TextView
@@ -15,6 +16,7 @@
         android:textSize="15sp"
         android:layout_marginStart="16dp"
         android:paddingVertical="7dp"
+        style="@style/TextFAQ.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Пример"/>

@@ -15,14 +15,14 @@
             android:src="@drawable/ic_close"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            app:tint="@color/purple_title" />
+            style="@style/TintIcon" />
 
         <TextView
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:textColor="@color/blue_title"
+            style="@style/TextFAQ.Subtitle"
             android:textSize="16sp"
             android:textStyle="bold"
             android:text="Новый источник"

@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <TextView
             style="@style/CompassText"
             android:layout_marginTop="10dp"
@@ -100,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:enabled="false"
+                style="@style/Button.Standard"
                 android:text="Отправить" />
 
         </LinearLayout>

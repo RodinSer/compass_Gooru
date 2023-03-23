@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:toolse="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:toolse="http://schemas.android.com/tools">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/text"
-        android:layout_margin="5dp"
-        toolse:text="@tools:sample/lorem"
+        style="@style/ParSourceGroup"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:textColor="@color/selector_text_exchange_parser"
-        android:background="@drawable/selector_exchange_parsing"
-        android:paddingVertical="5dp"
         android:paddingHorizontal="7dp"
-        android:layout_height="wrap_content"/>
+        android:paddingVertical="5dp"
+        toolse:text="@tools:sample/lorem" />
 
 </FrameLayout>

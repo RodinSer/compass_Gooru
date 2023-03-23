@@ -27,9 +27,9 @@ val networkModule = module {
     }
 
 
-    single(named("webSocket")) {
+/*    single(named("webSocket")) {
         OkHttpClient.Builder().build()
-    }
+    }*/
 
     single { GsonBuilder().create() }
 

@@ -2,7 +2,10 @@ package com.example.gooru.app
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.gooru.R
@@ -10,15 +13,44 @@ import com.example.gooru.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var binding: ActivityMainBinding? = null
+    private var navController: NavController? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
-        val navController =
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding!!.root)
+        navController =
             (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment)
                 .navController
 
-        binding.bottomNavigate.setupWithNavController(navController)
+        navController!!.addOnDestinationChangedListener { _, destination, _ ->
 
+            baseElementsVisibility(destination)
+            navigateMessageChat(destination)
+        }
+
+        binding!!.bottomNavigate.setupWithNavController(navController!!)
     }
+
+    private fun baseElementsVisibility(destination: NavDestination) {
+        val visibility = if (destination.id == R.id.startAuthFragment
+            || destination.id == R.id.chatFragment
+            || destination.id == R.id.ticketsFragment
+        ) View.GONE
+        else
+            View.VISIBLE
+
+        binding!!.bottomNavigate.visibility = visibility
+        binding!!.messageButton.visibility = visibility
+    }
+
+
+    private fun navigateMessageChat(destination: NavDestination) {
+        if (destination.id != R.id.chatFragment && destination.id != R.id.ticketsFragment)
+            binding!!.messageButton.setOnClickListener {
+                navController!!.navigate(R.id.ticketsFragment)
+            }
+    }
+
 }

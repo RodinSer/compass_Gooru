@@ -2,14 +2,14 @@
 <resources>
 
     <style name="BackgroundScreen">
-        <item name="android:background">@color/black</item>
+        <item name="android:background">@color/background</item>
     </style>
 
     <style name="CompassText" parent="@style/TextAppearance.AppCompat.Title">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/purple_title</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -17,14 +17,14 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/blue_title</item>
         <item name="android:textStyle">normal</item>
     </style>
 
     <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabIndicatorColor">@color/blue_title</item>
         <item name="tabIndicatorHeight">2dp</item>
-        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabSelectedTextColor">@color/blue_title</item>
         <item name="tabMode">scrollable</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -43,9 +43,6 @@
         <item name="boxBackgroundColor">@color/transparent_white</item>
         <item name="android:layout_marginHorizontal">16dp</item>
         <item name="android:layout_marginTop">12dp</item>
-        <item name="boxStrokeColor">@color/white</item>
-        <item name="hintTextColor">@color/white</item>
-
     </style>
 
     <style name="EditPassword" parent="ThemeOverlay.Material3.TextInputEditText">
@@ -58,14 +55,14 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/blue_title</item>
     </style>
 
     <style name="TextMiddleTitle" parent="@style/TextAppearance.AppCompat.Headline">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="MyParCourse.Task" parent="CardView">
@@ -110,11 +107,11 @@
     <style name="Button.Add.Floating" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
 
         <item name="android:layout_margin">18dp</item>
-        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:backgroundTint">@color/blue_title</item>
         <item name="android:rotation">45</item>
         <item name="borderWidth">0dp</item>
-        <item name="android:outlineAmbientShadowColor">@color/white</item>
-        <item name="android:outlineSpotShadowColor">@color/white</item>
+        <item name="android:outlineAmbientShadowColor">@color/blue_title</item>
+        <item name="android:outlineSpotShadowColor">@color/blue_title</item>
         <item name="android:src">@drawable/ic_close</item>
 
 
@@ -125,7 +122,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/purple_title</item>
     </style>
 
     <style name="TextFAQ.Subtitle" parent="@style/TextAppearance.AppCompat.Headline">
@@ -133,33 +130,27 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/blue_title</item>
     </style>
 
     <style name="TintIcon">
-        <item name="tint">@color/white</item>
+        <item name="tint">@color/blue_title</item>
     </style>
 
     <style name="Text.InEllipse" parent="@style/TextAppearance.AppCompat.Headline">
-        <item name="android:backgroundTint">@color/subtitle</item>
         <item name="android:background">@drawable/bg_time</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Button.Standard" parent="ShapeAppearanceOverlay.Material3.Button">
-        <item name="colorButtonNormal">@color/white</item>
-        <item name="colorOnPrimary">@color/transparent_white</item>
-        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="K_word">
-        <item name="android:backgroundTint">@color/subtitle</item>
-        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="ParSourceGroup">
-        <item name="android:background">@drawable/selector_exchange_parsing_night</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@drawable/selector_exchange_parsing</item>
+        <item name="android:textColor">@color/selector_text_exchange_parser</item>
     </style>
 
 
