@@ -1,7 +1,7 @@
 package com.example.gooru.feature.presentation.chat.tikets
 
 import androidx.lifecycle.viewModelScope
-import com.example.gooru.core.LoadState
+import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.feature.domain.model.support.SupportTicket

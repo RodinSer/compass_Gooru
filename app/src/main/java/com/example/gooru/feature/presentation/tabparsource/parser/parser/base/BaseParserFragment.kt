@@ -1,7 +1,7 @@
 package com.example.gooru.feature.presentation.tabparsource.parser.parser.base
 
 import androidx.viewbinding.ViewBinding
-import com.example.gooru.core.ParserButton
+import com.example.gooru.core.states.ParserButton
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.showShareDialog
 import com.example.gooru.core.extensions.startNewApp

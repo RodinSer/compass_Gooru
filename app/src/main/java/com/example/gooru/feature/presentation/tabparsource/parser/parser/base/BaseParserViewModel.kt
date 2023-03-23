@@ -3,8 +3,8 @@ package com.example.gooru.feature.presentation.tabparsource.parser.parser.base
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.example.gooru.core.LoadState
-import com.example.gooru.core.ParserButton
+import com.example.gooru.core.states.LoadState
+import com.example.gooru.core.states.ParserButton
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.provide.DownloadProvider

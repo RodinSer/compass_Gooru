@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/emailVerificationFragment"
-        android:name="com.example.gooru.feature.presentation.authorization.registration.EmailVerificationFragment"
+        android:name="com.example.gooru.feature.presentation.authorization.verification.EmailVerificationFragment"
         android:label="EmailVerificationFragment" />
     <fragment
         android:id="@+id/profileFragment"

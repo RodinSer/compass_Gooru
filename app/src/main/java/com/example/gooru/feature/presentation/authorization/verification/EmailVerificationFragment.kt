@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.authorization.registration
+package com.example.gooru.feature.presentation.authorization.verification
 
 import android.os.Bundle
 import android.view.LayoutInflater

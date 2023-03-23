@@ -1,4 +1,4 @@
-package com.example.gooru.feature.data.home
+package com.example.gooru.core.generation
 
 import com.example.gooru.feature.domain.model.homepage.HomePage
 import com.example.gooru.feature.presentation.home.HomeViewModel

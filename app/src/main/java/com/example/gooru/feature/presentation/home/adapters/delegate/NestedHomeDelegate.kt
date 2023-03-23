@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import com.example.gooru.R
 import com.example.gooru.core.extensions.loadCircleImage
 import com.example.gooru.core.extensions.setText
+import com.example.gooru.core.generation.FAQ
 import com.example.gooru.databinding.ItemAddParsourceBinding
 import com.example.gooru.databinding.ItemFaqBinding
 import com.example.gooru.databinding.ItemMyParsingTasksBinding
@@ -13,7 +14,6 @@ import com.example.gooru.databinding.ItemNestedTariffBinding
 import com.example.gooru.databinding.ItemParsingPopularBinding
 import com.example.gooru.databinding.ItemTariffBinding
 import com.example.gooru.databinding.ItemUserBinding
-import com.example.gooru.feature.data.home.FAQ
 import com.example.gooru.feature.domain.model.homepage.NewParSource
 import com.example.gooru.feature.domain.model.homepage.HomePage
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome

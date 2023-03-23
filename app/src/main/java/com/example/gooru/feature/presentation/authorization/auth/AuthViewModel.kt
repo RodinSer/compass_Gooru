@@ -1,6 +1,6 @@
 package com.example.gooru.feature.presentation.authorization.auth
 
-import android.util.Log
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
@@ -8,7 +8,7 @@ import com.example.gooru.core.extensions.emailValidation
 import com.example.gooru.core.provide.AuthTokenProvider
 import com.example.gooru.feature.domain.useCase.auth.AuthUseCase
 import com.example.gooru.feature.domain.useCase.auth.ResetPasswordUseCase
-import com.example.gooru.feature.presentation.authorization.AuthState
+import com.example.gooru.core.states.AuthState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -18,41 +18,51 @@ class AuthViewModel(
     private val resetPasswordUseCase: ResetPasswordUseCase,
     private val tokenProvider: AuthTokenProvider,
     private val dispatchers: DispatchersWrapper,
-) : BaseViewModel() {
+) : BaseValidationViewModel() {
 
     override fun errorHandler(error: Throwable) {
         if (error.message == "HTTP 400 Bad Request")
-            _stateAuth.value = AuthState.ERROR_400
-        else _stateAuth.value = AuthState.ERROR_WI_FI
+            _state.value = AuthState.ERROR_400
+        else _state.value = AuthState.ERROR_WI_FI
     }
 
-    private var isPasswordValidator = false
-    private var isEmailValidator = false
-
-    private val _stateAuth = MutableStateFlow(AuthState.STARTED)
-    val stateAuth = _stateAuth.asStateFlow()
-
     fun getToken(email: String, password: String) =
-        viewModelScope.launch(dispatchers.io+handler) {
-             if (tokenProvider.tokenContain()) tokenProvider.clearToken()
-            _stateAuth.value = AuthState.LOADING
+        viewModelScope.launch(dispatchers.io + handler) {
+            if (tokenProvider.tokenContain()) tokenProvider.clearToken()
+            _state.value = AuthState.LOADING
             tokenProvider.putToken(authUseCase.getToken(email, password).authToken)
-            _stateAuth.value = AuthState.SUCCESS_AUTH
+            _state.value = AuthState.SUCCESS_AUTH
         }
 
 
     fun resetPassword(email: String) {
         viewModelScope.launch(dispatchers.io) {
-            _stateAuth.value = AuthState.LOADING
+            _state.value = AuthState.LOADING
             resetPasswordUseCase.resetPassword(email)
-            _stateAuth.value = AuthState.SUCCESS_RESET
+            _state.value = AuthState.SUCCESS_RESET
         }
     }
 
-    private fun enableButton() {
-        if (isEmailValidator && isPasswordValidator)
-            _stateAuth.value = AuthState.ENABLED_BUTTON
-        else _stateAuth.value = AuthState.STARTED
+
+}
+
+abstract class BaseValidationViewModel : BaseViewModel() {
+
+    protected var isPasswordValidator = false
+    protected var isEmailValidator = false
+
+    override fun errorHandler(error: Throwable) {
+        if (error.message == "HTTP 400 Bad Request")
+            _state.value = AuthState.ERROR_400
+        else _state.value = AuthState.ERROR_WI_FI
+    }
+
+    protected val _state = MutableStateFlow(AuthState.STARTED)
+    val state = _state.asStateFlow()
+
+    protected fun enableButton() {
+        _state.value = if (isEmailValidator && isPasswordValidator)
+            AuthState.ENABLED_BUTTON else AuthState.STARTED
     }
 
     fun emailValidation(email: String) {
@@ -60,7 +70,7 @@ class AuthViewModel(
         enableButton()
     }
 
-    fun passwordValidation(password: String) {
+    open fun passwordValidation(password: String) {
         isPasswordValidator = password.length >= 8
         enableButton()
     }

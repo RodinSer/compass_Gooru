@@ -1,8 +1,8 @@
 package com.example.gooru.feature.presentation.tabparsource.parser.adapters.holders
 
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gooru.core.generation.ExchangeParsing
 import com.example.gooru.databinding.ItemExchangeParsingBinding
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.ExchangeParsing
 
 class ExchangeViewHolder(
     private val binding: ItemExchangeParsingBinding,

@@ -3,7 +3,7 @@ package com.example.gooru.feature.presentation.tabparsource.parser.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import com.example.gooru.core.ParserButton
+import com.example.gooru.core.states.ParserButton
 import com.example.gooru.databinding.ItemParserBinding
 import com.example.gooru.feature.domain.model.parser.Parser
 import com.example.gooru.feature.presentation.tabparsource.parser.adapters.diff.ParserDiff

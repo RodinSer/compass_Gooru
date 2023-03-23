@@ -2,7 +2,7 @@ package com.example.gooru.feature.presentation.profile
 
 import android.net.Uri
 import androidx.lifecycle.viewModelScope
-import com.example.gooru.core.LoadState
+import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
 import com.example.gooru.core.provide.AuthTokenProvider

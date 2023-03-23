@@ -1,4 +1,4 @@
-package com.example.gooru.core
+package com.example.gooru.core.states
 
 enum class LoadState {
     LOADING,

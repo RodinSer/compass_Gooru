@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import com.example.gooru.core.LoadState
+import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.constant.FORM_DATA
 import com.example.gooru.core.extensions.*

@@ -11,7 +11,7 @@ import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.createResetPasswordDialog
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.databinding.FragmentAuthBinding
-import com.example.gooru.feature.presentation.authorization.AuthState
+import com.example.gooru.core.states.AuthState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>() {
@@ -23,9 +23,9 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        dataObserver(viewModel.stateAuth) { state -> observer(state) }
+        dataObserver(viewModel.state) { state -> observer(state) }
 
-        editTextObserver()
+        enableButtonListener()
 
         clickAuthButton()
 
@@ -33,7 +33,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
 
     }
 
-    private fun editTextObserver() {
+    private fun enableButtonListener() {
         binding.email.doOnTextChanged { email, _, _, _ ->
             viewModel.emailValidation(email.toString())
         }
@@ -60,7 +60,7 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
         binding.nextButton.isEnabled = state == AuthState.ENABLED_BUTTON
         if (state == AuthState.SUCCESS_AUTH)
             findNavController().navigate(R.id.action_startAuthFragment_to_homeFragment)
-        if (state == AuthState.ERROR_WI_FI) showError {startAuth()}
+        if (state == AuthState.ERROR_WI_FI) showError { startAuth() }
     }
 
     private fun startAuth() {
