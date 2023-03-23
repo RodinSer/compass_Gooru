@@ -56,7 +56,7 @@
                 android:layout_marginVertical="6dp"
                 android:gravity="start"
                 android:text="@string/password_helper"
-                android:textColor="@color/blue_title"
+
                 android:textSize="13sp" />
 
             <TextView
@@ -80,6 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="12dp"
+                    style="@style/Button.Standard"
                     android:layout_marginBottom="22dp"
                     android:gravity="center"
                     android:text="@string/registration" />

@@ -45,8 +45,9 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="53dp"
                 android:gravity="end"
+                style="@style/TextMinSubtitle"
                 android:text="@string/forgot_password"
-                android:textColor="@color/purple_title" />
+                />
 
             <TextView
                 android:id="@+id/error_message"
@@ -71,6 +72,7 @@
                     android:layout_marginBottom="22dp"
                     android:gravity="center"
                     android:text="@string/Enter"
+                    style="@style/Button.Standard"
                     android:textAllCaps="false"
                     tools:ignore="VisualLintButtonSize" />
 

@@ -23,8 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                style="@style/CompassText"
                 android:text="Подтверждение электронной почты"
-                android:textColor="@color/black"
                 android:textSize="24sp" />
 
 
@@ -38,6 +38,7 @@
             <Button
                 android:layout_gravity="center"
                 android:text="@string/auth"
+                style="@style/Button.Standard"
                 android:id="@+id/next_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

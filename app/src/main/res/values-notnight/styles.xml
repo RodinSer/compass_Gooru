@@ -153,5 +153,11 @@
         <item name="android:textColor">@color/selector_text_exchange_parser</item>
     </style>
 
+    <style name="Ticket.Status" parent="@style/TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@drawable/bg_time</item>
+        <item name="android:backgroundTint">@color/background</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 </resources>

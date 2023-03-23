@@ -36,9 +36,9 @@
 
         <TextView
             android:id="@+id/name"
+            style="@style/TextMiddleTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:textSize="16sp"
             tools:text="Поп-арт механик" />
     </LinearLayout>
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/progress_en"
-            android:textColor="@color/white"
+            style="@style/TextMiddleTitle"
             android:textSize="10sp" />
 
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:progress="10"
             android:progressBackgroundTint="@color/bg_progress"
-            android:progressTint="@color/white" />
+            android:progressTint="@color/blue_title" />
 
         <TextView
             android:layout_width="match_parent"

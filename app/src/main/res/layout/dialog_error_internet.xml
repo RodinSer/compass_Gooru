@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="start"
         android:paddingHorizontal="15dp"
+        style="@style/TextMiddleTitle"
         android:paddingVertical="10dp"
         android:text="@string/load_error"
         android:textColor="@color/blue_title" />
@@ -34,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="15dp"
         android:text="Повторить"
+        style="@style/Button.Standard"
         android:layout_gravity="end"/>
 
 </LinearLayout>
