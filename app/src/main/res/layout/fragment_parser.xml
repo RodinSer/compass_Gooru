@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layoutDescription="@xml/fragment_parser_scene"
-    tools:context=".feature.presentation.parser.parser.parserp.ParserFragment">
+    tools:context=".feature.presentation.tabparsource.parser.parser.parserp.ParserFragment">
 
 
     <androidx.constraintlayout.widget.Group

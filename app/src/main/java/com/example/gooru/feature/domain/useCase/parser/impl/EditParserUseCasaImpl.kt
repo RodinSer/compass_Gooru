@@ -1,6 +1,6 @@
 package com.example.gooru.feature.domain.useCase.parser.impl
 
-import com.example.gooru.feature.data.body.BodyPatchParser
+import com.example.gooru.feature.domain.model.body.BodyPatchParser
 import com.example.gooru.feature.domain.repository.ParserRepository
 import com.example.gooru.feature.domain.useCase.parser.EditParserUseCasa
 

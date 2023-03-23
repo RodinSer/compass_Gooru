@@ -1,27 +1,10 @@
 package com.example.gooru.core.provide
 
-import android.content.Context
+interface UserIdProvider{
 
-class UserIdProvider(context: Context) {
+    fun putUserID(userId: Int)
 
-    private val preferenceUserId =
-        context.getSharedPreferences(USER_ID_NAME, Context.MODE_PRIVATE)
+    fun clearUserId()
 
-    fun putUserID(userId: Int) {
-        preferenceUserId.edit().putInt(ID, userId).apply()
-
-    }
-
-    fun clearUserId() {
-        preferenceUserId.edit().clear().apply()
-    }
-
-    fun getUserId(): Int =
-        preferenceUserId.getInt(ID, -1)
-
-
-    private companion object {
-        const val USER_ID_NAME = "User_Id"
-        const val ID = "IdFromUser"
-    }
+    fun getUserId(): Int
 }

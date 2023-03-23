@@ -4,6 +4,8 @@ import com.example.gooru.R
 import com.example.gooru.feature.data.repositoryImpl.*
 import com.example.gooru.feature.domain.repository.*
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.dsl.bind
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -17,18 +19,19 @@ val repositoryModule = module {
         )
     }
 
-    single<ParserRepository> { ParserRepositoryImpl(get()) }
+    singleOf(::ParserRepositoryImpl){bind<ParserRepository>()}
 
-    single<UserRepository> { UserRepositoryImpl(get(), get()) }
+    singleOf(::UserRepositoryImpl){bind<UserRepository>()}
 
-    single<TariffRepository> { TariffRepositoryImpl(get()) }
+    singleOf(::TariffRepositoryImpl){bind<TariffRepository>()}
 
-    single<PagingParser> { PagingParserImpl(get()) }
+    singleOf(::PagingParserImpl){bind<PagingParser>()}
 
-    single<PagingSupportTicket> { PagingSupportTicket(get()) }
+    singleOf(::SupportRepositoryImpl){bind<SupportRepository>()}
 
-    single<SupportRepository> { SupportRepositoryImpl(get()) }
+    singleOf(::CommentRepositoryImpl){bind<CommentRepository>()}
 
-    single<CommentRepository> { CommentRepositoryImpl(get()) }
+    singleOf(::PagingSupportTicket)
+
 
 }

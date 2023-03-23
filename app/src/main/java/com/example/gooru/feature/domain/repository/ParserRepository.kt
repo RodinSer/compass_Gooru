@@ -1,8 +1,8 @@
 package com.example.gooru.feature.domain.repository
 
-import com.example.gooru.feature.data.body.BodyDownloadFile
-import com.example.gooru.feature.data.body.BodyFavorite
-import com.example.gooru.feature.data.body.BodyPatchParser
+import com.example.gooru.feature.domain.model.body.BodyDownloadFile
+import com.example.gooru.feature.domain.model.body.BodyFavorite
+import com.example.gooru.feature.domain.model.body.BodyPatchParser
 import com.example.gooru.feature.data.dto.parser.FavoriteParserDto
 import com.example.gooru.feature.domain.model.parser.ParserInPage
 

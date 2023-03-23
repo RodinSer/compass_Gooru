@@ -1,6 +1,6 @@
 package com.example.gooru.feature.domain.useCase.user.impl
 
-import com.example.gooru.feature.data.body.BodyChangePassword
+import com.example.gooru.feature.domain.model.body.BodyChangePassword
 import com.example.gooru.feature.domain.repository.UserRepository
 import com.example.gooru.feature.domain.useCase.user.UserChangePasswordUseCase
 

@@ -1,6 +1,6 @@
 package com.example.gooru.feature.domain.repository
 
-import com.example.gooru.feature.data.body.BodyComment
+import com.example.gooru.feature.domain.model.body.BodyComment
 
 interface CommentRepository {
 
