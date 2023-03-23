@@ -9,6 +9,7 @@ import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.core.extensions.startNewApp
+import com.example.gooru.core.states.HomeButton
 import com.example.gooru.databinding.FragmentHomeBinding
 import com.example.gooru.feature.domain.model.homepage.HomeInfo
 import com.example.gooru.feature.presentation.home.adapters.adapter.HomeAdapter

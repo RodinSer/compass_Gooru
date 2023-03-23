@@ -1,7 +1,6 @@
 package com.example.gooru.feature.presentation.home.adapters.delegate
 
 import android.annotation.SuppressLint
-import android.view.View
 import androidx.core.view.isVisible
 import com.example.gooru.R
 import com.example.gooru.core.extensions.loadCircleImage
@@ -20,7 +19,7 @@ import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.domain.model.homepage.parsource.PopularParSource
 import com.example.gooru.feature.domain.model.homepage.tariff.Tariff
 import com.example.gooru.feature.domain.model.homepage.user.User
-import com.example.gooru.feature.presentation.home.HomeButton
+import com.example.gooru.core.states.HomeButton
 import com.example.gooru.feature.presentation.home.adapters.adapter.NestedTariffAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 

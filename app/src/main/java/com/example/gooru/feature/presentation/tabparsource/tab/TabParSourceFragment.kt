@@ -10,6 +10,7 @@ import com.example.gooru.feature.presentation.parsers.adapters.ParSourceTabAdapt
 import com.google.android.material.tabs.TabLayoutMediator
 
 class TabParSourceFragment : BaseFragment<FragmentStartAuthBinding>() {
+
     override fun initBinding(inflater: LayoutInflater) =
         FragmentStartAuthBinding.inflate(inflater)
 
