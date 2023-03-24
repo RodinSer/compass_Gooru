@@ -51,7 +51,7 @@ fun parSourceDelegate(
     }) {
 
         binding.root.setOnClickListener {
-            onClickListener(HomeButton.PARSER.apply { id = item.id })
+            onClickListener(HomeButton.PARSER.apply { id = item.id})
         }
 
         bind {

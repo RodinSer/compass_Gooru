@@ -25,12 +25,21 @@ class ParserFragment : BaseParserFragment<FragmentParserBinding, ParserViewModel
 
         viewModel.getParsers(args.parSourceId)
 
-        dataObserver(viewModel.parsers) { adapter.submitData(it) }
+        viewModel.getParSourceInfo(args.parSourceId)
+
+        dataObserver(viewModel.parsers) { parser -> adapter.submitData(parser) }
+
+        dataObserver(viewModel.parSource) { parSource ->
+            binding.keyWord.text = parSource?.keywords
+            binding.name.text = parSource?.name
+            binding.status.text = parSource?.condition
+        }
 
         binding.radioGroup.setOnCheckedChangeListener { radioGroup, _ ->
             viewModel.setRadioButtonId(radioGroup.checkedRadioButtonId)
         }
     }
+
 
     private fun settingsRecyclerView() {
         binding.recyclerView.adapter = adapter

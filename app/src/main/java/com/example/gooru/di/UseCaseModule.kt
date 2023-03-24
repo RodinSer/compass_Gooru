@@ -14,7 +14,9 @@ import com.example.gooru.feature.domain.useCase.auth.impl.ResetPasswordUseCaseIm
 import com.example.gooru.feature.domain.useCase.parser.*
 import com.example.gooru.feature.domain.useCase.parser.impl.*
 import com.example.gooru.feature.domain.useCase.parsource.NewParSourceUseCase
+import com.example.gooru.feature.domain.useCase.parsource.ParSourceByIdUseCase
 import com.example.gooru.feature.domain.useCase.parsource.impl.NewParSourceUseCaseImpl
+import com.example.gooru.feature.domain.useCase.parsource.impl.ParSourceByIdUseCaseImpl
 import com.example.gooru.feature.domain.useCase.support.SupportAllTicketsUseCase
 import com.example.gooru.feature.domain.useCase.support.SupportByTicketUseCase
 import com.example.gooru.feature.domain.useCase.support.SupportNewTicketUseCase
@@ -41,6 +43,7 @@ import org.koin.dsl.module
 val useCaseModule = module {
 
     singleOf(::HomeParSourceUseCaseImpl){bind<HomeParSourceUseCase>()}
+    singleOf(::ParSourceByIdUseCaseImpl){bind<ParSourceByIdUseCase>()}
     singleOf(::CommentUseCaseImpl){bind<CommentUseCase>()}
 }
 

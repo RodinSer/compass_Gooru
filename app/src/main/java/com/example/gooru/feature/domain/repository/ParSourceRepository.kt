@@ -12,6 +12,8 @@ interface ParSourceRepository {
 
     suspend fun createNewParSource(body: BodyParSource): ParSourceHome
 
-    suspend fun getHomeParSource(pageSize:Int):List<ParSourceHome>
+    suspend fun getHomeParSource(pageSize: Int): List<ParSourceHome>
+
+    suspend fun getParSourceByID(id: Int): ParSourceHome
 
 }

@@ -18,7 +18,9 @@ class ParSourceRepositoryImpl(
     override suspend fun createNewParSource(body: BodyParSource) =
         api.createParSource(body).toParSource()
 
-    override suspend fun getHomeParSource(pageSize:Int) =
+    override suspend fun getHomeParSource(pageSize: Int) =
         api.getUserParSource(1, pageSize).results.map { it.toParSourceHome() }
+
+    override suspend fun getParSourceByID(id: Int) = api.getUserParSourceByID(id).toParSource()
 
 }
