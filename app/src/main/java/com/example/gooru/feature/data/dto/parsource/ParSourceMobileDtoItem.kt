@@ -11,14 +11,14 @@ class ParSourceMobileDtoItem(
     @SerializedName("last_time_sync")
     private val lastTimeSync: String,
     private val name: String,
-    val condition: String,
-    val keywords: String,
+    private val condition: String,
+    private val keywords: String,
     @SerializedName("parsers_count")
     val parsersCount: Int
 ) {
 
     fun toParSourceHome() = ParSourceHome(
-        id, lastTimeSync.simpleDateFormat(), name
+        id, lastTimeSync.simpleDateFormat(), name,condition,keywords
     )
 
 

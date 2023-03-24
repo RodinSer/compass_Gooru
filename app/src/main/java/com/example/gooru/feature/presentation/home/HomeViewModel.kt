@@ -13,7 +13,7 @@ import com.example.gooru.core.provide.UserIdProvider
 import com.example.gooru.feature.domain.model.homepage.HomeInfo
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
 import com.example.gooru.feature.domain.model.homepage.user.User
-import com.example.gooru.feature.domain.useCase.parsource.ParSourceUseCase
+import com.example.gooru.feature.domain.useCase.parsource.HomeParSourceUseCase
 import com.example.gooru.feature.domain.useCase.tariff.AllTariffUseCase
 import com.example.gooru.feature.domain.useCase.tariff.PayUseCase
 import com.example.gooru.feature.domain.useCase.user.UserInfoUseCase
@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val dispatchers: DispatchersWrapper,
-    private val parSourceUseCase: ParSourceUseCase,
+    private val parSourceUseCase: HomeParSourceUseCase,
     private val userUseCase: UserInfoUseCase,
     private val userIdProvider: UserIdProvider,
     private val allTariffUseCase: AllTariffUseCase,
@@ -49,7 +49,7 @@ class HomeViewModel(
     fun getHomePage(isAuth: Boolean) = viewModelScope.launch(dispatchers.io + handler) {
         if (isAuth) {
             _loadState.value = LoadState.LOADING
-            val myParSource = async { parSourceUseCase.getMyParSource() }.await()
+             val myParSource = async { parSourceUseCase.getMyParSource(MAX_PAR_SOURCE_SIZE) }.await()
             val userMe = async { userUseCase.getUserInfo() }.await()
             val tariff = async { allTariffUseCase.getAllTariff() }.await()
 
@@ -65,7 +65,7 @@ class HomeViewModel(
         }
     }
 
-    fun getPayUrl(tariffId: Int, redirect: (url: String) -> Unit)=
+    fun getPayUrl(tariffId: Int, redirect: (url: String) -> Unit) =
         viewModelScope.launch(dispatchers.io + handler) {
             _loadState.value = LoadState.LOADING
             val payUrl = payUseCase.getUrl(tariffId)
@@ -76,19 +76,21 @@ class HomeViewModel(
 
     fun checkNewItem() {
         val newParSource: ParSourceHome? = savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE]
-
-        if (newParSource != null) {
+        if (_data.value.isNotEmpty()) {
             val horizontalItems = (_data.value[1] as ListHorizontal)
-            val list = horizontalItems.list.toMutableList()
+            if (newParSource != null && horizontalItems.list.size > MAX_PAR_SOURCE_SIZE) {
 
-            list.add(newParSource)
+                val list = horizontalItems.list.toMutableList()
 
-            horizontalItems.list = list
+                list.add(newParSource)
 
-            val buildList = _data.value.toMutableList()
-            buildList[1] = horizontalItems
-            _data.value = buildList
-            savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE] = null
+                horizontalItems.list = list
+
+                val buildList = _data.value.toMutableList()
+                buildList[1] = horizontalItems
+                _data.value = buildList
+                savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE] = null
+            }
         }
     }
 
@@ -98,5 +100,8 @@ class HomeViewModel(
         false
     }
 
+    companion object {
+        private const val MAX_PAR_SOURCE_SIZE = 5
+    }
 
 }

@@ -2,13 +2,13 @@ package com.example.gooru.di
 
 import com.example.gooru.feature.domain.useCase.auth.AuthUseCase
 import com.example.gooru.feature.domain.useCase.auth.ChangePasswordUseCase
-import com.example.gooru.feature.domain.useCase.parsource.ParSourceUseCase
+import com.example.gooru.feature.domain.useCase.parsource.HomeParSourceUseCase
 import com.example.gooru.feature.domain.useCase.auth.RegistrationUseCase
 import com.example.gooru.feature.domain.useCase.auth.ResetPasswordUseCase
 import com.example.gooru.feature.domain.useCase.user.UserInfoUseCase
 import com.example.gooru.feature.domain.useCase.auth.impl.AuthUseCaseImpl
 import com.example.gooru.feature.domain.useCase.auth.impl.ChangePasswordUseCaseImpl
-import com.example.gooru.feature.domain.useCase.parsource.impl.ParSourceUseCaseImpl
+import com.example.gooru.feature.domain.useCase.parsource.impl.HomeParSourceUseCaseImpl
 import com.example.gooru.feature.domain.useCase.auth.impl.RegistrationUseCaseImpl
 import com.example.gooru.feature.domain.useCase.auth.impl.ResetPasswordUseCaseImpl
 import com.example.gooru.feature.domain.useCase.parser.*
@@ -40,7 +40,7 @@ import org.koin.dsl.module
 
 val useCaseModule = module {
 
-    singleOf(::ParSourceUseCaseImpl){bind<ParSourceUseCase>()}
+    singleOf(::HomeParSourceUseCaseImpl){bind<HomeParSourceUseCase>()}
     singleOf(::CommentUseCaseImpl){bind<CommentUseCase>()}
 }
 

@@ -20,6 +20,8 @@ import com.example.gooru.feature.domain.model.homepage.parsource.PopularParSourc
 import com.example.gooru.feature.domain.model.homepage.tariff.Tariff
 import com.example.gooru.feature.domain.model.homepage.user.User
 import com.example.gooru.core.states.HomeButton
+import com.example.gooru.databinding.ItemAllParsourceBinding
+import com.example.gooru.feature.domain.model.homepage.NextButton
 import com.example.gooru.feature.presentation.home.adapters.adapter.NestedTariffAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
@@ -109,11 +111,20 @@ fun descriptionTariffDelegate() =
         }
     }
 
-fun parsingAddDelegate(onClickListener: (button: HomeButton) -> Unit) =
+fun parSourceAddDelegate(onClickListener: (button: HomeButton) -> Unit) =
     adapterDelegateViewBinding<NewParSource, HomePage, ItemAddParsourceBinding>({ layoutInflater, root ->
         ItemAddParsourceBinding.inflate(layoutInflater, root, false)
     }) {
         binding.root.setOnClickListener {
             onClickListener(HomeButton.NEW_SOURCE)
+        }
+    }
+
+fun parSourceAllDelegate(onClickListener: (button: HomeButton) -> Unit) =
+    adapterDelegateViewBinding<NextButton, HomePage, ItemAllParsourceBinding>({ layoutInflater, root ->
+        ItemAllParsourceBinding.inflate(layoutInflater, root, false)
+    }) {
+        binding.root.setOnClickListener {
+            onClickListener(HomeButton.ALL)
         }
     }

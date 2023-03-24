@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MyParCourse.Task">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/ic_arrow"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            style="@style/TintIcon" />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            style="@style/TextFAQ.Subtitle"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Показать все"
+            />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

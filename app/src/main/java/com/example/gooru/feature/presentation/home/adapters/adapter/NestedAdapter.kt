@@ -13,7 +13,8 @@ class NestedAdapter(
     init {
         delegatesManager.addDelegate(parSourceDelegate(onClickListener))
             .addDelegate(tariffDelegate(onClickListener)).addDelegate(popularDelegate())
-            .addDelegate(parsingAddDelegate(onClickListener)).addDelegate(userDelegate())
+            .addDelegate(parSourceAddDelegate(onClickListener)).addDelegate(userDelegate())
+            .addDelegate(parSourceAllDelegate(onClickListener)).addDelegate(userDelegate())
             .addDelegate(faqDelegate())
 
         setItems(list)

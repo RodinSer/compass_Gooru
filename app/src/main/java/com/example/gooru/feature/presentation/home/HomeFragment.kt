@@ -51,13 +51,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun onClick(homeButton: HomeButton) = when (homeButton) {
-        HomeButton.NEW_SOURCE ->
-            findNavController()
+        HomeButton.NEW_SOURCE -> findNavController()
                 .navigate(HomeFragmentDirections.actionHomeFragmentToAddParSourceFragment())
-        HomeButton.PARSER ->
-            findNavController()
+        HomeButton.PARSER -> findNavController()
                 .navigate(HomeFragmentDirections.actionHomeFragmentToParserFragment(homeButton.id))
         HomeButton.TARIFF -> redirect(homeButton.id)
+        HomeButton.ALL -> findNavController()
+            .navigate(HomeFragmentDirections.actionHomeFragmentToMyParSourceFragment())
     }
 
     private fun redirect(id: Int) {
