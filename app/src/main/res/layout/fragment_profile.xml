@@ -242,6 +242,32 @@
             app:layout_constraintTop_toBottomOf="@+id/log_uot"
             tools:layout_editor_absoluteX="16dp" />
 
+        <Switch
+            android:id="@+id/switcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/subtitle_last_name"
+            app:layout_constraintTop_toTopOf="@+id/subtitle_phone"
+            tools:ignore="HardcodedText,UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Светлая"
+            app:layout_constraintBottom_toBottomOf="@+id/switcher"
+            app:layout_constraintEnd_toStartOf="@id/switcher"
+            app:layout_constraintTop_toTopOf="@id/switcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тёмная"
+            app:layout_constraintBottom_toBottomOf="@+id/switcher"
+            app:layout_constraintStart_toEndOf="@id/switcher"
+            app:layout_constraintTop_toTopOf="@id/switcher" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

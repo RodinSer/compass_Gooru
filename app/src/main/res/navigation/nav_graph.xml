@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/emailVerificationFragment"
-        android:name="com.example.gooru.feature.presentation.authorization.registration.EmailVerificationFragment"
+        android:name="com.example.gooru.feature.presentation.authorization.verification.EmailVerificationFragment"
         android:label="EmailVerificationFragment" />
     <fragment
         android:id="@+id/profileFragment"
@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/parserFragment"
-        android:name="com.example.gooru.feature.presentation.tabparsource.parser.parser.parserp.ParserFragment"
+        android:name="com.example.gooru.feature.presentation.parsers.parser.parserp.ParserFragment"
         android:label="fragment_parser"
         tools:layout="@layout/fragment_parser" >
         <argument
@@ -79,12 +79,12 @@
     </fragment>
     <fragment
         android:id="@+id/addParSourceFragment"
-        android:name="com.example.gooru.feature.presentation.tabparsource.parser.addparsource.AddParSourceFragment"
+        android:name="com.example.gooru.feature.presentation.parsers.addparsource.AddParSourceFragment"
         android:label="fragment_add_par_source"
         tools:layout="@layout/fragment_add_par_source" />
     <fragment
         android:id="@+id/tabParSourceFragment"
-        android:name="com.example.gooru.feature.presentation.tabparsource.TabParSourceFragment"
+        android:name="com.example.gooru.feature.presentation.tabparsource.tab.TabParSourceFragment"
         android:label="fragment_tab_par_source"
         tools:layout="@layout/fragment_start_auth" >
         <action

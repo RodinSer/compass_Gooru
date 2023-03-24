@@ -6,9 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import com.example.gooru.core.LoadState
+import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.constant.FORM_DATA
 import com.example.gooru.core.extensions.*
@@ -31,6 +32,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        switchNightThem()
 
         observers()
 
@@ -62,6 +65,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         dataObserver(viewModel.user) { user -> userObserver(user) }
 
         dataObserver(viewModel.avatar) { url -> binding.avatar.loadImage(url) }
+
+        dataObserver(viewModel.isNightMode) { isChecked -> nightModeListener(isChecked) }
 
         dataObserver(viewModel.tariffVisibility) { tariffActive ->
             binding.userTariff.root.isVisible = tariffActive
@@ -96,7 +101,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
     @SuppressLint("SetTextI18n")
     private fun userObserver(user: User) = binding.apply {
-        avatar.loadImage(user.avatar)
         email.text = user.email
         firstName.text = user.firstName
         lastName.text = user.lastName
@@ -114,4 +118,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
     }
 
+    private fun nightModeListener(isChecked: Boolean) {
+        binding.switcher.isChecked = isChecked
+        if (isChecked) AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+    private fun switchNightThem() {
+        binding.switcher.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setNightMode(isChecked)
+        }
+    }
 }

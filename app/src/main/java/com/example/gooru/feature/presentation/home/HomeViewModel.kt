@@ -2,13 +2,13 @@ package com.example.gooru.feature.presentation.home
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import com.example.gooru.core.LoadState
+import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseViewModel
 import com.example.gooru.core.dispatcher.DispatchersWrapper
+import com.example.gooru.core.generation.creteFAQList
 import com.example.gooru.core.provide.AuthTokenProvider
 import com.example.gooru.feature.data.home.ListHorizontal
 import com.example.gooru.feature.data.home.ListVertical
-import com.example.gooru.feature.data.home.creteFAQList
 import com.example.gooru.core.provide.UserIdProvider
 import com.example.gooru.feature.domain.model.homepage.HomeInfo
 import com.example.gooru.feature.domain.model.homepage.parsource.ParSourceHome
@@ -17,7 +17,7 @@ import com.example.gooru.feature.domain.useCase.parsource.ParSourceUseCase
 import com.example.gooru.feature.domain.useCase.tariff.AllTariffUseCase
 import com.example.gooru.feature.domain.useCase.tariff.PayUseCase
 import com.example.gooru.feature.domain.useCase.user.UserInfoUseCase
-import com.example.gooru.feature.presentation.tabparsource.parser.addparsource.AddParSourceViewModel
+import com.example.gooru.feature.presentation.parsers.addparsource.AddParSourceViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

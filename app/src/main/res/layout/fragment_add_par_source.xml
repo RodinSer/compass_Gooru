@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".feature.presentation.tabparsource.parser.addparsource.AddParSourceFragment">
+    tools:context=".feature.presentation.parsers.addparsource.AddParSourceFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

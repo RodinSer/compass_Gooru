@@ -13,13 +13,15 @@ class PagingSoursTickets(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, SupportTicket> {
         val page = params.key ?: FIRST_PAGE
 
-        val item =
-            supportAllUseCase.getAllTickets(page)
-
-        return LoadResult.Page(
-            prevKey = null,
-            data = item,
-            nextKey = null
+        return kotlin.runCatching { supportAllUseCase.getAllTickets(page) }.fold(
+            onSuccess = {
+                LoadResult.Page(
+                    prevKey = null,
+                    data = it,
+                    nextKey = null
+                )
+            },
+            onFailure = { LoadResult.Error(it) }
         )
     }
 
