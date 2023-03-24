@@ -20,9 +20,6 @@
             app:destination="@id/startAuthFragment"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_homeFragment_to_myParSourceFragment"
-            app:destination="@id/myParSourceFragment" />
     </fragment>
     <fragment
         android:id="@+id/emailVerificationFragment"
@@ -97,9 +94,4 @@
             android:id="@+id/action_tabParSourceFragment_to_addParSourceFragment"
             app:destination="@id/addParSourceFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/myParSourceFragment"
-        android:name="com.example.gooru.feature.presentation.parsource.MyParSourceFragment"
-        android:label="fragment_my_par_source"
-        tools:layout="@layout/fragment_my_par_source" />
 </navigation>

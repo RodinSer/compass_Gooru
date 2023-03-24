@@ -78,7 +78,7 @@ class HomeViewModel(
         val newParSource: ParSourceHome? = savedStateHandle[AddParSourceViewModel.NEW_PAR_SOURCE]
         if (_data.value.isNotEmpty()) {
             val horizontalItems = (_data.value[1] as ListHorizontal)
-            if (newParSource != null && horizontalItems.list.size > MAX_PAR_SOURCE_SIZE) {
+            if (newParSource != null /*&& horizontalItems.list.size > MAX_PAR_SOURCE_SIZE*/) {
 
                 val list = horizontalItems.list.toMutableList()
 

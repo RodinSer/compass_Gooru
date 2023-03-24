@@ -8,6 +8,11 @@ class DownLoadURLUseCaseImpl(
     private val parserRepository: ParserRepository
 ) : DownLoadURLUseCase {
 
-    override suspend fun getUrl(parSourceId: Int, parserId: Int) =
-        parserRepository.getUrlExel(BodyDownloadFile(parSourceId, listOf(parSourceId).toString()))
+    override suspend fun getUrl(parSourceId: Int, parserId: Int?): String {
+        val list = if (parserId != null)
+            listOf(parserId).toString() else null
+        return parserRepository.getUrlExel(
+            BodyDownloadFile(parSourceId, list)
+        )
+    }
 }

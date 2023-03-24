@@ -13,7 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:visibility="gone"
-        app:constraint_referenced_ids="avatar_group,title_key_word,title_name,date_title,title_status,name,key_word,date,status,button" />
+        app:constraint_referenced_ids="avatar_group,title_key_word,title_name,date_title,title_status,name,key_word,date,status,download_button" />
 
     <ImageView
         android:id="@+id/avatar_group"
@@ -38,7 +38,7 @@
         style="@style/ParserStatus_field"
         android:layout_marginStart="5dp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/download_button"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/title_statistic_group"
         app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +56,7 @@
         android:id="@+id/key_word"
         style="@style/ParserStatus_field"
         app:layout_constrainedWidth="true"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/download_button"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toTopOf="@+id/title_key_word"
@@ -100,7 +100,7 @@
         tools:text="70%" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/download_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/download_button"
         app:layout_constraintStart_toStartOf="@+id/avatar_group"
         app:layout_constraintTop_toBottomOf="@id/title_status">
 

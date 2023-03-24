@@ -17,10 +17,10 @@ class DownloadProviderImpl(context: Context) : DownloadProvider {
         val downloadRequest = DownloadManager
             .Request(Uri.parse(url))
             .setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)//качать только по войфай или нет
-            .setTitle("$FILE_NAME$fileName")
+            .setTitle("$FILE_NAME$fileName.xlsx")
             .setDestinationInExternalPublicDir(
                 Environment.DIRECTORY_DOWNLOADS,
-                File.separator + "$FILE_NAME$fileName"
+                File.separator + "$FILE_NAME$fileName.xlsx"
             )
             .setNotificationVisibility(
                 DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED

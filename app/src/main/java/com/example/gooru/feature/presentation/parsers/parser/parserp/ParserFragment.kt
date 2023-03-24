@@ -35,6 +35,10 @@ class ParserFragment : BaseParserFragment<FragmentParserBinding, ParserViewModel
             binding.status.text = parSource?.condition
         }
 
+        binding.downloadButton.setOnClickListener {
+            viewModel.downloadUrlAllParsersByIdParSource(args.parSourceId)
+        }
+
         binding.radioGroup.setOnCheckedChangeListener { radioGroup, _ ->
             viewModel.setRadioButtonId(radioGroup.checkedRadioButtonId)
         }
