@@ -1,5 +1,6 @@
 package com.example.gooru.feature.presentation.authorization.auth
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import com.example.gooru.core.extensions.createResetPasswordDialog
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.core.states.AuthState
 import com.example.gooru.databinding.FragmentAuthBinding
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthFragment : BaseFragment<FragmentAuthBinding>() {
@@ -58,8 +60,18 @@ class AuthFragment : BaseFragment<FragmentAuthBinding>() {
         binding.errorMessage.isVisible = state == AuthState.ERROR_400
         binding.nextButton.isEnabled = state == AuthState.ENABLED_BUTTON
         if (state == AuthState.SUCCESS_AUTH)
-            findNavController().navigate(R.id.action_startAuthFragment_to_homeFragment)
+        findNavController().navigate(R.id.action_startAuthFragment_to_homeFragment)
         if (state == AuthState.ERROR_WI_FI) showError { startAuth() }
+        if (state == AuthState.SUCCESS_RESET) {
+            Snackbar.make(
+                binding.root,
+                "инструкции по восстановлению пароля высланы на электронную почту",
+                Snackbar.LENGTH_SHORT
+            )
+                .setBackgroundTint(Color.parseColor("#197ECA"))
+                .setTextColor(Color.WHITE)
+                .show()
+        }
     }
 
     private fun startAuth() {

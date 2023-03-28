@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.parsource
+package com.example.gooru.feature.presentation.parsource.my
 
 import android.os.Bundle
 import android.view.LayoutInflater

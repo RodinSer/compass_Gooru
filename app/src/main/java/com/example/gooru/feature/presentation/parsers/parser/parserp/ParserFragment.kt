@@ -32,6 +32,7 @@ class ParserFragment : BaseParserFragment<FragmentParserBinding, ParserViewModel
         dataObserver(viewModel.parSource) { parSource ->
             binding.keyWord.text = parSource?.keywords
             binding.name.text = parSource?.name
+            binding.date.text  = parSource?.lastTimeSync
             binding.status.text = parSource?.condition
         }
 

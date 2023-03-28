@@ -17,7 +17,7 @@ import com.example.gooru.feature.domain.useCase.parsource.HomeParSourceUseCase
 import com.example.gooru.feature.domain.useCase.tariff.AllTariffUseCase
 import com.example.gooru.feature.domain.useCase.tariff.PayUseCase
 import com.example.gooru.feature.domain.useCase.user.UserInfoUseCase
-import com.example.gooru.feature.presentation.parsers.addparsource.AddParSourceViewModel
+import com.example.gooru.feature.presentation.parsource.addparsource.AddParSourceViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow

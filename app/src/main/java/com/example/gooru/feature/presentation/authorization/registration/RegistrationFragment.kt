@@ -1,8 +1,14 @@
 package com.example.gooru.feature.presentation.authorization.registration
 
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
@@ -11,9 +17,10 @@ import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.constant.OFFER
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.core.extensions.startNewApp
-import com.example.gooru.databinding.FragmentRegistrationBinding
 import com.example.gooru.core.states.AuthState
+import com.example.gooru.databinding.FragmentRegistrationBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
     override fun initBinding(inflater: LayoutInflater) =
@@ -32,6 +39,18 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
 
         clickOffer()
 
+        val startTextOffer = resources.getString(R.string.offer_start)
+        val endTextOffer = resources.getString(R.string.offer_end)
+
+        val spans: Spannable = SpannableString(startTextOffer + endTextOffer)
+        spans.setSpan(
+            ForegroundColorSpan(Color.BLUE),
+            startTextOffer.length,
+            startTextOffer.length + endTextOffer.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        binding.offer.text = spans
 
     }
 
@@ -53,8 +72,9 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
         binding.nextButton.isVisible = state != AuthState.LOADING
         binding.errorMessage.isVisible = state == AuthState.ERROR_400
         binding.nextButton.isEnabled = state == AuthState.ENABLED_BUTTON
-        if (state == AuthState.SUCCESS_AUTH)
+        if (state == AuthState.SUCCESS_AUTH) {
             findNavController().navigate(R.id.action_startAuthFragment_to_emailVerificationFragment)
+        }
         if (state == AuthState.ERROR_WI_FI) showError { startRegistration() }
     }
 

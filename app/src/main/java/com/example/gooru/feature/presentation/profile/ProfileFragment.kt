@@ -39,6 +39,10 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         binding.avatarEdit.setOnClickListener { getItem.launch(FORM_DATA) }
 
+        binding.activateSubscriptionButton.setOnClickListener{
+            findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToTariffFragment())
+        }
+
         personEditButton()
 
         contentEditButton()
@@ -74,6 +78,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         }
 
         dataObserver(viewModel.loadState) { state -> loadStateListener(state) }
+
+
     }
 
     private fun personEditButton() =

@@ -6,6 +6,7 @@ import com.example.gooru.core.extensions.passwordValidation
 import com.example.gooru.feature.domain.useCase.auth.RegistrationUseCase
 import com.example.gooru.core.states.AuthState
 import com.example.gooru.feature.presentation.authorization.base.BaseValidationViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RegistrationViewModel(
@@ -22,6 +23,8 @@ class RegistrationViewModel(
                 _state.value = AuthState.LOADING
                 registerUseCase.registration(email, password)
                 _state.value = AuthState.SUCCESS_AUTH
+                delay(100)
+                _state.value = AuthState.STARTED
             }
         }
 

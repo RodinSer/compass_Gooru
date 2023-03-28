@@ -20,25 +20,25 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:text="@string/change_password"
+        android:text="@string/new_ticket"
         style="@style/TextMiddleTitle"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
+        android:hint="Тема"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="25dp"
-        app:endIconMode="clear_text">
+        android:layout_marginBottom="25dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/theme"
+        <AutoCompleteTextView
+            android:id="@+id/theme_"
+            android:inputType="none"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Тема" />
+            android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

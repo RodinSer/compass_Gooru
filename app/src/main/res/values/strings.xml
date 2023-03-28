@@ -27,11 +27,20 @@
     <string name="link_to_source">Ссылка на источник</string>
     <string name="compass">COMPASS GOORU</string>
     <string name="parsing">PARSING</string>
-    <string name="offer">Нажимая кнопку «Зарегистрироваться», я даю согласие на обработку персональных данных, соглашаюсь с тарифами и правилами публичной оферты</string>
+    <string name="offer_start">Нажимая кнопку «Зарегистрироваться», я даю согласие на обработку персональных данных, соглашаюсь с тарифами и правилами </string>
+    <string name="offer_end"> публичной оферты </string>
     <string name="bad_parameters">Невозможно войти с предоставленными учетными данными</string>
     <string name="bad_parameters_registration">Невозможно зарегестрироваться с предоставленными учетными данными</string>
-    <string name="password_helper">* Пароли должны совпадать, должен содержать цифры и латинские буквы</string>
+    <string name="password_helper">* Пароль доржен:\n
+        - состоять из цифр и латинских букв;\n
+        - быть не короче 8-ми символов;\n
+        - содержать хотя бы 1 заглавную букву;\n
+        - содержать хотя бы 1 строчную букву;\n
+        - содержать хотя бы 1 цифру;</string>
     <string name="new_source">Новый источник</string>
+    <string name="new_ticket">Создать oбращение</string>
+    <string name="design">Оформить</string>
+    <string name="edit_1">Сменить</string>
 
     <string-array name="popular_parsing">
         <item>Поиск работы специалистов</item>
@@ -53,5 +62,19 @@
         <item>Мои Парсеры</item>
         <item>Избранное</item>
     </string-array>
+
+
+    <string-array name="them_ticket">
+        <item>Мои Парсеры</item>
+        <item>Вопросы к менеджеру</item>
+        <item>Оплата</item>
+        <item>Новый  заказ</item>
+        <item>Безопасность</item>
+        <item>Сотрудничество</item>
+        <item>Ошибки приложения</item>
+        <item>Другое</item>
+
+    </string-array>
+
 
 </resources>

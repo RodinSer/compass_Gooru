@@ -3,6 +3,7 @@ package com.example.gooru.feature.presentation.authorization.start
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.view.get
 import com.example.gooru.R
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.databinding.FragmentStartAuthBinding
@@ -14,10 +15,11 @@ class StartAuthFragment : BaseFragment<FragmentStartAuthBinding>() {
 
     private val tabs by lazy { resources.getStringArray(R.array.auth_group) }
 
-    private val tabLayoutMediator by lazy {
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = tabs[position]
-        }
+    private var tabLayoutMediator: TabLayoutMediator? = null
+
+    override fun onStart() {
+        super.onStart()
+        binding.viewPager.currentItem = 0
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,11 +28,15 @@ class StartAuthFragment : BaseFragment<FragmentStartAuthBinding>() {
         binding.viewPager.isUserInputEnabled = false
 
         binding.viewPager.adapter = AuthAdapter(this, tabs.size)
-        tabLayoutMediator.attach()
+        tabLayoutMediator =
+            TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+                tab.text = tabs[position]
+            }.apply { attach() }
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        tabLayoutMediator.detach()
+        tabLayoutMediator?.detach()
     }
 }

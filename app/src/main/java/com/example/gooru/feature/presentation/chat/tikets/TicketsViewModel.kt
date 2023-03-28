@@ -34,10 +34,10 @@ class TicketsViewModel(
     /** Пагинация*/
     //var tickets = pagingTickets.getAllTickets()
 
-    fun creteNewTicket(name: String, message: String, function: () -> Unit?) =
+    fun creteNewTicket(themeId: Int, message: String, function: () -> Unit?) =
         viewModelScope.launch(dispatcher.io + handler) {
             _loadState.value = LoadState.LOADING
-            _tickets.value.add(0, newTicketUseCase.create(name, message))
+            _tickets.value.add(0, newTicketUseCase.create(themeId, message))
             _loadState.value = LoadState.SUCCESS
             function()
         }

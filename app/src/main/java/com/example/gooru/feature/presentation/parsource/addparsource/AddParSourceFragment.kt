@@ -1,5 +1,6 @@
-package com.example.gooru.feature.presentation.parsers.addparsource
+package com.example.gooru.feature.presentation.parsource.addparsource
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +8,14 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.navigation.fragment.findNavController
+import com.example.gooru.R
 import com.example.gooru.core.states.LoadState
 import com.example.gooru.core.base.BaseFragment
 import com.example.gooru.core.extensions.showError
 import com.example.gooru.databinding.FragmentAddParSourceBinding
 import com.example.gooru.feature.presentation.parsers.adapters.ExchangeAdapter
 import com.example.gooru.feature.presentation.parsers.adapters.KeyWordAdapter
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,8 +48,11 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
         when (state) {
             LoadState.ERROR -> showError { createParSource() }
             LoadState.SUCCESS -> {
-                Toast.makeText(requireContext(), "parSource создан успешно", Toast.LENGTH_SHORT)
-                    .show()
+                val snackbar =
+                    Snackbar.make(binding.root, "parSource создан успешно", Snackbar.LENGTH_SHORT)
+                snackbar.setBackgroundTint(Color.parseColor("#197ECA"))
+                snackbar.setTextColor(Color.WHITE)
+                snackbar.show()
                 findNavController().popBackStack()
             }
             else -> {}
@@ -74,12 +80,15 @@ class AddParSourceFragment : BaseFragment<FragmentAddParSourceBinding>() {
     private fun sendButton() =
         binding.sendButton.setOnClickListener { createParSource() }
 
-    private fun createParSource() = viewModel.creteParSource(
-        1,
-        binding.description.text.toString(),
-        adapterExchangeParsing.getItems(),
-        adapterKeuWord.getItems(),
-        binding.name.text.toString()
-    )
+    private fun createParSource() {
+        addKeyWord()
+        viewModel.creteParSource(
+            1,
+            binding.description.text.toString(),
+            adapterExchangeParsing.getItems(),
+            adapterKeuWord.getItems(),
+            binding.name.text.toString()
+        )
+    }
 
 }

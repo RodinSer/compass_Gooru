@@ -8,6 +8,6 @@ class SupportNewTicketUseCaseImpl(
     private val supportRepository: SupportRepository
 ) : SupportNewTicketUseCase {
 
-    override suspend fun create(name: String, message: String) =
-        supportRepository.creteNewTicket(BodyNewTicket(name, message))
+    override suspend fun create(themeId: Int, message: String) =
+        supportRepository.creteNewTicket(BodyNewTicket(themeId.toString(), message))
 }

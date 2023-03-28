@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="46dp"
     xmlns:toos="http://schemas.android.com/tools">
-    
+
     <RadioButton
         android:id="@+id/test"
         android:layout_width="match_parent"

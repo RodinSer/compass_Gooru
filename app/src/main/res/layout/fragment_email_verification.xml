@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginVertical="16dp"
-                android:text="На указонную почту было отправленно сообщене. Пройдитде по ссылке из письма дляуспешного прохождения регистрации" />
+                android:text="На указанную почту было отправлено сообщение. Пройдите по ссылке из письма для успешного прохождения регистрации" />
 
             <Button
                 android:layout_gravity="center"

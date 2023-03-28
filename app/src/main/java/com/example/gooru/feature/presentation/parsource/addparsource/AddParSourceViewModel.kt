@@ -1,4 +1,4 @@
-package com.example.gooru.feature.presentation.parsers.addparsource
+package com.example.gooru.feature.presentation.parsource.addparsource
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
