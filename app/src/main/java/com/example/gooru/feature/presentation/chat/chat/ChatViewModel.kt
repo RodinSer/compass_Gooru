@@ -55,7 +55,7 @@ class ChatViewModel(
 
     fun startWebSocket(ticketId: Int) {
         val request = Request.Builder()
-            .url("wss://apigooru.compas-pro.com/ws/chat/$ticketId/$AUTH ${tokenProvider.getToken()}")
+            .url("$BASE_WS_URL/$ticketId/$AUTH ${tokenProvider.getToken()}")
             .build()
         try {
             webSocket = client.newWebSocket(request, webSocketListener)
